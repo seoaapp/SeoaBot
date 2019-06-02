@@ -1,0 +1,23 @@
+{
+  "name": "seoa",
+  "version": "0.1.0",
+  "description": "",
+  "main": "seoa.js",
+  "scripts": {
+    "test": "node seoa.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttakkku/PMH.git"
+  },
+  "author": "PMH",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ttakkku/PMH/issues"
+  },
+  "homepage": "https://github.com/ttakkku/PMH#readme",
+  "dependencies": {
+    "dialogflow": "^0.9.1",
+    "discord.js": "^11.5.1"
+  }
+}
