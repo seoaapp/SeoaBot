@@ -410,6 +410,11 @@ protobufjs@^6.8.0, protobufjs@^6.8.6, protobufjs@^6.8.8:
     "@types/node" "^10.1.0"
     long "^4.0.0"
 
+random-hex-color@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/random-hex-color/-/random-hex-color-1.0.1.tgz#3518cbccf1ddd43cd6a9c054d6787a3c978b4751"
+  integrity sha1-NRjLzPHd1DzWqcBU1nh6PJeLR1E=
+
 readable-stream@^2.0.0, readable-stream@~2.3.6:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"

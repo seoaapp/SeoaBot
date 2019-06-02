@@ -1,0 +1,18 @@
+/**
+ * @name Seoa:helps
+ * @description Help Command 
+ */
+const discord = require('discord.js')
+
+exports.run = ((seoa, msg) => {
+  let help = new discord.RichEmbed()
+  .addField('Seoa CommandBook', 'Prefix: =')
+  .addField('Help (CommandBook)', '=help / =도움 / =도움말')
+  .addField('와! 심심해!', '=[할말]')
+  .setFooter('이 봇은 베타입니다. 불안정하니 버그가 발생할경우 PMHStudio / PMH#7086 으로 DM 주세요')
+
+  msg.channel.send('DM으로 도움말을 보냈습니다!')
+  msg.author.send(help)
+})
+
+exports.callSign = ['help', 'Help', '도움', '도움말']
