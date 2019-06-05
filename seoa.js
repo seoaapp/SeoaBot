@@ -23,8 +23,7 @@ const settings = {
   prefix: process.env.prefix || '=',
   commands: process.env.commands || './commands/',
   dialogflow: process.env.dialogflow || 'seoa-woksnl',
-  activity: process.env.activity || 'Awesome Musics | =help',
-  notGuildMsg: process.env.notGuildMsg || 'You cannot use SeoaBot in DM'
+  activity: process.env.activity || 'Awesome Musics | =help'
 }
 
 /** Seoa Discord Client */
@@ -68,7 +67,7 @@ seoa.on('message', (msg) => {
 
   if (msg.author.id === seoa.user.id) return
   if (msg.author.bot) return 
-  if (!msg.guild) return msg.channel.send(settings.notGuildMsg)
+  if (!msg.guild) return msg.channel.send(seoa.user.username + '는 DM에서 사용하실 수 없어요!')
 
   if (!msg.content.startsWith(settings.prefix)) return
   console.info(msg.author.username + '> ' + msg.content)

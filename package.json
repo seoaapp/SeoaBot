@@ -19,6 +19,7 @@
   "dependencies": {
     "dialogflow": "^0.9.1",
     "discord.js": "^11.5.1",
-    "random-hex-color": "^1.0.1"
+    "random-hex-color": "^1.0.1",
+    "yt-search": "^0.4.1"
   }
 }
