@@ -17,6 +17,9 @@ const dialogflow = require('dialogflow')
 /** Random Color Picker Module */
 const randomHexColor = require('random-hex-color')
 
+/** sangoon_is_math Module */
+const SIM = require("sangoon_is_math") 
+
 /** Seoa Settings */
 const settings = {
   token: process.env.token || '',
@@ -97,7 +100,7 @@ seoa.on('message', (msg) => {
       .addField(seoa.user.username + '의 생일', seoa.user.createdAt, true)
       .addField(seoa.user.username + '의 업데이트 날짜', seoa.readyAt, true)
       .addField(seoa.user.username + '의 업타임', days + '일 ' + hours + '시간 ' + minutes + '분 ' + seconds + '초', true)
-      .addField('API 핑', seoa.ping, true)
+      .addField('API 핑', SIM.round(seoa.ping), true)
     msg.channel.send(botInfoEmbed)
   } else {
     let request = {
