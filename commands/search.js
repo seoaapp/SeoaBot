@@ -38,3 +38,7 @@ exports.run = (seoa, msg) => {
 }
 
 exports.callSign = ['search', '검색']
+exports.helps = {
+  description: "YouTube에서 검색합니다",
+  uses: "=search"
+}

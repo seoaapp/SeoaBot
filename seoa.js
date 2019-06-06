@@ -112,7 +112,7 @@ seoa.on('message', (msg) => {
 
     seoaDialogflow.detectIntent(request).then((res) => {
       if (res[0].queryResult.fulfillmentText.split(';')[0] === 'run') {
-        if (commands.get(res[0].queryResult.fulfillmentText.split(';')[1])) commands.get(res[0].queryResult.fulfillmentText.split(';')[1]).run(seoa, msg)
+        if (commands.get(res[0].queryResult.fulfillmentText.split(';')[1])) commands.get(res[0].queryResult.fulfillmentText.split(';')[1]).run(seoa, msg, settings)
       } else if (res[0].queryResult.fulfillmentText.split(';')[0] === 'say') {
         msg.channel.send(res[0].queryResult.fulfillmentText.split(';')[1])
       }
