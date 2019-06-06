@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ttakkku/PMH.git"
+    "url": "git+https://github.com/ttakkku/SeoaBot.git"
   },
   "author": "PMH",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/ttakkku/PMH/issues"
+    "url": "https://github.com/ttakkku/SeoaBot/issues"
   },
-  "homepage": "https://github.com/ttakkku/PMH#readme",
+  "homepage": "https://github.com/ttakkku/SeoaBot#readme",
   "dependencies": {
     "dialogflow": "^0.9.1",
     "discord.js": "^11.5.1",
