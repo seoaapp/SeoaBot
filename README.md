@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SeoaBot
 
 [![GPL](https://img.shields.io/github/license/ttakkku/SeoaBot.svg)](https://github.com/ttakkku/SeoaBot/blob/master/LICENSE)

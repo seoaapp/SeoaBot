@@ -10,12 +10,6 @@ const discord = require('discord.js')
 exports.run = ((seoa, msg, settings) => {
   let help = new discord.RichEmbed()
   .addField('Seoa CommandBook', 'Prefix: =')
-<<<<<<< HEAD
-=======
-  .addField('Help (CommandBook)', '=help / =도움 / =도움말')
-  .addField('search (CommandBook)', '=search / =검색')
-  .addField('와! 심심해!', '=[할말]')
->>>>>>> 3b70316f8d53a9656a612e612dafe894e6b68935
   .setDescription('이 봇은 베타입니다. 불안정하니 버그가 발생할경우 [이슈](https://github.com/ttakkku/SeoaBot/issues)에 알려주세요')
 
 
