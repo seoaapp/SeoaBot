@@ -21,7 +21,7 @@ exports.run = ((seoa, msg, settings) => {
       }
     })
     msg.channel.send('DM으로 도움말을 보냈습니다!')
-    msg.author.send(help, 'https://discord.gg/KNBGZU2')
+    msg.author.send(help)
   })
 })
 
