@@ -1,7 +1,7 @@
 {
   "name": "seoa",
   "version": "0.1.0",
-  "description": "",
+  "description": "The Discord bot is name Seoa",
   "main": "seoa.js",
   "scripts": {
     "test": "node seoa.js"
