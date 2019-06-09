@@ -19,6 +19,8 @@
   "dependencies": {
     "dialogflow": "^0.9.1",
     "discord.js": "^11.5.1",
+    "noeul-music-module": "^1.0.3",
+    "opusscript": "0.0.6",
     "random-hex-color": "^1.0.1",
     "sangoon_is_math": "^0.0.3",
     "yt-search": "^0.4.1"
