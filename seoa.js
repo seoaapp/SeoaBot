@@ -8,6 +8,7 @@
 
 'use strict' // strict mode
 
+
 /** Discord.js Module */
 const discord = require('discord.js')
 
@@ -26,7 +27,8 @@ const settings = {
   prefix: process.env.prefix || '=',
   commands: process.env.commands || './commands/',
   dialogflow: process.env.dialogflow || 'seoa-woksnl',
-  activity: process.env.activity || 'Awesome Musics | =help'
+  activity: process.env.activity || 'Awesome Musics | =help',
+  yttoken: process.env.yttoken || ''
 }
 
 /** Seoa Discord Client */
@@ -36,6 +38,15 @@ const seoa = new discord.Client()
 const seoaDialogflow = new dialogflow.SessionsClient()
   /** Seoa Commands Collection */
 let commands = new discord.Collection()
+
+/** Music Modle */
+seoa.music = require('noeul-music-module')
+
+seoa.music.start(seoa, {
+  youtubeKey: settings.yttoken,
+  botPrefix: settings.prefix + '음악 ',
+  djRole: 'seoaDJ',
+})
 
 // Command Reading Start
 
@@ -72,6 +83,7 @@ seoa.on('message', (msg) => {
   if (msg.author.bot) return 
   if (!msg.guild) return msg.channel.send(seoa.user.username + '는 DM에서 사용하실 수 없어요!')
 
+  if (msg.content.startsWith('=음악 ')) return
   if (!msg.content.startsWith(settings.prefix)) return
   console.info(msg.author.username + '> ' + msg.content)
   if (!msg.content.split(settings.prefix)[1]) {
@@ -97,9 +109,9 @@ seoa.on('message', (msg) => {
       .addField('총 사용자 수', seoa.users.size, true)
       .addField('총 체널 수', seoa.channels.size, true)
       .addField('총 서버 수', seoa.guilds.size, true)
-      .addField(seoa.user.username + '의 생일', seoa.user.createdAt, true)
+      .addField(seoa.user.username + '의 생일', seoa.user.createdAt, true)      .addField(seoa.user.username
       .addField(seoa.user.username + '의 업데이트 날짜', seoa.readyAt, true)
-      .addField(seoa.user.username + '의 업타임', days + '일 ' + hours + '시간 ' + minutes + '분 ' + seconds + '초', true)
+ + '의 업타임', days + '일 ' + hours + '시간 ' + minutes + '분 ' + seconds + '초', true)
       .addField('API 핑', SIM.round(seoa.ping), true)
     msg.channel.send(botInfoEmbed)
   } else {
