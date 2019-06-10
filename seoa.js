@@ -95,7 +95,7 @@ seoa.on('message', (msg) => {
       .addField(seoa.user.username + '의 ID', seoa.user.id, true)
       .addField('총 명령어 수', commands.size, true)
       .addField('총 사용자 수', seoa.users.size, true)
-      .addField('총 체널 수', seoa.channels.size, true)
+      .addField('총 채널 수', seoa.channels.size, true)
       .addField('총 서버 수', seoa.guilds.size, true)
       .addField(seoa.user.username + '의 생일', seoa.user.createdAt, true)
       .addField(seoa.user.username + '의 업데이트 날짜', seoa.readyAt, true)
