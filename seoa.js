@@ -91,7 +91,7 @@ seoa.on('message', (msg) => {
       .setThumbnail(seoa.user.avatarURL)
       .setColor(randomHexColor())
       .addBlankField()
-      .addField(seoa.user.username + '의 이름, 테그', seoa.user.tag, true)
+      .addField(seoa.user.username + '의 이름, 태그', seoa.user.tag, true)
       .addField(seoa.user.username + '의 ID', seoa.user.id, true)
       .addField('총 명령어 수', commands.size, true)
       .addField('총 사용자 수', seoa.users.size, true)
