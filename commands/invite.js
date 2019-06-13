@@ -7,7 +7,6 @@ const discord = require('discord.js')
 
 exports.run = ((seoa, msg, settings) => {
   let invite = new discord.RichEmbed()
-    .addField('Seoa CommandBook', 'Prefix: ~')
     .setDescription('**[봇 초대링크!](https://discordapp.com/oauth2/authorize?client_id=584692085614182440&permissions=8&scope=bot)**')
   msg.channel.send(invite).then(err => console.log(err))
 });
