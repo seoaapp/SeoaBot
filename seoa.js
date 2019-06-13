@@ -26,7 +26,7 @@ const settings = {
   prefix: process.env.prefix || '~',
   commands: process.env.commands || './commands/',
   dialogflow: process.env.dialogflow || 'seoa-woksnl',
-  activity: process.env.activity || 'Awesome Musics | =help'
+  activity: process.env.activity || 'Awesome Musics | ~help'
 }
 
 /** Seoa Discord Client */
