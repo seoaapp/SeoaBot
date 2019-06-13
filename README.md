@@ -5,10 +5,12 @@
 [![pr](https://img.shields.io/github/issues-pr/ttakkku/SeoaBot.svg)](https://github.com/ttakkku/SeoaBot/pulls)
 [![GitHub followers](https://img.shields.io/github/followers/ttakkku.svg?label=Flollow&style=social)](https://github.com/ttakkku)
 
+# Bot Invite
+[Seoa Invite](https://discordapp.com/oauth2/authorize?client_id=584692085614182440&permissions=8&scope=bot)
+
 # Code Style
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
-
 
 # Thanks to
 
