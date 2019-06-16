@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <a href="https://discord.gg/KNBGZU2"><img src="https://cdn.discordapp.com/attachments/572373155637624832/589832504723243009/1.png" width="586" alt="SeoaBot"/></a>
+    <a href="https://discord.gg/KNBGZU2"><img src="https://cdn.discordapp.com/attachments/568032700213231666/589833031783809046/1_1.png" width="586" alt="SeoaBot"/></a>
   </p>
 </div>
 
