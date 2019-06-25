@@ -74,7 +74,7 @@ seoa.on('message', (msg) => {
 
   if (!msg.content.startsWith(settings.prefix)) return
   console.info(msg.author.username + '> ' + msg.content)
-  if (!msg.content.split(settings.prefix)[1]) {
+  if (msg.content === settings.prefix) {
 
     // UpTime Caculator Start
     let totalSeconds = (seoa.uptime / 1000)
