@@ -122,4 +122,4 @@ seoa.on('message', (msg) => {
     })
   }
 })
-  /** @copyright (c) 2019. Seoa Bot Develoment Team. all rights reserved. */
+  /** @copyright (c) 2019. Seoa Develoment Team. all rights reserved. */
