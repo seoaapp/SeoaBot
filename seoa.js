@@ -23,11 +23,12 @@ const SIM = require("sangoon_is_math")
 /** Seoa Settings */
 const settings = {
   token: process.env.token || '',
-  prefix: process.env.prefix || '~',
+  prefix: process.env.prefix || '^',
   commands: process.env.commands || './commands/',
   dialogflow: process.env.dialogflow || 'seoa-woksnl',
-  activity: process.env.activity || 'Awesome Musics | ~help'
+  activity: process.env.activity || 'Awesome Musics | ^help'
 }
+process.env.GOOGLE_APPLICATION_CREDENTIALS = './lib/Seoa-d5dd2ce1a3b1.json'
 
 /** Seoa Discord Client */
 const seoa = new discord.Client()
@@ -107,7 +108,7 @@ seoa.on('message', (msg) => {
       session: seoaDialogflow.sessionPath(settings.dialogflow, msg.author.id),
       queryInput: {
         text: {
-          text: msg.content.split(settings.prefix)[1],
+          text: msg.content.split(settings.prefix)[1]  + "말",
           languageCode: 'ko-KR'
         }
       }
