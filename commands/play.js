@@ -40,5 +40,5 @@ exports.run = ((seoa, msg, settings) => {
 exports.callSign = ['플렝','노래', '시작', 'play']
 exports.helps = {
     description: "노래를 재생해드릴께요~",
-    uses: "~play"
+    uses: "/play"
 }
