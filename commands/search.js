@@ -31,6 +31,19 @@ exports.run = (seoa, msg) => {
             embed.addField((index + 1) + '. ' + video.title, '[보기](http://youtube.com' + video.url + ') | 길이: ' + video.duration + ' | 게시일: ' + video.ago + ' | ' + video.views + '번 재생됨')
           })
           m.edit(embed)
+          msg.channel.awaitMessages(filter, {
+            max: 1,
+            time: 60000
+          }).then((collect2) => {
+            if (!collect2.first()) {
+              m.edit('1분이 지나 취소되었습니다')
+              m.delete(2000)
+            } else {
+              if (collect2) {
+                
+              }
+            }
+          })
         })
       }
     })
@@ -40,5 +53,5 @@ exports.run = (seoa, msg) => {
 exports.callSign = ['search', '검색']
 exports.helps = {
   description: "YouTube에서 검색합니다",
-  uses: "/search"
+  uses: ">search"
 }

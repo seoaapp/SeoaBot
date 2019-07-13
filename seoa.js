@@ -23,10 +23,11 @@ const SIM = require("sangoon_is_math")
 /** Seoa Settings */
 const settings = {
   token: process.env.token || '',
-  prefix: process.env.prefix || '/',
+  prefix: process.env.prefix || '>',
   commands: process.env.commands || './commands/',
   dialogflow: process.env.dialogflow || 'seoa-woksnl',
-  activity: process.env.activity || 'Awesome Musics | /help'
+  activity: process.env.activity || 'Awesome Musics | >help',
+  owners: ['527746745073926145', '309230935377707011']
 }
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './lib/Seoa-d5dd2ce1a3b1.json'
 
@@ -74,7 +75,8 @@ seoa.on('message', (msg) => {
   if (!msg.guild) return msg.channel.send(seoa.user.username + '는 DM에서 사용하실 수 없어요!')
 
   if (!msg.content.startsWith(settings.prefix)) return
-  console.info(msg.author.username + '> ' + msg.content)
+  console.info(msg.guild.name + "> "+ msg.author.username + '> ' + msg.content)
+
   if (msg.content === settings.prefix) {
 
     // UpTime Caculator Start
@@ -104,23 +106,15 @@ seoa.on('message', (msg) => {
       .addField('API 핑', SIM.round(seoa.ping), true)
     msg.channel.send(botInfoEmbed)
   } else {
-    let request = {
-      session: seoaDialogflow.sessionPath(settings.dialogflow, msg.author.id),
-      queryInput: {
-        text: {
-          text: msg.content.split(settings.prefix)[1]  + "말",
-          languageCode: 'ko-KR'
-        }
-      }
-    }
+    let query = {
+      fullText: msg.content,
+      message: msg.content.split(settings.prefix)[1],
+      command: msg.content.split(settings.prefix)[1].split(' ')[0],
+      args: msg.content.split(settings.prefix)[1].split(' ').slice(1)
+    } 
 
-    seoaDialogflow.detectIntent(request).then((res) => {
-      if (res[0].queryResult.fulfillmentText.split(';')[0] === 'run') {
-        if (commands.get(res[0].queryResult.fulfillmentText.split(';')[1])) commands.get(res[0].queryResult.fulfillmentText.split(';')[1]).run(seoa, msg, settings)
-      } else if (res[0].queryResult.fulfillmentText.split(';')[0] === 'say') {
-        msg.channel.send(res[0].queryResult.fulfillmentText.split(';')[1])
-      }
-    })
+    commands.get(query.command).run(seoa, msg, settings, query)
   }
 })
-  /** @copyright (c) 2019. Seoa Develoment Team. all rights reserved. */
+
+/** @copyright (c) 2019. Seoa Develoment Team. all rights reserved. */

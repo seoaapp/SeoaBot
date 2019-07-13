@@ -14,5 +14,5 @@ exports.run = ((seoa, msg, settings) => {
 exports.callSign = ['invite', '봇초대링크', '초대링크', 'Invite']
 exports.helps = {
   description: "초대링크를 줍니다",
-  uses: "/invite"
+  uses: ">invite"
 }
