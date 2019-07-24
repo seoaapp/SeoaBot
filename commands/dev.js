@@ -3,10 +3,9 @@
  * @description Developer evaluation command
  */
 
-exports.run = (seoa, msg, settings, query) => {
+exports.run = ((seoa, msg, settings, query) => { 
   if (settings.owners.includes(msg.author.id)) {
     try {
-      // eslint-disable-next-line
       eval(query.args.join(' '))
     } catch (error) {
       msg.channel.send(error)
@@ -14,6 +13,5 @@ exports.run = (seoa, msg, settings, query) => {
   } else {
     msg.channel.send('어디서 감히 개발자도 아닌게 까불어!')
   }
-}
-
-exports.callSign = ['dev', 'eval']
+})
+exports.callSign = ['dev','eval']

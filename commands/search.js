@@ -8,6 +8,7 @@ const ytSearch = require('yt-search')
 const randomHexColor = require('random-hex-color')
 
 exports.run = (seoa, msg) => {
+
   /** Message Filter for .awaitMessages() */
   const filter = (m) => m.author.id === msg.author.id
 
@@ -23,7 +24,7 @@ exports.run = (seoa, msg) => {
         ytSearch(collect.first().content, (err, res) => {
           if (err) m.channel.send(err)
 
-          const embed = new discord.RichEmbed()
+          let embed = new discord.RichEmbed()
             .setColor(randomHexColor())
             .setTitle('\'' + collect.first().content.slice(0, 200) + '\'의 검색 결과')
           res.videos.slice(0, 10).forEach((video, index) => {
@@ -39,7 +40,7 @@ exports.run = (seoa, msg) => {
               m.delete(2000)
             } else {
               if (collect2) {
-
+                
               }
             }
           })
@@ -51,6 +52,6 @@ exports.run = (seoa, msg) => {
 
 exports.callSign = ['search', '검색']
 exports.helps = {
-  description: 'YouTube에서 검색합니다',
-  uses: '>search'
+  description: "YouTube에서 검색합니다",
+  uses: ">search"
 }

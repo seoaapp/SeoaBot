@@ -3,10 +3,11 @@
  * @description Music Player by YouTube & Spotify & SoundCloud & Music File & Others
  */
 
+const discord = require('discord.js')
 const ytdl = require('ytdl-core')
 
-exports.run = (seoa, msg, settings) => {
-  const targetUrl = msg.content.split(' ')[1]
+exports.run = ((seoa, msg, settings) => {
+  let targetUrl = msg.content.split(' ')[1]
   try {
     if (msg.content.includes('youtube.com') || msg.content.includes('youtu.be')) {
       if (msg.member.voiceChannel) {
@@ -21,7 +22,7 @@ exports.run = (seoa, msg, settings) => {
 
     } else if (msg.content.includes('spotify')) {
 
-    } else if (msg.content.includes('')) {
+    } else if (msg.content.includes("")) {
       if (msg.member.voiceChannel) {
         if (!msg.guild.voiceConnection) {
           msg.member.voiceChannel.join()
@@ -32,13 +33,13 @@ exports.run = (seoa, msg, settings) => {
       }
     }
   } catch (e) {
-    console.log(URLSearchParams(e))
+    console.log(encodeURIComponent(e))
     msg.channel.send('삐빅! 지원하지 않는 URL입니다.')
   }
-}
+})
 
 exports.callSign = ['플렝', '노래', '시작', 'play']
 exports.helps = {
-  description: '노래를 재생해드릴께요~',
-  uses: '>play'
+  description: "노래를 재생해드릴께요~",
+  uses: ">play"
 }
