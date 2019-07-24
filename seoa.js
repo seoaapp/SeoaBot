@@ -12,13 +12,13 @@
 const discord = require('discord.js')
 
 /** Dialogflow Module */
-// const dialogflow = require('dialogflow')
+const dialogflow = require('dialogflow')
 
 /** Random Color Picker Module */
 const randomHexColor = require('random-hex-color')
 
 /** sangoon_is_math Module */
-const SIM = require('sangoon_is_math')
+const SIM = require("sangoon_is_math") 
 
 /** Seoa Settings */
 const settings = {
@@ -34,8 +34,10 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = './lib/Seoa-d5dd2ce1a3b1.json'
 /** Seoa Discord Client */
 const seoa = new discord.Client()
 
-/** Seoa Commands Collection */
-const commands = new discord.Collection()
+/** Seoa Dialogflow Client */
+const seoaDialogflow = new dialogflow.SessionsClient()
+  /** Seoa Commands Collection */
+let commands = new discord.Collection()
 
 // Command Reading Start
 
@@ -45,15 +47,15 @@ const fileReader = require('fs')
 fileReader.readdir(settings.commands, (err, files) => {
   if (err) console.err(err)
 
-  const commandFiles = files.filter((v) => v.split('.').pop() === 'js')
+  let commandFiles = files.filter((v) => v.split('.').pop() === 'js')
   if (commandFiles.length <= 0) console.error('Couldn\'t find commands.')
 
   commandFiles.forEach((v, i) => {
-    const command = require(settings.commands + v)
-    command.callSign.forEach((sign) => {
-      commands.set(sign, command)
-    })
-    console.log('Command Readed: ' + settings.commands + v)
+  let command = require(settings.commands + v)
+  command.callSign.forEach((sign) => {
+  commands.set(sign, command)
+  })
+  console.log('Command Readed: ' + settings.commands + v)
   })
 })
 
@@ -67,24 +69,26 @@ seoa.on('ready', () => {
 })
 
 seoa.on('message', (msg) => {
+
   if (msg.author.id === seoa.user.id) return
-  if (msg.author.bot) return
+  if (msg.author.bot) return 
   if (!msg.guild) return msg.channel.send(seoa.user.username + '는 DM에서 사용하실 수 없어요!')
 
   if (!msg.content.startsWith(settings.prefix)) return
-  console.info(msg.guild.name + '> ' + msg.author.username + '> ' + msg.content)
+  console.info(msg.guild.name + "> "+ msg.author.username + '> ' + msg.content)
 
   if (msg.content === settings.prefix) {
+
     // UpTime Caculator Start
     let totalSeconds = (seoa.uptime / 1000)
-    const days = Math.floor(totalSeconds / 86400)
-    const hours = Math.floor(totalSeconds / 3600)
-    totalSeconds %= 3600
-    const minutes = Math.floor(totalSeconds / 60)
-    const seconds = Math.floor(totalSeconds % 60)
+    let days = Math.floor(totalSeconds / 86400)
+    let hours = Math.floor(totalSeconds / 3600)
+    totalSeconds %= 3600;
+    let minutes = Math.floor(totalSeconds / 60)
+    let seconds = Math.floor(totalSeconds % 60)
     // UpTime Caculator End
 
-    const botInfoEmbed = new discord.RichEmbed()
+    let botInfoEmbed = new discord.RichEmbed()
       .setTitle(seoa.user.username + '정보!')
       .setDescription(msg.author + '에게')
       .setThumbnail(seoa.user.avatarURL)
@@ -102,18 +106,14 @@ seoa.on('message', (msg) => {
       .addField('API 핑', SIM.round(seoa.ping), true)
     msg.channel.send(botInfoEmbed)
   } else {
-    const query = {
+    let query = {
       fullText: msg.content,
       message: msg.content.split(settings.prefix)[1],
       command: msg.content.split(settings.prefix)[1].split(' ')[0],
       args: msg.content.split(settings.prefix)[1].split(' ').slice(1)
-    }
+    } 
 
-    const runCommand = commands.get(query.command)
-
-    if (!runCommand) {
-      runCommand.run(seoa, msg, settings, query)
-    }
+    commands.get(query.command).run(seoa, msg, settings, query)
   }
 })
 
