@@ -21,6 +21,7 @@
     "discord.js": "^11.5.1",
     "ffmpeg": "^0.0.4",
     "opusscript": "^0.0.6",
+    "os": "^0.1.1",
     "random-hex-color": "^1.0.1",
     "sangoon_is_math": "^0.0.3",
     "yt-search": "^0.4.1",

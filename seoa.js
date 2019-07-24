@@ -29,8 +29,8 @@ const settings = {
   activity: process.env.activity || 'Awesome Musics | >help',
   owners: ['527746745073926145', '309230935377707011']
 }
+module.exports.settings = settings
 process.env.GOOGLE_APPLICATION_CREDENTIALS = './lib/Seoa-d5dd2ce1a3b1.json'
-
 /** Seoa Discord Client */
 const seoa = new discord.Client()
 
@@ -118,3 +118,20 @@ seoa.on('message', (msg) => {
 })
 
 /** @copyright (c) 2019. Seoa Develoment Team. all rights reserved. */
+
+/**
+ * 으아아아악
+ * 으아아아아아아아악
+ * 심심해!
+ * 으아아아아아악
+ * 으아아아아아ㅏㅇ아ㅏㅇ아아ㅏㅇ
+ * 뭐하지 뭐하지
+ * 으아아아
+ * simsim
+ * tlatla
+ * i am simsim and you also
+ * 심시밋미심시밋ㅁ
+ * 으아아아 심심
+ * 뭐하지뭐하지뭐하지
+ * anjgkwlanjgkwl
+ */
