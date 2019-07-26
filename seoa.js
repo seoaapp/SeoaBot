@@ -25,24 +25,30 @@ const settings = {
   token: process.env.token || '',
   prefix: process.env.prefix || '>',
   commands: process.env.commands || './commands/',
-  dialogflow: process.env.dialogflow || 'seoa-woksnl',
+  // dialogflow: process.env.dialogflow || 'seoa-woksnl',
   activity: process.env.activity || 'Awesome Musics | >help',
   owners: ['527746745073926145', '309230935377707011']
 }
 module.exports.settings = settings
-process.env.GOOGLE_APPLICATION_CREDENTIALS = './lib/Seoa-d5dd2ce1a3b1.json'
+// process.env.GOOGLE_APPLICATION_CREDENTIALS = './lib/Seoa-d5dd2ce1a3b1.json'
 /** Seoa Discord Client */
 const seoa = new discord.Client()
 
 /** Seoa Commands Collection */
 const commands = new discord.Collection()
 
+/** Guild Onwers ID */
+const owners = require('./ServerData/owner.json')
+
+/** Message */
+const locale = require('./locales/kr.json')
+
 // Command Reading Start
 
 /** File System: File Reader */
-const fileReader = require('fs')
+const fs = require('fs')
 
-fileReader.readdir(settings.commands, (err, files) => {
+fs.readdir(settings.commands, (err, files) => {
   if (err) console.err(err)
 
   const commandFiles = files.filter((v) => v.split('.').pop() === 'js')
@@ -64,12 +70,18 @@ seoa.login(settings.token)
 seoa.on('ready', () => {
   console.info(seoa.user.username + ' is now Online!\n')
   seoa.user.setActivity(settings.activity, { type: 'PLAYING' })
+
+  seoa.guilds.forEach((guild) => {
+    owners[guild.id] = guild.owner.id
+  })
+
+  fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners))
 })
 
 seoa.on('message', (msg) => {
   if (msg.author.id === seoa.user.id) return
   if (msg.author.bot) return
-  if (!msg.guild) return msg.channel.send(seoa.user.username + '는 DM에서 사용하실 수 없어요!')
+  if (!msg.guild) return msg.channel.send(locale.BotNotDM.replace('[seoa.user.username]', seoa.user.username))
 
   if (!msg.content.startsWith(settings.prefix)) return
   console.info(msg.guild.name + '> ' + msg.author.username + '> ' + msg.content)
@@ -85,21 +97,21 @@ seoa.on('message', (msg) => {
     // UpTime Caculator End
 
     const botInfoEmbed = new discord.RichEmbed()
-      .setTitle(seoa.user.username + '정보!')
-      .setDescription(msg.author + '에게')
+      .setTitle(seoa.user.username + locale.Info)
+      .setDescription(msg.author + locale.From)
       .setThumbnail(seoa.user.avatarURL)
       .setColor(randomHexColor())
       .addBlankField()
-      .addField(seoa.user.username + '의 이름, 태그', seoa.user.tag, true)
-      .addField(seoa.user.username + '의 ID', seoa.user.id, true)
-      .addField('총 명령어 수', commands.size, true)
-      .addField('총 사용자 수', seoa.users.size, true)
-      .addField('총 채널 수', seoa.channels.size, true)
-      .addField('총 서버 수', seoa.guilds.size, true)
-      .addField(seoa.user.username + '의 생일', seoa.user.createdAt, true)
-      .addField(seoa.user.username + '의 업데이트 날짜', seoa.readyAt, true)
-      .addField(seoa.user.username + '의 업타임', days + '일 ' + hours + '시간 ' + minutes + '분 ' + seconds + '초', true)
-      .addField('API 핑', SIM.round(seoa.ping), true)
+      .addField(seoa.user.username + locale['Name&Tag'], seoa.user.tag, true)
+      .addField(seoa.user.username + locale.ID, seoa.user.id, true)
+      .addField(locale.CommandSize, commands.size, true)
+      .addField(locale.UsersSize, seoa.users.size, true)
+      .addField(locale.ChannelsSize, seoa.channels.size, true)
+      .addField(locale.ServersSize, seoa.guilds.size, true)
+      .addField(seoa.user.username + locale.BotDay, seoa.user.createdAt, true)
+      .addField(seoa.user.username + locale.UpdataDay, seoa.readyAt, true)
+      .addField(seoa.user.username + locale.UpTime, days + locale.Day + hours + locale.hour + minutes + locale.minute + seconds + locale.second, true)
+      .addField(locale.APIPING, SIM.round(seoa.ping), true)
     msg.channel.send(botInfoEmbed)
   } else {
     const query = {
@@ -112,8 +124,9 @@ seoa.on('message', (msg) => {
     const runCommand = commands.get(query.command)
 
     if (!runCommand) {
-      runCommand.run(seoa, msg, settings, query).catch(e => e)
-
+      msg.channel.send(locale.CommandNotFound)
+    } else {
+      runCommand.run(seoa, msg, settings, query)
     }
   }
 })

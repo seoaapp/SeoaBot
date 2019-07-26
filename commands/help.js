@@ -17,7 +17,7 @@ exports.run = (seoa, msg, settings) => {
     files.forEach((v, i) => {
       const temp = require('../' + settings.commands + v).helps
       if (temp) {
-        help.addField('>' + temp.description, '>' + temp.uses)
+        help.addField(temp.description, '> ' + temp.uses)
       }
     })
     msg.channel.send('DM으로 도움말을 보냈습니다!')
