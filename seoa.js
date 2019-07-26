@@ -112,7 +112,8 @@ seoa.on('message', (msg) => {
     const runCommand = commands.get(query.command)
 
     if (!runCommand) {
-      runCommand.run(seoa, msg, settings, query).catch(e =>)
+      runCommand.run(seoa, msg, settings, query).catch(e => e)
+
     }
   }
 })
