@@ -3,7 +3,6 @@
  * @description YouTube Search Command
  */
 
-const discord = require('discord.js')
 const ytSearch = require('yt-search')
 const randomHexColor = require('random-hex-color')
 
@@ -23,13 +22,18 @@ exports.run = (seoa, msg) => {
         ytSearch(collect.first().content, (err, res) => {
           if (err) m.channel.send(err)
 
-          const embed = new discord.RichEmbed()
-            .setColor(randomHexColor())
-            .setTitle('\'' + collect.first().content.slice(0, 200) + '\'의 검색 결과')
+          const embed = {
+            color: randomHexColor(),
+            title: '\'' + collect.first().content.slice(0, 200) + '\'의 검색 결과',
+            field: []
+          }
           res.videos.slice(0, 10).forEach((video, index) => {
-            embed.addField((index + 1) + '. ' + video.title, '[보기](http://youtube.com' + video.url + ') | 길이: ' + video.duration + ' | 게시일: ' + video.ago + ' | ' + video.views + '번 재생됨')
+            embed.field.push({
+              title: (index + 1) + '. ' + video.title,
+              value: '[보기](http://youtube.com' + video.url + ') | 길이: ' + video.duration + ' | 게시일: ' + video.ago + ' | ' + video.views + '번 재생됨'
+            })
           })
-          m.edit(embed)
+          m.edit({ embed })
           msg.channel.awaitMessages(filter, {
             max: 1,
             time: 60000
@@ -39,7 +43,7 @@ exports.run = (seoa, msg) => {
               m.delete(2000)
             } else {
               if (collect2) {
-
+                // None
               }
             }
           })

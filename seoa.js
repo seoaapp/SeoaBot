@@ -95,24 +95,73 @@ seoa.on('message', (msg) => {
     const minutes = Math.floor(totalSeconds / 60)
     const seconds = Math.floor(totalSeconds % 60)
     // UpTime Caculator End
-
-    const botInfoEmbed = new discord.RichEmbed()
-      .setTitle(seoa.user.username + locale.Info)
-      .setDescription(msg.author + locale.From)
-      .setThumbnail(seoa.user.avatarURL)
-      .setColor(randomHexColor())
-      .addBlankField()
-      .addField(seoa.user.username + locale['Name&Tag'], seoa.user.tag, true)
-      .addField(seoa.user.username + locale.ID, seoa.user.id, true)
-      .addField(locale.CommandSize, commands.size, true)
-      .addField(locale.UsersSize, seoa.users.size, true)
-      .addField(locale.ChannelsSize, seoa.channels.size, true)
-      .addField(locale.ServersSize, seoa.guilds.size, true)
-      .addField(seoa.user.username + locale.BotDay, seoa.user.createdAt, true)
-      .addField(seoa.user.username + locale.UpdataDay, seoa.readyAt, true)
-      .addField(seoa.user.username + locale.UpTime, days + locale.Day + hours + locale.hour + minutes + locale.minute + seconds + locale.second, true)
-      .addField(locale.APIPING, SIM.round(seoa.ping), true)
-    msg.channel.send(botInfoEmbed)
+    const inline = true
+    const botInfoEmbed = {
+      title: seoa.user.username + locale.Info,
+      description: msg.author + locale.From,
+      thumbnail: {
+        url: seoa.user.avatarURL
+      },
+      color: randomHexColor(),
+      fields: [
+        {
+          name: '\u200B',
+          value: '\u200B',
+          inline
+        },
+        {
+          name: seoa.user.username + locale['Name&Tag'],
+          value: seoa.user.tag,
+          inline
+        },
+        {
+          name: seoa.user.username + locale.ID,
+          value: seoa.user.id,
+          inline
+        },
+        {
+          name: locale.CommandSize,
+          value: commands.size,
+          inline
+        },
+        {
+          name: locale.UsersSize,
+          value: seoa.users.size,
+          inline
+        },
+        {
+          name: locale.ChannelsSize,
+          value: seoa.channels.size,
+          inline
+        },
+        {
+          name: locale.ServersSize,
+          value: seoa.guilds.size,
+          inline
+        },
+        {
+          name: seoa.user.username + locale.BotDay,
+          value: seoa.user.createdAt,
+          inline
+        },
+        {
+          name: seoa.user.username + locale.UpdataDay,
+          value: seoa.readyAt,
+          inline
+        },
+        {
+          name: seoa.user.username + locale.UpTime,
+          value: days + locale.Day + hours + locale.hour + minutes + locale.minute + seconds + locale.second,
+          inline
+        },
+        {
+          name: locale.APIPING,
+          value: SIM.round(seoa.ping),
+          inline
+        }
+      ]
+    }
+    msg.channel.send({ embed: botInfoEmbed })
   } else {
     const query = {
       fullText: msg.content,
