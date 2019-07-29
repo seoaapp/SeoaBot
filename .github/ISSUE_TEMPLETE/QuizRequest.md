@@ -1,4 +1,8 @@
-# Request Quiz
+---
+name: Quiz Request
+about: For requesting quiz
+---
+# Quiz Request
 ## Quiz Language (Programming Language)
 * Enter your quiz's language here
 
