@@ -72,7 +72,7 @@ seoa.on('ready', () => {
   seoa.user.setActivity(settings.activity, { type: 'PLAYING' })
 
   seoa.guilds.forEach((guild) => {
-    owners[guild.id] = guild.owner.id
+    owners[guild.id] = guild.ownerID
   })
 
   fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners))
