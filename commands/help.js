@@ -9,9 +9,9 @@ const { resolve: pathAppend } = require('path')
 
 exports.run = (seoa, msg, settings) => {
   const help = {
-    field: [
+    fields: [
       {
-        title: 'Seoa CommandBook',
+        name: 'Seoa CommandBook',
         value: 'Prefix: >'
       }
     ],
@@ -23,8 +23,8 @@ exports.run = (seoa, msg, settings) => {
     files.forEach((v) => {
       const temp = require(pathAppend(__dirname, '../', settings.commands, v)).helps
       if (temp) {
-        help.field.push({
-          title: temp.description,
+        help.fields.push({
+          name: temp.description,
           value: '> ' + temp.uses
         })
       }

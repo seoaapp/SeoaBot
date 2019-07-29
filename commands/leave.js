@@ -4,7 +4,7 @@
  */
 
 exports.run = (seoa, msg, settings) => {
-  if (msg.guild.voiceConnection) {
+  if (msg.guild.voiceConnection) { // TODO: LEAVE 에러 고치기
     msg.member.voiceChannel.leave()
     msg.channel.send('음성 채널을 떠났습니다!')
   }
