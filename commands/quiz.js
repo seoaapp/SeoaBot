@@ -75,7 +75,7 @@ exports.run = (seoa, msg, settings) => {
         } else if (QuizData[quizNum].awnser === false) {
           QuizAwnser = '❌'
         }
-        const userData = require('../UserData/Users.json')
+        const userData = require('../UserData/users.json')
 
         // 맞았을 경우
         if (collected.array()[0].emoji.name === QuizAwnser) {
@@ -90,7 +90,7 @@ exports.run = (seoa, msg, settings) => {
           }
           th.edit(quizCorrectEmbed)
           userData[msg.author.id].quizPoint++
-          fs.writeFileSync('./UserData/users.json', JSON.stringify(userData))
+          fs.writeFileSync('./UserData/users.json', JSON.stringify(userData, null, '  '))
         } else { // 틀렸을 경우
           const quizNotCorrectEmbed = new discord.RichEmbed()
             .setColor(0xff0000)
@@ -103,7 +103,7 @@ exports.run = (seoa, msg, settings) => {
           }
           th.edit(quizNotCorrectEmbed)
           userData[msg.author.id].quizPoint--
-          fs.writeFileSync('./UserData/users.json', JSON.stringify(userData))
+          fs.writeFileSync('./UserData/users.json', JSON.stringify(userData, null, '  '))
         }
       }
     })

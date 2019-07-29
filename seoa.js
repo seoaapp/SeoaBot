@@ -77,17 +77,17 @@ seoa.on('ready', () => {
     owners[guild.id] = guild.ownerID
   })
 
-  fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners))
+  fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners, null, '  '))
 
   seoa.users.forEach((user) => {
-    if (!users[user.id]) {
+    if (!users[user.id] && user.id !== '1') {
       users[user.id] = {
         quizPoint: 0
       }
     }
   })
 
-  fs.writeFileSync('./UserData/users.json', JSON.stringify(users))
+  fs.writeFileSync('./UserData/users.json', JSON.stringify(users, null, '  '))
 })
 
 seoa.on('message', (msg) => {
