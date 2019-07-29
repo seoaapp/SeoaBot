@@ -14,7 +14,7 @@ exports.run = (seoa, msg, settings) => {
         value: 'Prefix: >'
       }
     ],
-    description: '이 봇은 베타입니다. 불안정하니 버그가 발생할경우 [이슈](https://github.com/ttakkku/SeoaBot/issues)에 알려주세요 \n **[봇 초대링크!](https://discordapp.com/oauth2/authorize?client_id=584692085614182440&permissions=8&scope=bot)** \n **[봇 서포트 주소](https://discord.gg/KNBGZU2)**'
+    description: '이 봇은 베타입니다. 불안정하니 버그가 발생할경우 [이슈](https://github.com/ttakkku/SeoaBot/issues)에 알려주세요 \n **[봇 초대링크!](https://discordapp.com/oauth2/authorize?client_id=584692085614182440&permissions=8&scope=bot)** \n **[봇 서포트 주소](https://discord.gg/QJfeKYr)**'
   }
 
   fileReader.readdir(settings.commands, (err, files) => {
