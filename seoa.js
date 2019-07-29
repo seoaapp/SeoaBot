@@ -102,7 +102,7 @@ seoa.on('message', (msg) => {
       thumbnail: {
         url: seoa.user.avatarURL
       },
-      color: randomHexColor(),
+      color: parseInt(randomHexColor().substring(1), 16),
       fields: [
         {
           name: '\u200B',
