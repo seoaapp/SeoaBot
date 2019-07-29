@@ -197,4 +197,5 @@ seoa.on('message', (msg) => {
  * 으아아아 심심
  * 뭐하지뭐하지뭐하지
  * anjgkwlanjgkwl
+ * 코인 왔다감
  */
