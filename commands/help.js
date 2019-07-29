@@ -5,6 +5,7 @@
 
 /** File System: File Reader */
 const fileReader = require('fs')
+const { resolve: pathAppend } = require('path')
 
 exports.run = (seoa, msg, settings) => {
   const help = {
@@ -19,8 +20,8 @@ exports.run = (seoa, msg, settings) => {
 
   fileReader.readdir(settings.commands, (err, files) => {
     if (err) console.error(err)
-    files.forEach((v, i) => {
-      const temp = require('../' + settings.commands + v).helps
+    files.forEach((v) => {
+      const temp = require(pathAppend(__dirname, '../', settings.commands, v)).helps
       if (temp) {
         help.field.push({
           title: temp.description,
