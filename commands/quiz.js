@@ -5,10 +5,14 @@
 
 const QuizData = require('../QuizData/quizs.json')
 const discord = require('discord.js')
+const fs = require('fs')
 
 exports.run = (seoa, msg, settings) => {
-  let msgArray = msg.content.split(' ')
-  let filter = (reaction, user) => (reaction.emoji.name === '⭕' || reaction.emoji.name === '❌') && user.id === msg.author.id
+  const msgArray = msg.content.split(' ')
+  const filter = (reaction, user) =>
+    (reaction.emoji.name === '⭕' ||
+    reaction.emoji.name === '❌') &&
+    user.id === msg.author.id
 
   /**
    * @type {number}
@@ -20,16 +24,16 @@ exports.run = (seoa, msg, settings) => {
     if (msgArray[1] < QuizData.length) {
       quizNum = Math.floor(msgArray[1])
     } else if ((QuizData.filter(quiz => quiz.language === msgArray[1])).length > 0) {
-      let quizsFiltered = QuizData.filter(quiz => quiz.language === msgArray[1])
+      const quizsFiltered = QuizData.filter(quiz => quiz.language === msgArray[1])
       quizNum = QuizData.indexOf(quizsFiltered[Math.floor(Math.random() * (quizsFiltered.length - 1))])
     } else {
-      let quizNumberNotExist = new discord.RichEmbed()
+      const quizNumberNotExist = new discord.RichEmbed()
         .setColor(0xff0000)
         .addField('퀴즈 No. ' + msgArray[1] + '(을)를 찾을 수 없습니다', '퀴즈는 No. ' + (QuizData.length - 1) + '까지만 존재합니다')
       return msg.channel.send(quizNumberNotExist)
     }
   }
-  let quizEmbed = new discord.RichEmbed()
+  const quizEmbed = new discord.RichEmbed()
     .setColor(0x0000ff)
     .setAuthor(msg.author.username + '님이 Code Quiz를 풀고있습니다', msg.author.displayAvatarURL)
     .setTitle('Quiz No.' + quizNum)
@@ -54,9 +58,9 @@ exports.run = (seoa, msg, settings) => {
       max: 1
     }).then((collected) => {
       if (!collected) {
-        let quizFailByLate = new discord.RichEmbed()
+        const quizFailByLate = new discord.RichEmbed()
           .setColor(0x808080)
-          .setDescription('[문제, 정답, 풀이 오류신고, 수정요청, 추가신청](https://github.com/PMHStudio/DiscordCodeQuizBot/issues/new/choose)')
+          .setDescription('[문제, 정답, 풀이 오류신고, 수정요청, 추가신청](https://github.com/seoaapp/SeoaBot/issues)')
           .setAuthor(msg.author.username + '님이 Code Quiz를 풀지못하셨습니다', msg.author.displayAvatarURL)
           .setTitle('Quiz No.' + quizNum)
           .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
@@ -71,11 +75,13 @@ exports.run = (seoa, msg, settings) => {
         } else if (QuizData[quizNum].awnser === false) {
           QuizAwnser = '❌'
         }
+        const userData = require('../UserData/Users.json')
 
+        // 맞았을 경우
         if (collected.array()[0].emoji.name === QuizAwnser) {
-          let quizCorrectEmbed = new discord.RichEmbed()
+          const quizCorrectEmbed = new discord.RichEmbed()
             .setColor(0x00ff00)
-            .setDescription('[문제, 정답, 풀이 오류신고, 수정요청, 추가신청](https://github.com/PMHStudio/DiscordCodeQuizBot/issues/new/choose)')
+            .setDescription('[문제, 정답, 풀이 오류신고, 수정요청, 추가신청](https://github.com/seoaapp/SeoaBot/issues)')
             .setAuthor(msg.author.username + '님이 Code Quiz를 맞추셨습니다!', msg.author.displayAvatarURL)
             .setTitle('Quiz No.' + quizNum)
             .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
@@ -83,10 +89,12 @@ exports.run = (seoa, msg, settings) => {
             quizCorrectEmbed.setImage(QuizData[quizNum].image)
           }
           th.edit(quizCorrectEmbed)
-        } else {
-          let quizNotCorrectEmbed = new discord.RichEmbed()
+          userData[msg.author.id].quizPoint++
+          fs.writeFileSync('./UserData/users.json', JSON.stringify(userData))
+        } else { // 틀렸을 경우
+          const quizNotCorrectEmbed = new discord.RichEmbed()
             .setColor(0xff0000)
-            .setDescription('[문제, 정답, 풀이 오류신고, 수정요청, 추가신청](https://github.com/PMHStudio/DiscordCodeQuizBot/issues/new/choose)')
+            .setDescription('[문제, 정답, 풀이 오류신고, 수정요청, 추가신청](https://github.com/seoaapp/SeoaBot/issues)')
             .setAuthor(msg.author.username + '님이 Code Quiz를 풀지못하셨습니다', msg.author.displayAvatarURL)
             .setTitle('Quiz No.' + quizNum)
             .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
@@ -94,6 +102,8 @@ exports.run = (seoa, msg, settings) => {
             quizNotCorrectEmbed.setImage(QuizData[quizNum].image)
           }
           th.edit(quizNotCorrectEmbed)
+          userData[msg.author.id].quizPoint--
+          fs.writeFileSync('./UserData/users.json', JSON.stringify(userData))
         }
       }
     })
@@ -102,6 +112,6 @@ exports.run = (seoa, msg, settings) => {
 
 exports.callSign = ['quiz', 'Quiz', '퀴즈']
 exports.helps = {
-    description: '도움말을 보여줍니다',
-    uses: '>quiz'
+  description: '도움말을 보여줍니다',
+  uses: '>quiz'
 }

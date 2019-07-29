@@ -40,9 +40,11 @@ const commands = new discord.Collection()
 /** Guild Onwers ID */
 const owners = require('./ServerData/owner.json')
 
+/** UserData */
+const users = require('./UserData/users.json')
+
 /** Message */
 const locale = require('./locales/kr.json')
-
 // Command Reading Start
 
 /** File System: File Reader */
@@ -76,6 +78,16 @@ seoa.on('ready', () => {
   })
 
   fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners))
+
+  seoa.users.forEach((user) => {
+    if (!users[user.id]) {
+      users[user.id] = {
+        quizPoint: 0
+      }
+    }
+  })
+
+  fs.writeFileSync('./UserData/users.json', JSON.stringify(users))
 })
 
 seoa.on('message', (msg) => {
@@ -181,21 +193,3 @@ seoa.on('message', (msg) => {
 })
 
 /** @copyright (c) 2019. Seoa Develoment Team. all rights reserved. */
-
-/**
- * 으아아아악
- * 으아아아아아아아악
- * 심심해!
- * 으아아아아아악
- * 으아아아아아ㅏㅇ아ㅏㅇ아아ㅏㅇ
- * 뭐하지 뭐하지
- * 으아아아
- * simsim
- * tlatla
- * i am simsim and you also
- * 심시밋미심시밋ㅁ
- * 으아아아 심심
- * 뭐하지뭐하지뭐하지
- * anjgkwlanjgkwl
- * 코인 왔다감
- */

@@ -5,3 +5,6 @@ yarn.lock
 
 # vscode
 .vscode/
+
+ServerData/
+UserData/
