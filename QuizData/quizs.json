@@ -65,6 +65,7 @@
     "explanation": "dynamic은 C#에서 지원하는 인터프리터의 기능입니다.\n그래서 변수 타입을 그때그때 계속 바꿀 수 있기에 출력하기 바로 전에 지정이 된\nint (System.Int32)로 변환되어 저렇게 표시되는 것입니다.",
     "awnser": true
   },
+  
   {
     "language": "html",
     "question": "html에서 줄바꿈을 하려고 하면 <br>을 입력해야 한다.",
@@ -89,5 +90,17 @@
     "question": "```cpp\n#include <stdio.h>\n\nint main()\n{\n    printf(\"Hello World\");\n}```\n```cpp\n#include <iostream>\nusing namespace std;\nint main()\n{\n    cout << \"Hello World!\" << endl;\n}\n```\n이 3가지의 소스는 모두 Hello World! 를 출력하는 소스입니다.",
     "awnser": true,
     "explanation": "직접 해보시는 게 좋습니다.(?)"
+  },
+  {
+    "language": "py3",
+    "question": "raise 함수를 사용할 때는 ```\npython\nraise 'ValueError'\n```로 사용 해야한다",
+    "awnser": false,
+    "explanation": "raise ValueError 등으로 따옴표가 필요 없다."
+  },
+  {
+    "language": "js",
+    "question": "```function test() {\n  this.asdf = 'asdf'\n  console.log(this.asdf)\n}\n\ntest()\nconsole.log(asdf)```를 했을 때 오류가 나지 않는다.",
+    "awnser": true,
+    "explanation": "class(prototype)이 아닐 때에는 this가 global로 사용됩니다. 즉, `this.asdf = 'asdf'`가 `global.asdf = 'asdf'`가 되는것이죠. 그때 외부에서 부른 `console.log(asdf)`는 `console.log(global.asdf)`와 같은것이고, 이는 사용할 수 있으니 오류가 나지 않습니다."
   }
 ]

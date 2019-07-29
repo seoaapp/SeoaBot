@@ -56,7 +56,7 @@ fs.readdir(settings.commands, (err, files) => {
   const commandFiles = files.filter((v) => v.split('.').pop() === 'js')
   if (commandFiles.length <= 0) console.error('Couldn\'t find commands.')
 
-  commandFiles.forEach((v, i) => {
+  commandFiles.forEach((v) => {
     const command = require(settings.commands + v)
     command.callSign.forEach((sign) => {
       commands.set(sign, command)
@@ -67,6 +67,7 @@ fs.readdir(settings.commands, (err, files) => {
 
 // Command Reading End
 
+// login
 seoa.login(settings.token)
 
 seoa.on('ready', () => {
@@ -77,17 +78,17 @@ seoa.on('ready', () => {
     owners[guild.id] = guild.ownerID
   })
 
-  fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners))
-
+  fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners, null, '  '))
+  // register users
   seoa.users.forEach((user) => {
-    if (!users[user.id]) {
+    if (!users[user.id] && user.id !== '1') {
       users[user.id] = {
         quizPoint: 0
       }
     }
   })
 
-  fs.writeFileSync('./UserData/users.json', JSON.stringify(users))
+  fs.writeFileSync('./UserData/users.json', JSON.stringify(users, null, '  '))
 })
 
 seoa.on('message', (msg) => {
@@ -182,7 +183,7 @@ seoa.on('message', (msg) => {
       args: msg.content.split(settings.prefix)[1].split(' ').slice(1)
     }
 
-    const runCommand = commands.get(query.command)
+    const runCommand = commands.get(query.command.toLowerCase())
 
     if (!runCommand) {
       msg.channel.send(locale.CommandNotFound)
@@ -192,4 +193,4 @@ seoa.on('message', (msg) => {
   }
 })
 
-/** @copyright (c) 2019. Seoa Develoment Team. all rights reserved. */
+/** @copyright (c) 2019. Seoa Development Team. all rights reserved. */

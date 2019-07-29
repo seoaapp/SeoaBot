@@ -4,7 +4,8 @@
  */
 
 exports.run = (seoa, msg, settings) => {
-  if (!msg.guild.voiceConnection) {
+  if (msg.member.voiceChannel) {
+    // msg.member.voiceChannel.join()
     msg.member.voiceChannel.join()
   }
 }
