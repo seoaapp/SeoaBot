@@ -1,93 +1,93 @@
 [
   {
     "language": "c",
-    "question": "C언어에서 세미콜론(;)은 의무가 아닙니다\n즉, 사람의 스타일에 따라 적을수도, 안적을수도 있습니다",
-    "explanation": "의무입니다, C언어 컴파일러(빌더)는 세미콜론으로 문장과 문장을 나눕니다.\n세미콜론을 사용하지 않을경우, 컴파일러가 컴파일(빌드)를 수행하지 못합니다",
+    "question": "C언어에서 세미콜론(;)은 의무가 아닙니다.\n즉, 사람의 스타일에 따라 적을수도, 안 적을수도 있습니다.",
+    "explanation": "의무입니다, C언어 컴파일러(빌더)는 세미콜론으로 문장과 문장을 나눕니다.\n세미콜론을 사용하지 않을경우, 컴파일러가 컴파일(빌드)을 수행하지 못합니다.",
     "awnser": false
   },
   {
     "language": "js",
-    "question": "JavaScript에서 세미콜론은 의무입니다\n즉, 문장을 끝넬경우 무조건 적어야 합니다",
-    "explanation": "선택사항입니다, 예시로, JavaScript Standard Style에서는 세미콜론이 없어야 한다는 규칙이 있습니다! (예외사항도 있음)\n[정말](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) [없어도](http://inimino.org/~inimino/blog/javascript_semicolons) [됩니다](https://www.youtube.com/watch?v=gsfbh17Ax9I)",
+    "question": "JavaScript에서 세미콜론은 의무입니다.\n즉, 문장을 끝낼경우 무조건 적어야 합니다.",
+    "explanation": "선택 사항입니다, 예시로, JavaScript Standard Style에서는 세미콜론이 없어야 한다는 규칙이 있습니다! (예외사항도 있음)\n[정말](http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding) [없어도](http://inimino.org/~inimino/blog/javascript_semicolons) [됩니다](https://www.youtube.com/watch?v=gsfbh17Ax9I)",
     "awnser": false
   },
   {
     "language": "c",
-    "question": "C언어에서 문자열(String)을 선언할때, 문자(char.)의 배열(Array)를 사용합니다",
-    "explanation": "사용합니다,```c\nchar string[] = \"This is Char-Array\";```와 같이 문자열을 선언할수있습니다!\n하지만 출력은```c\nprintf(\"%s\\n\", string);```으로 간단하게 출력할수있습니다!",
+    "question": "C언어에서 문자열(String)을 선언할 때, 문자(char.)의 배열(Array)을 사용합니다.",
+    "explanation": "사용합니다,```c\nchar string[] = \"This is Char-Array\";```와 같이 문자열을 선언할 수 있습니다!\n하지만 출력은```c\nprintf(\"%s\\n\", string);```으로 간단하게 출력할 수 있습니다!",
     "awnser": true
   },
   {
     "language": "c",
-    "question": "C언어에서 for문은 while문과 선언, 대입으로 대체가 가능합니다",
-    "explanation": "가능합니다, ```c\nfor (int n; n > 10; n++) {\n  printf(\"%d\", n)\n}\n```는 ```c\nint n;\n\nwhile (n > 10) {\n  printf(\"%d\", n)\n  n++;\n}```로 대체 가능합니다",
+    "question": "C언어에서 for문은 while문과 선언, 대입으로 대체가 가능합니다.",
+    "explanation": "가능합니다, ```c\nfor (int n; n > 10; n++) {\n  printf(\"%d\", n)\n}\n```는 ```c\nint n;\n\nwhile (n > 10) {\n  printf(\"%d\", n)\n  n++;\n}```로 대체 가능합니다.",
     "awnser": true
   },
   {
     "language": "c",
-    "question": "C언어에서 for문의 소괄호()의 구성요소는 왼쪽부터 '선언; 조건; 대입'순입니다",
-    "explanation": "맞습니다, 또한, 구성요소를 무조건 다 적지 않고 빈칸으로 나두워도 됩니다",
+    "question": "C언어에서 for문의 소괄호()의 구성요소는 왼쪽부터 '선언; 조건; 대입'순입니다.",
+    "explanation": "맞습니다. 또한, 구성요소를 무조건 다 적지 않고 빈칸으로 놔두어도 됩니다.",
     "awnser": true
   },
   {
     "language": "c#",
-    "question": "C#에서 조건문 if에는 무조건 중괄호가 있어야 한다",
-    "explanation": "[기여](https://github.com/PMHStudio/DiscordCodeQuizBot/issues/2) 기본적으로는\n\nif (조건식)\n{실행 문장}\n\n이지만 실행되는 문장이 하나일 경우\n\nif (조건식) 실행 문장\n\n으로 중괄호를 빼는것이 가능하다",
+    "question": "C#에서 조건문 if에는 무조건 중괄호가 있어야 합니다.",
+    "explanation": "기본적으로는\n\nif (조건식)\n{실행 문장}\n\n이지만 실행되는 문장이 하나일 경우\n\nif (조건식) 실행 문장\n\n으로 중괄호를 빼는 것이 가능합니다.",
     "awnser": false
   },
   {
     "language": "c#",
-    "question": "C#에서 다중 if문은 switch문으로 바꿀(대체) 수 있다",
-    "explanation": "바꿀 수 있습니다, 예를 들어\n```cs\nint a = 3;\nif (a == 1)\n\n{\n    Console.WriteLine(\"변수 a는  1\");\n\n}\nelse if (a == 2)\n{\n    Console.WriteLine(\"변수 a는 2\");\n}\nelse if (a == 3)\n{\n    Console.WriteLine(\"변수 a는 3\");\n}\nelse\n{\n    Console.WriteLine(\"기타\")\n}\n//출력결과: 변수 a는 3```를 ```cs\nint a = 3;\nswitch (a)\n{\ncase 1:\n    Console.WriteLine(\"변수 a는 1\");\n    break;\ncase 2:\n    Console.WriteLine(\"변수 a는 2\");\n    break;\ncase 3:\n    Console.WriteLine(\"변수 a는 3\");\n    break;\ndefault:\n    Console.WriteLine(\"기타\");\n    break;\n}\n\n//출력 결과: 변수 a는 3```로 바꿀 수 있습니다",
+    "question": "C#에서 다중 if문은 switch문으로 바꿀(대체할) 수 있습니다.",
+    "explanation": "바꿀 수 있습니다, 예를 들어\n```cs\nint a = 3;\nif (a == 1)\n\n{\n    Console.WriteLine(\"변수 a는  1\");\n\n}\nelse if (a == 2)\n{\n    Console.WriteLine(\"변수 a는 2\");\n}\nelse if (a == 3)\n{\n    Console.WriteLine(\"변수 a는 3\");\n}\nelse\n{\n    Console.WriteLine(\"기타\")\n}\n//출력결과: 변수 a는 3```를 ```cs\nint a = 3;\nswitch (a)\n{\ncase 1:\n    Console.WriteLine(\"변수 a는 1\");\n    break;\ncase 2:\n    Console.WriteLine(\"변수 a는 2\");\n    break;\ncase 3:\n    Console.WriteLine(\"변수 a는 3\");\n    break;\ndefault:\n    Console.WriteLine(\"기타\");\n    break;\n}\n\n//출력 결과: 변수 a는 3```로 바꿀 수 있습니다.",
     "awnser": true
   },
   {
     "language": "genaral",
-    "question": "프로그래밍에서 \"x = x + 2\"를 개산하면 1이 나옵니다",
-    "explanation": "아닙니다, 프로그래밍은 수학이 아닙니다!\n저 식은 방정식이 아닌, ```fix\nx를 앞에서 정해진 x에 2를 더한값으로 정해라```라는뜻입니다",
+    "question": "프로그래밍에서 \"x = x + 2\"를 개산하면 1이 나옵니다.",
+    "explanation": "아닙니다, 프로그래밍은 수학이 아닙니다!\n저 식은 방정식이 아닌, ```fix\nx를 앞에서 정해진 x에 2를 더한 값으로 정하시오.```라는 뜻입니다.",
     "awnser": false
   },
   {
     "language": "js",
-    "question": "JavaScript에서 모든 자료형은 함수로 이루워져 있습니다",
-    "explanation": "맞습니다, JavaScript의 모든 자료형은 함수로 이루워져 있어서\n실제로 ```js\nconsole.log(Boolean + Array + String + Number + Object)```로 입력하면```js\nfunction Boolean() { [native code] }function Array() { [native code] }function String() { [native code] }function Number() { [native code] }function Object() { [native code] }```로 출력되는걸 볼수있습니다",
+    "question": "JavaScript에서 모든 자료형은 함수로 이루어져 있습니다.",
+    "explanation": "맞습니다, JavaScript의 모든 자료형은 함수로 이루어져 있어서\n실제로 ```js\nconsole.log(Boolean + Array + String + Number + Object)```로 입력하면```js\nfunction Boolean() { [native code] }function Array() { [native code] }function String() { [native code] }function Number() { [native code] }function Object() { [native code] }```로 출력되는 걸 볼 수 있습니다.",
     "awnser": true
   },
   {
     "language": "js",
-    "question": "JavaScript에서 ```js\nvar a = \"30\"\na += true\na += 1 + 2\nconsole.log(a)```를 했을때, 출력은```\n> 34```이다",
-    "explanation": "\"30true3\"으로 출력됩니다, 이유는 다음과 같습니다```diff\n+ a가 30이라는 *문자열*이다\n+ *문자열*에 *참/거짓*을 넣으려 할때, JS는 *참/거짓*을 *문자열*로 바꿔 맨뒤에 놓는다\n+ *문자열*에 *숫자*를 넣으려 할때, JS는 *숫자*를 문자열으로 바꿔 맨뒤에 놓는다\n```",
+    "question": "JavaScript에서 ```js\nvar a = \"30\"\na += true\na += 1 + 2\nconsole.log(a)```를 했을때, 출력은```\n> 34```이다.",
+    "explanation": "\"30true3\"으로 출력됩니다, 이유는 다음과 같습니다.```diff\n+ a가 30이라는 *문자열*입니다.\n+ *문자열*에 *참/거짓*을 넣으려 할때, JS는 *참/거짓*을 *문자열*로 바꿔 맨뒤에 놓습니다.\n+ *문자열*에 *숫자*를 넣으려고 할때, JS는 *숫자*를 문자열으로 바꿔 맨뒤에 놓습니다.\n```",
     "awnser": false
   },
   {
     "language": "c#",
-    "question": "C#에서 ```csharp\ndynamic c = \"20\";\nc = false;\nc = 1 + 2;\nConsole.WriteLine(c.Getype);```를 했을때, 출력은```\n> System.Int32```이다",
-    "explanation": "dynamic은 C#에서 지원하는 인터프리터의 기능이다.\n그래서 변수 타입을 그때그때 계속 바꿀 수 있기에 출력하기 바로 전에 지정이 된\nint (System.Int32)로 변환되어 저렇게 표시되는 것이다",
+    "question": "C#에서 ```csharp\ndynamic c = \"20\";\nc = false;\nc = 1 + 2;\nConsole.WriteLine(c.Getype);```를 했을때, 출력은```\n> System.Int32```입니다.",
+    "explanation": "dynamic은 C#에서 지원하는 인터프리터의 기능입니다.\n그래서 변수 타입을 그때그때 계속 바꿀 수 있기에 출력하기 바로 전에 지정이 된\nint (System.Int32)로 변환되어 저렇게 표시되는 것입니다.",
     "awnser": true
   },
   {
     "language": "html",
-    "question": "html에서 Enter를 칠려고 하면 <br>를 눌러야 한다.",
-    "explanation": "[기여](https://github.com/PMHStudio/DiscordCodeQuizBot/issues/3)Html에서는 키보드의 Enter를 눌러도 인식이 안 되고, 단지, 사용자가 보기 편할 수 있도록 하는 수단이기 때문이다.\n따라서, 글의 내용에서 Enter를 누를려고 하면 Enter 대신 <br>를 쳐야 한다",
+    "question": "html에서 줄바꿈을 하려고 하면 <br>을 입력해야 한다.",
+    "explanation": "Html에서는 키보드의 Enter를 입력해도 인식이 안 되고, 단지, 사용자가 보기 편할 수 있도록 하는 수단이기 때문이다.\n따라서, 글의 내용에서 줄바꿈을 하려고 하면 Enter 대신 <br>를 입력해야 합니다.",
     "awnser": true
   },
   {
     "language": "genaral",
-    "question": "{username}(은)는 심심하여 아래의 그림과 같은 논리게이트를 가지고 놀고 있었다\n이때, 그가 A부분에 전기를 흘려보내고 B부분에는 전기를 흘려보내지 않는다면, Q에는 전기가 흐르는가?",
-    "explanation": "흐르지 않습니다, 이 논리게이트는 [And 게이트](https://ko.wikipedia.org/wiki/AND_%EA%B2%8C%EC%9D%B4%ED%8A%B8)로서 A와 B부분이 전부 전기가 흘러야 Q에 전기가 흐르게 됩니다",
+    "question": "{username}(은)는 심심하여 아래의 그림과 같은 논리게이트를 가지고 놀고 있었습니다.\n이때, 그가 A부분에 전기를 흘려보내고 B부분에는 전기를 흘려보내지 않는다면, Q에는 전기가 흐릅니다.",
+    "explanation": "흐르지 않습니다, 이 논리게이트는 [And 게이트](https://ko.wikipedia.org/wiki/AND_%EA%B2%8C%EC%9D%B4%ED%8A%B8)로서 A와 B부분이 모두 전기가 흘러야 Q에 전기가 흐르게 됩니다",
     "awnser": false,
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/AND_ANSI_Labelled.svg/1920px-AND_ANSI_Labelled.svg.png"
   },
   {
     "language": "c#",
     "question": "int는 32비트 정수이다",
-    "explanation": "[기여](https://github.com/PMHStudio/DiscordCodeQuizBot/issues/5) int 범위는 2,147,483,647 이 최대이다.\n만약 하나이라도 넘으면 –2,147,483,648 되기 때문에 주의 바람.",
+    "explanation": "int 범위는 2,147,483,647 이 최대이다.\n만약 하나이라도 넘으면 –2,147,483,648 되기 때문에 주의 바람.",
     "awnser": true
   },
   {
     "language": "c++",
-    "question": "```cpp\n#include <stdio.h>\n\nint main()\n{\n    printf(\"Hello World\");\n}```\n```cpp\n#include <iostream>\nusing namespace std;\nint main()\n{\n    cout << \"Hello World!\" << endl;\n}\n```\n이 세개는 다같이 Hello World! 출력하는 소스이다?",
+    "question": "```cpp\n#include <stdio.h>\n\nint main()\n{\n    printf(\"Hello World\");\n}```\n```cpp\n#include <iostream>\nusing namespace std;\nint main()\n{\n    cout << \"Hello World!\" << endl;\n}\n```\n이 3가지의 소스는 모두 Hello World! 를 출력하는 소스입니다.",
     "awnser": true,
-    "explanation": "[기여](https://github.com/PMHStudio/DiscordCodeQuizBot/issues/6) 직접 해보시는 게 좋습니다(?)"
+    "explanation": "직접 해보시는 게 좋습니다.(?)"
   }
 ]
