@@ -1,13 +1,8 @@
-const discord = require('discord.js')
-const seoa = require('./seoa')
-/** Sharding */
-const shard = new discord.ShardingManager('./seoa.js', {
-  totalShards: 4,
-  token: seoa.settings.token
-})
+const { ShardingManager: Shard } = require('discord.js')
+const manager = new Shard('./seoa.js')
 
-shard.spawn()
+manager.spawn(2)
 
-shard.on('launch', (shard) => {
+manager.on('launch', (shard) => {
   console.log('Sharded: ' + shard.id)
 })
