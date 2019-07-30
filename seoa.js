@@ -43,6 +43,9 @@ const owners = require('./ServerData/owner.json')
 /** UserData */
 const users = require('./UserData/users.json')
 
+/** ServersData */
+const servers = require('./ServerData/servers.json')
+
 /** Message */
 const locale = require('./locales/kr.json')
 // Command Reading Start
@@ -83,12 +86,23 @@ seoa.on('ready', () => {
   seoa.users.forEach((user) => {
     if (!users[user.id] && user.id !== '1') {
       users[user.id] = {
-        quizPoint: 0
+        quizPoint: 0,
+        name: user.tag
       }
     }
   })
 
   fs.writeFileSync('./UserData/users.json', JSON.stringify(users, null, '  '))
+
+  seoa.guilds.forEach((guilds) => {
+    if (!servers[guilds.id] && guilds.id !== '1') {
+      servers[guilds.id] = {
+        name: guilds.name
+      }
+    }
+  })
+
+  fs.writeFileSync('./ServerData/servers.json', JSON.stringify(servers, null, '  '))
 })
 
 seoa.on('message', (msg) => {

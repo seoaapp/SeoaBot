@@ -111,7 +111,7 @@ exports.run = (seoa, msg, settings) => {
     })
   } else {
     const userData = require('../UserData/users.json')
-    msg.channel.send(userData[msg.author.id].quizPoint + ' 점수 입니다.')
+    msg.channel.send('**' + userData[msg.author.id].quizPoint + '** 포인트 입니다.')
   }
 }
 
