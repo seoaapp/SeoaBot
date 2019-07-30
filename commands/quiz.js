@@ -61,7 +61,7 @@ exports.run = (seoa, msg, settings) => {
         if (!collected) {
           const quizFailByLate = new discord.RichEmbed()
             .setColor(0x808080)
-            .setDescription('[Code Quiz 추가 요청하러 가기!](https://github.com/seoaapp/SeoaBot/issues)')
+            .setDescription('[Code Quiz 추가 요청하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)')
             .setAuthor(msg.author.username + '님 - 타임 오버입니다!', msg.author.displayAvatarURL)
             .setTitle('Quiz No.' + quizNum)
             .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
@@ -82,7 +82,7 @@ exports.run = (seoa, msg, settings) => {
           if (collected.array()[0].emoji.name === QuizAwnser) {
             const quizCorrectEmbed = new discord.RichEmbed()
               .setColor(0x00ff00)
-              .setDescription('[Code Quiz 오류 제보하러 가기!](https://github.com/seoaapp/SeoaBot/issues)')
+              .setDescription('[Code Quiz 오류 제보하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)')
               .setAuthor(msg.author.username + '님 - 정답입니다!', msg.author.displayAvatarURL)
               .setTitle('Quiz No.' + quizNum)
               .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
@@ -95,7 +95,7 @@ exports.run = (seoa, msg, settings) => {
           } else { // 틀렸을 경우
             const quizNotCorrectEmbed = new discord.RichEmbed()
               .setColor(0xff0000)
-              .setDescription('[Code Quiz 문의하러 가기!](https://github.com/seoaapp/SeoaBot/issues)')
+              .setDescription('[Code Quiz 문의하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)')
               .setAuthor(msg.author.username + '님 - 오답입니다!', msg.author.displayAvatarURL)
               .setTitle('Quiz No.' + quizNum)
               .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)

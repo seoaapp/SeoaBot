@@ -26,7 +26,7 @@ const settings = {
   prefix: process.env.prefix || '>',
   commands: process.env.commands || './commands/',
   // dialogflow: process.env.dialogflow || 'seoa-woksnl',
-  activity: process.env.activity || 'Awesome Musics | >help',
+  activity: process.env.activity || 'Awesome Musics & Quizs | >help',
   owners: ['527746745073926145', '309230935377707011']
 }
 module.exports.settings = settings
@@ -37,21 +37,33 @@ const seoa = new discord.Client()
 /** Seoa Commands Collection */
 const commands = new discord.Collection()
 
+/** File System: File Reader */
+const fs = require('fs')
+
 /** Guild Onwers ID */
+if (!fs.existsSync('./ServerData/')) {
+  fs.mkdirSync('./ServerData')
+}
+fs.writeFileSync('./ServerData/owner.json', '{}')
 const owners = require('./ServerData/owner.json')
 
 /** UserData */
+if (!fs.existsSync('./UserData/')) {
+  fs.mkdirSync('./UserData')
+  fs.writeFileSync('./UserData/users.json', '{}')
+}
+if (!fs.existsSync('./UserData/users.json')) {
+  fs.writeFileSync('./UserData/users.json', '{}')
+}
 const users = require('./UserData/users.json')
 
 /** ServersData */
+fs.writeFileSync('./ServerData/servers.json', '{}')
 const servers = require('./ServerData/servers.json')
 
 /** Message */
 const locale = require('./locales/kr.json')
 // Command Reading Start
-
-/** File System: File Reader */
-const fs = require('fs')
 
 fs.readdir(settings.commands, (err, files) => {
   if (err) console.err(err)
