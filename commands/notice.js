@@ -14,7 +14,7 @@ exports.run = (seoa, msg, settings, query) => {
         if (guild.channels.get(settings.servers[guild.id].channelnoticeid)) {
           guild.channels.get(settings.servers[guild.id].channelnoticeid).send(query.args)
         }
-        console.log(guild.channels.get(settings.servers[guild.id].channelnoticeid))
+        // console.log(guild.channels.get(settings.servers[guild.id].channelnoticeid))
       }
     })
   } else {
