@@ -50,8 +50,8 @@
   {
     "language": "js",
     "question": "JavaScript에서 모든 자료형은 함수로 이루어져 있습니다.",
-    "explanation": "맞습니다, JavaScript의 모든 자료형은 함수로 이루어져 있어서\n실제로 ```js\nconsole.log(Boolean + Array + String + Number + Object)```로 입력하면```js\nfunction Boolean() { [native code] }function Array() { [native code] }function String() { [native code] }function Number() { [native code] }function Object() { [native code] }```로 출력되는 걸 볼 수 있습니다.",
-    "awnser": true
+    "explanation": "아닙니다, JS 공식 레퍼런스인 https://developer.mozilla.org/ko/docs/Web/JavaScript/Data_structures 에서도 Object를 따로 분류하고 있으며, ```js\ntypeof 0 === typeof (new Number())\n``` 역시 false(거짓)이 나오는 것을 알 수 있습니다.",
+    "awnser": false
   },
   {
     "language": "js",
@@ -99,7 +99,7 @@
   },
   {
     "language": "js",
-    "question": "```function test() {\n  this.asdf = 'asdf'\n  console.log(this.asdf)\n}\n\ntest()\nconsole.log(asdf)```를 했을 때 오류가 나지 않는다.",
+    "question": "```js\nfunction test() {\n  this.asdf = 'asdf'\n  console.log(this.asdf)\n}\n\ntest()\nconsole.log(asdf)\n```를 했을 때 오류가 나지 않는다.",
     "awnser": true,
     "explanation": "class(prototype)이 아닐 때에는 this가 global로 사용됩니다. 즉, `this.asdf = 'asdf'`가 `global.asdf = 'asdf'`가 되는것이죠. 그때 외부에서 부른 `console.log(asdf)`는 `console.log(global.asdf)`와 같은것이고, 이는 사용할 수 있으니 오류가 나지 않습니다."
   }
