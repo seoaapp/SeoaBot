@@ -12,7 +12,7 @@ exports.run = (seoa, msg, settings, query) => {
       } else {
         /* 설정된 채널로 보내기 */
         if (guild.channels.get(settings.servers[guild.id].channelnoticeid)) {
-          guild.channels.get(settings.servers[guild.id].channelnoticeid).send(query.args[0])
+          guild.channels.get(settings.servers[guild.id].channelnoticeid).send(query.args)
         }
         console.log(guild.channels.get(settings.servers[guild.id].channelnoticeid))
       }

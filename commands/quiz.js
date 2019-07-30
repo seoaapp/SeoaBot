@@ -23,7 +23,7 @@ exports.run = (seoa, msg, settings) => {
     msg.channel.send('**' + userData[msg.author.id].quizPoint + '** 포인트 입니다.')
   } else {
     if (!msgArray[1]) {
-      quizNum = Math.floor(Math.random() * (QuizData.length - 1))
+      quizNum = Math.floor(Math.random() * QuizData.length)
       /**  } else {
           if (msgArray[1] < QuizData.length) {
             quizNum = Math.floor(msgArray[1])
@@ -72,6 +72,8 @@ exports.run = (seoa, msg, settings) => {
               quizFailByLate.setImage(QuizData[quizNum].image)
             }
             th.edit(quizFailByLate)
+            userData[msg.author.id].quizPoint--
+            fs.writeFileSync('./UserData/users.json', JSON.stringify(userData, null, '  '))
           } else {
             let QuizAwnser
             if (QuizData[quizNum].awnser === true) {
