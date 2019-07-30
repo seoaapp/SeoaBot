@@ -4,7 +4,7 @@
  */
 
 exports.run = (seoa, msg, settings) => {
-  const invite = { description: '**[봇 초대링크!](https://discordapp.com/oauth2/authorize?client_id=584692085614182440&permissions=8&scope=bot)**' }
+  const invite = { description: '**[봇 초대링크!](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)**' }
   msg.channel.send({ embed: invite }).then(err => console.log(err))
 }
 

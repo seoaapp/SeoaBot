@@ -23,13 +23,13 @@ exports.run = (seoa, msg) => {
           if (err) m.channel.send(err)
 
           const embed = {
-            color: randomHexColor(),
+            color: parseInt(randomHexColor().substring(1), 16),
             title: '\'' + collect.first().content.slice(0, 200) + '\'의 검색 결과',
-            field: []
+            fields: []
           }
           res.videos.slice(0, 10).forEach((video, index) => {
-            embed.field.push({
-              title: (index + 1) + '. ' + video.title,
+            embed.fields.push({
+              name: (index + 1) + '. ' + video.title,
               value: '[보기](http://youtube.com' + video.url + ') | 길이: ' + video.duration + ' | 게시일: ' + video.ago + ' | ' + video.views + '번 재생됨'
             })
           })

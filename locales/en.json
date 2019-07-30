@@ -1,3 +1,20 @@
 {
-
+  "CommandNotFound": "Oh, This command is undefiened",
+  "BotNotDM": "You can use [seoa.user.username] in DM",
+  "Info": "Infomation!",
+  "From": "to",
+  "Name&Tag": "of Name, Tag",
+  "ID": "of ID",
+  "CommandSize": "ALL Command Count",
+  "UsersSize": "ALL User Count",
+  "ChannelsSize": "ALL Channel Coundt",
+  "ServersSize": "ALL Server Count",
+  "BotDay": "'s birthday",
+  "UpdataDay": "'s update date",
+  "UpTime": "uptime",
+  "APIPING": "API ping",
+  "Day": " Day ",
+  "hour": " Hour ",
+  "minute": " Minute ",
+  "second": " Seconds"
 }
