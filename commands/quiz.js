@@ -72,6 +72,8 @@ exports.run = (seoa, msg, settings) => {
               quizFailByLate.setImage(QuizData[quizNum].image)
             }
             th.edit(quizFailByLate)
+            userData[msg.author.id].quizPoint--
+            fs.writeFileSync('./UserData/users.json', JSON.stringify(userData, null, '  '))
           } else {
             let QuizAwnser
             if (QuizData[quizNum].awnser === true) {
