@@ -161,7 +161,7 @@ seoa.on('message', (msg) => {
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].DiscordTag,
+          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].['Name&Tag']
           value: seoa.user.tag,
           inline
         },
@@ -191,12 +191,12 @@ seoa.on('message', (msg) => {
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].Birthday,
+          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].BotDay,
           value: seoa.user.createdAt,
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].LastUpdate,
+          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].UpdataDay,
           value: seoa.readyAt,
           inline
         },
