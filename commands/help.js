@@ -22,10 +22,12 @@ exports.run = (seoa, msg, settings) => {
     if (err) console.error(err)
     files.forEach((v) => {
       const temp = require(pathAppend(__dirname, '../', settings.commands, v)).helps
+      const inline = true
       if (temp) {
         help.fields.push({
           name: temp.description,
-          value: '> ' + temp.uses
+          value: '> ' + temp.uses,
+          inline
         })
       }
     })

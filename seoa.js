@@ -22,7 +22,7 @@ const SIM = require('sangoon_is_math')
 
 /** Seoa Settings */
 const settings = {
-  token: process.env.token || 'NTk1MjQ2ODA2MTYyNjA0MDU2.XT-Krg.sAADjXry4foW0gfzLhyy3_i1ubc',
+  token: process.env.token || '',
   prefix: process.env.prefix || '>',
   commands: process.env.commands || './commands/',
   // dialogflow: process.env.dialogflow || 'seoa-woksnl',
