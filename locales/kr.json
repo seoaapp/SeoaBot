@@ -3,7 +3,7 @@
     "BotNotDM": "[seoa.user.username]는 DM에서 사용하실 수 없어요!",
     "Info": "의 정보!",
     "From": "가 요청함",
-    "Name&Tag": "의 DiscordTag",
+    "DiscordTag": "의 DiscordTag",
     "ID": "의 클라이언트 ID",
     "CommandSize": "등록된 명령어 수",
     "UsersSize": "등록된 유저 수",
