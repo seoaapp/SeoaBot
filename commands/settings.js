@@ -15,10 +15,10 @@ exports.run = (seoa, msg, settings, query) => {
     } else {
       settings.servers[msg.guild.id].lang = query.args[1]
       fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
-      msg.channel.send(query.args[1] + '으로 설정되었습니다.')
+      msg.channel.send(`\`${query.args[1]}\`` + '으로 설정되었습니다.')
     }
   } else if (['channel', '채널'].includes(query.args[0].toLowerCase())) {
-    settings.servers[msg.guild.id].channelnoticeid = msg.channel.id
+    settings.servers[msg.guild.id].channelnoticeid = msg.mentions.channels.firstKey()
     fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
     msg.channel.send('성공!')
   }
