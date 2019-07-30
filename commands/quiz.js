@@ -23,7 +23,7 @@ exports.run = (seoa, msg, settings) => {
     msg.channel.send('**' + userData[msg.author.id].quizPoint + '** 포인트 입니다.')
   } else {
     if (!msgArray[1]) {
-      quizNum = Math.floor(Math.random() * (QuizData.length - 1))
+      quizNum = Math.floor(Math.random() * QuizData.length)
       /**  } else {
           if (msgArray[1] < QuizData.length) {
             quizNum = Math.floor(msgArray[1])
