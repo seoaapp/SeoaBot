@@ -1,6 +1,7 @@
 ---
 name: Quiz Request
 about: For requesting quiz
+labels: quiz-request
 ---
 # Quiz Request
 ## Quiz Language (Programming Language)
