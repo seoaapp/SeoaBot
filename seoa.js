@@ -51,10 +51,10 @@ const commands = new discord.Collection()
 /** Guild Onwers ID */
 if (!fs.existsSync('./ServerData/')) {
   fs.mkdirSync('./ServerData')
-  fs.writeFileSync('./ServerData/owners.json', '{}')
+  fs.writeFileSync('./ServerData/owner.json', '{}')
 }
-if (!fs.existsSync('./ServerData/owners.json')) {
-  fs.writeFileSync('./ServerData/owners.json', '{}')
+if (!fs.existsSync('./ServerData/owner.json')) {
+  fs.writeFileSync('./ServerData/owner.json', '{}')
 }
 const owners = require('./ServerData/owner.json')
 
@@ -71,7 +71,7 @@ const users = require('./UserData/users.json')
 /** Message */
 const locale = {
   en: require('./locales/en.json'),
-  kr: require('./locales/kr.json')
+  kor: require('./locales/kr.json')
 }
 // Command Reading Start
 
