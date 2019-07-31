@@ -56,7 +56,7 @@ if (!fs.existsSync('./ServerData/')) {
 if (!fs.existsSync('./ServerData/owners.json')) {
   fs.writeFileSync('./ServerData/owners.json', '{}')
 }
-const owners = require('./ServerData/owner.json')
+const owners = require('./ServerData/owners.json')
 
 /** UserData */
 if (!fs.existsSync('./UserData/')) {
@@ -71,7 +71,8 @@ const users = require('./UserData/users.json')
 /** Message */
 const locale = {
   en: require('./locales/en.json'),
-  kr: require('./locales/kr.json')
+  kor: require('./locales/kor.json'),
+  pt: require('./locales/pt.json')
 }
 // Command Reading Start
 
@@ -103,7 +104,7 @@ seoa.on('ready', () => {
     owners[guild.id] = guild.ownerID
   })
 
-  fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners, null, '  '))
+  fs.writeFileSync('./ServerData/owners.json', JSON.stringify(owners, null, '  '))
   // register users
   seoa.users.forEach((user) => {
     if (!users[user.id] && user.id !== '1') {

@@ -3,7 +3,7 @@
   "BotNotDM": "Sorry, but you can't use [seoa.user.username] in Direct Message.",
   "Info": "'s Infomation",
   "From": " requested",
-  "Name&Tag": "of Name, Tag",
+  "Name&Tag": "'s DiscordTag",
   "ID": "'s Client ID",
   "CommandSize": "Commands",
   "UsersSize": "Users",

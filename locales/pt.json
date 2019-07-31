@@ -1,0 +1,20 @@
+{
+  "CommandNotFound": "Desculpe, não encontrei esse comando no nosso banco de dados. Tente usar >help!",
+  "BotNotDM": "Desculpe, mas você não pode usar [seoa.user.username] no DM(Mensagem Direta).",
+  "Info": "Informações de: ",
+  "From": "Pedido por: ",
+  "Name&Tag": "Nome e a tag",
+  "ID": "ID de cliente do: ",
+  "CommandSize": "Comandos",
+  "UsersSize": " Usuários",
+  "ChannelsSize": "Canais",
+  "ServersSize": "Servidores",
+  "BotDay": "Aniversário de criação de conta do: ",
+  "UpdataDay": "O último tempo online de: ",
+  "UpTime": "Tempo online do: ",
+  "APIPING": "Ping de conexão ao WebSocket:",
+  "Day": " dia(s)",
+  "hour": " hora(s)",
+  "minute": " minuto(s)",
+  "second": " segundo(s)"
+}
