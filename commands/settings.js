@@ -9,7 +9,7 @@ exports.run = (seoa, msg, settings, query) => {
   if (msg.member.hasPermission('ADMINISTRATOR')) {
     if (query.args[0]) {
       if (['lang', '언어'].includes(query.args[0].toLowerCase())) {
-        if (!(query.args[1] === 'kor' || query.args[1] === 'en')) {
+        if (!(query.args[1] === 'kor' || query.args[1] === 'en' || query.args[1] === 'pt')) {
           settings.servers[msg.guild.id].lang = 'en'
           fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
           msg.channel.send('해당 언어는 정의되어 있지 않아 `en`으로 설정되었습니다.')

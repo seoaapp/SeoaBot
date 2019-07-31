@@ -71,7 +71,8 @@ const users = require('./UserData/users.json')
 /** Message */
 const locale = {
   en: require('./locales/en.json'),
-  kor: require('./locales/kor.json')
+  kor: require('./locales/kor.json'),
+  pt: require('./locales/pt.json')
 }
 // Command Reading Start
 
