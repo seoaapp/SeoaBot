@@ -28,7 +28,7 @@
   "NOTJOIN": "삐빅! 음성채널에 들어와 있지 않습니다!",
   "NOTURL": "삐빅! 지원하지 않는 URL입니다.",
   "QUIZMSG1": "[Code Quiz 추가 요청하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)",
-  "PointMsg": "포인트 입니다.",
+  "PointMsg": "**[userData[msg.author.id].quizPoint]** 포인트 입니다.",
   "QUIZ2": "[msg.author.username]님이 Code Quiz를 푸는 중입니다...",
   "ENMSG": "해당 언어는 정의되어 있지 않아 `en`으로 설정되었습니다.",
   "Lang": "[query.args[1]]으로 설정되었습니다.",
