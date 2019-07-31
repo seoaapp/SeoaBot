@@ -149,8 +149,8 @@ seoa.on('message', (msg) => {
     // UpTime Caculator End
     const inline = true
     const botInfoEmbed = {
-      title: seoa.user.username + locale[settings.servers[msg.guild.id].lang].Info,
-      description: msg.author + locale[settings.servers[msg.guild.id].lang].From,
+      title: locale[settings.servers[msg.guild.id].lang].Info.replace('[seoa.user.username]', seoa.user.username),
+      description: msg.author + locale[settings.servers[msg.guild.id].lang].From.replace('[msg.author]', msg.author),
       thumbnail: {
         url: seoa.user.avatarURL
       },
@@ -162,12 +162,12 @@ seoa.on('message', (msg) => {
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang]['Name&Tag'],
+          name: locale[settings.servers[msg.guild.id].lang]['Name&Tag'].replace('[seoa.user.username]', seoa.user.username),
           value: seoa.user.tag,
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].ID,
+          name: locale[settings.servers[msg.guild.id].lang].ID.replace('[seoa.user.username]', seoa.user.username),
           value: seoa.user.id,
           inline
         },
@@ -192,18 +192,18 @@ seoa.on('message', (msg) => {
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].BotDay,
+          name: locale[settings.servers[msg.guild.id].lang].BotDay.replace('[seoa.user.username]', seoa.user.username),
           value: seoa.user.createdAt,
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].UpdataDay,
+          name: locale[settings.servers[msg.guild.id].lang].UpdataDay.replace('[seoa.user.username]', seoa.user.username),
           value: seoa.readyAt,
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].UpTime,
-          value: days + locale[settings.servers[msg.guild.id].lang].Day + hours + locale[settings.servers[msg.guild.id].lang].hour + minutes + locale[settings.servers[msg.guild.id].lang].minute + seconds + locale[settings.servers[msg.guild.id].lang].second,
+          name: locale[settings.servers[msg.guild.id].lang].UpTime.replace('[seoa.user.username]', seoa.user.username),
+          value: locale[settings.servers[msg.guild.id].lang].Time.replace('[days]', days).replace('[hours]', hours).replace('[minutes]', minutes).replace('[seconds]', seconds),
           inline
         },
         {

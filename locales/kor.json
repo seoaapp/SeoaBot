@@ -1,20 +1,17 @@
 {
     "CommandNotFound": "아 저런! 그건 없는 명령이에요",
     "BotNotDM": "[seoa.user.username]는 DM에서 사용하실 수 없어요!",
-    "Info": "의 정보!",
-    "From": "가 요청함",
-    "Name&Tag": "의 DiscordTag",
-    "ID": "의 클라이언트 ID",
+    "Info": "[seoa.user.username]의 정보!",
+    "From": "[msg.author]가 요청함",
+    "Name&Tag": "[seoa.user.username]의 DiscordTag",
+    "ID": "[seoa.user.username]의 클라이언트 ID",
     "CommandSize": "등록된 명령어 수",
     "UsersSize": "등록된 유저 수",
     "ChannelsSize": "총 채널 수",
     "ServersSize": "총 서버 수",
-    "BotDay": "의 계정 생성 날짜",
-    "UpdataDay": "의 마지막 업데이트 날짜",
-    "UpTime": "의 업타임",
+    "BotDay": "[seoa.user.username]의 계정 생성 날짜",
+    "UpdataDay": "[seoa.user.username]의 마지막 업데이트 날짜",
+    "UpTime": "[seoa.user.username]의 업타임",
     "APIPING": "API 핑 ( 지연시간 )",
-    "Day": "일 ",
-    "hour": "시간 ",
-    "minute": "분 ",
-    "second": "초"
+    "Time": "[days]일 [hours]시간 [minutes]분 [seconds]초"
 }
