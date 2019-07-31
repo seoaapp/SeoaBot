@@ -34,5 +34,15 @@
   "Lang": "[query.args[1]]으로 설정되었습니다.",
   "su": "성공!",
   "ch": "`채널, 언어` 중에서 하나를 골라주세요",
-  "MISS": "당신은 권한이 없어서 설정을 못 합니다"
+  "MISS": "당신은 권한이 없어서 설정을 못 합니다",
+  "min": "제한시간은 **1분**입니다.",
+  "Over": "[msg.author.username]님 - 타임 오버입니다!",
+  "IS": "[Code Quiz 오류 제보하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)",
+  "PR":"[Code Quiz 문의하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)",
+  "SUS": "[msg.author.username]님 - 정답입니다!",
+  "NOTCORRET": "[msg.author.username]님 - 오답입니다!",
+  "YOUTUBEDEVMSG": "YouTube에서 검색할 검색어를 입력해 주세요 (제한시간 1분) **[Dev]**",
+  "Corrent": "1분이 지나 취소되었습니다",
+  "search": "'의 검색 결과",
+  "view": "[보기](http://youtube.com[video.url]) | 길이: [video.duration] | 게시일: [video.ago] | [video.views]번 재생됨"
 }
