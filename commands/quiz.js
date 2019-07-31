@@ -22,7 +22,7 @@ exports.run = (seoa, msg, settings) => {
   let quizNum
   if (msg.content.includes('point') || msg.content.includes('포인트')) {
     const userData = require('../UserData/users.json')
-    msg.channel.send('**' + userData[msg.author.id].quizPoint + '** ' + locale[settings.servers[msg.guild.id].lang].PointMsg)
+    msg.channel.send(locale[settings.servers[msg.guild.id].lang].PointMsg).replace('[userData[msg.author.id].quizPoint]', userData[msg.author.id].quizPoint)
   } else {
     if (!msgArray[1]) {
       quizNum = Math.floor(Math.random() * QuizData.length)
