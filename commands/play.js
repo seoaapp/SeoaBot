@@ -3,6 +3,13 @@
  * @description Music Player by YouTube & Spotify & SoundCloud & Music File & Others
  */
 
+/** Message */
+const locale = {
+  en: require('../locales/en.json'),
+  kor: require('../locales/kor.json'),
+  pt: require('../locales/pt.json')
+}
+
 const ytdl = require('ytdl-core')
 
 exports.run = (seoa, msg, settings) => {
@@ -15,7 +22,7 @@ exports.run = (seoa, msg, settings) => {
         }
         msg.guild.voiceConnection.playStream(ytdl(targetUrl, { audioonly: true }), { volume: 0.5 })
       } else {
-        msg.channel.send('삐빅! 음성채널에 들어와 있지 않습니다!')
+        msg.channel.send(locale[settings.servers[msg.guild.id].lang].NOTJOIN)
       }
     } else if (msg.content.includes('soundcloud')) {
 
@@ -28,12 +35,12 @@ exports.run = (seoa, msg, settings) => {
         }
         msg.guild.voiceConnection.playStream(msg.attachments.map(v => v.url), { audioonly: true }, { volume: 0.5 })
       } else {
-        msg.channel.send('삐빅! 음성채널에 들어와 있지 않습니다!')
+        msg.channel.send(locale[settings.servers[msg.guild.id].lang].NOTJOIN)
       }
     }
   } catch (e) {
     console.log(URLSearchParams(e))
-    msg.channel.send('삐빅! 지원하지 않는 URL입니다.')
+    msg.channel.send(locale[settings.servers[msg.guild.id].lang].NOTURL)
   }
 }
 

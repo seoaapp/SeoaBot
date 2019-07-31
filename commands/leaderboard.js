@@ -4,6 +4,13 @@
  * @Thank https://stackoverflow.com/questions/37817334/javascript-bubble-sort
  */
 
+/** Message */
+const locale = {
+  en: require('../locales/en.json'),
+  kor: require('../locales/kor.json'),
+  pt: require('../locales/pt.json')
+}
+
 function bubble (arr) {
   var len = arr.length
   for (var i = 0; i < len; i++) {
@@ -28,9 +35,9 @@ exports.run = (seoa, msg, settings, query) => {
 
   arr = bubble(arr).slice(0, parseInt(query.args[1]) || 20)
 
-  let temp = '```fix\nSeoaBot Code Quiz LeaderBoard\n'
+  let temp = '```fix\n' + locale[settings.servers[msg.guild.id].lang].LeaderBoardMsg + '\n'
   arr.forEach((leader, th) => {
-    temp += (th + 1) + '등: ' + leader.name + '(' + leader.quizPoint + '점)\n'
+    temp += (th + 1) + locale[settings.servers[msg.guild.id].lang]['LeaderBoardMsg1'] + '  ' + leader.name + '(' + leader.quizPoint + locale[settings.servers[msg.guild.id].lang].Point + ')\n'
   })
   temp += '```'
   msg.channel.send(temp)

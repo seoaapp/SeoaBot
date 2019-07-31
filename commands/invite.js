@@ -3,8 +3,17 @@
  * @description Bot Invite Command
  */
 
+/** Message */
+const locale = {
+  en: require('../locales/en.json'),
+  kor: require('../locales/kor.json'),
+  pt: require('../locales/pt.json')
+}
+
 exports.run = (seoa, msg, settings) => {
-  const invite = { description: '**[봇 초대링크!](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)**' }
+  const invite = {
+    description: locale[settings.servers[msg.guild.id].lang].Invite
+  }
   msg.channel.send({ embed: invite }).then(err => console.log(err))
 }
 

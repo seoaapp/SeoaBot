@@ -3,6 +3,13 @@
  * @description Developer evaluation command
  */
 
+/** Message */
+const locale = {
+  en: require('../locales/en.json'),
+  kor: require('../locales/kor.json'),
+  pt: require('../locales/pt.json')
+}
+
 exports.run = (seoa, msg, settings, query) => {
   if (settings.owners.includes(msg.author.id)) {
     try {
@@ -12,7 +19,7 @@ exports.run = (seoa, msg, settings, query) => {
       msg.channel.send(error)
     }
   } else {
-    msg.channel.send('어디서 감히 개발자도 아닌게 까불어!')
+    msg.channel.send(locale[settings.servers[msg.guild.id].lang]['403'])
   }
 }
 

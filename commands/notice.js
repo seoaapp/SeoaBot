@@ -3,6 +3,13 @@
  * @description Notice Command
  */
 
+/** Message */
+const locale = {
+  en: require('../locales/en.json'),
+  kor: require('../locales/kor.json'),
+  pt: require('../locales/pt.json')
+}
+
 exports.run = (seoa, msg, settings, query) => {
   if (settings.owners.includes(msg.author.id)) {
     seoa.guilds.forEach((guild) => {
@@ -18,7 +25,7 @@ exports.run = (seoa, msg, settings, query) => {
       }
     })
   } else {
-    msg.reply('당신은 봇 소유자 (운영자)가 아닙니다!')
+    msg.reply(locale[settings.servers[msg.guild.id].lang]['404'])
   }
 }
 

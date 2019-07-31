@@ -6,7 +6,12 @@
 const QuizData = require('../QuizData/quizs.json')
 const discord = require('discord.js')
 const fs = require('fs')
-
+/** Message */
+const locale = {
+  en: require('../locales/en.json'),
+  kor: require('../locales/kor.json'),
+  pt: require('../locales/pt.json')
+}
 exports.run = (seoa, msg, settings) => {
   const msgArray = msg.content.split(' ')
   const filter = (reaction, user) =>
@@ -17,7 +22,7 @@ exports.run = (seoa, msg, settings) => {
   let quizNum
   if (msg.content.includes('point') || msg.content.includes('포인트')) {
     const userData = require('../UserData/users.json')
-    msg.channel.send('**' + userData[msg.author.id].quizPoint + '** 포인트 입니다.')
+    msg.channel.send('**' + userData[msg.author.id].quizPoint + '** ' + locale[settings.servers[msg.guild.id].lang].PointMsg)
   } else {
     if (!msgArray[1]) {
       quizNum = Math.floor(Math.random() * QuizData.length)
@@ -36,7 +41,7 @@ exports.run = (seoa, msg, settings) => {
         } */
       const quizEmbed = new discord.RichEmbed()
         .setColor(0x0000ff)
-        .setAuthor(msg.author.username + '님이 Code Quiz를 푸는 중입니다...', msg.author.displayAvatarURL)
+        .setAuthor(locale[settings.servers[msg.guild.id].lang]['QUIZ2'].replace('[msg.author.username]', msg.author.username), msg.author.displayAvatarURL)
         .setTitle('Quiz No.' + quizNum)
         .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '제한시간은 **1분**입니다.')
       if (QuizData[quizNum].image) {
@@ -62,7 +67,7 @@ exports.run = (seoa, msg, settings) => {
             const userData = require('../UserData/users.json')
             const quizFailByLate = new discord.RichEmbed()
               .setColor(0x808080)
-              .setDescription('[Code Quiz 추가 요청하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)')
+              .setDescription(locale[settings.servers[msg.guild.id].lang]['QUIZMSG1'])
               .setAuthor(msg.author.username + '님 - 타임 오버입니다!', msg.author.displayAvatarURL)
               .setTitle('Quiz No.' + quizNum)
               .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)

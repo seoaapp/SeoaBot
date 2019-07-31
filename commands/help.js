@@ -6,16 +6,21 @@
 /** File System: File Reader */
 const fileReader = require('fs')
 const { resolve: pathAppend } = require('path')
+const locale = {
+  en: require('../locales/en.json'),
+  kor: require('../locales/kor.json'),
+  pt: require('../locales/pt.json')
+}
 
 exports.run = (seoa, msg, settings) => {
   const help = {
     fields: [
       {
-        name: 'Seoa CommandBook',
-        value: 'Prefix: >'
+        name: locale[settings.servers[msg.guild.id].lang].CommandBook,
+        value: locale[settings.servers[msg.guild.id].lang].Prefix + ' >'
       }
     ],
-    description: '이 봇은 베타입니다. 불안정하니 버그가 발생할경우 [이슈](https://github.com/ttakkku/SeoaBot/issues)에 알려주세요 \n **[봇 초대링크!](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)** \n **[봇 서포트 주소](https://discord.gg/QJfeKYr)**'
+    description: locale[settings.servers[msg.guild.id].lang].BETAMSG
   }
 
   fileReader.readdir(settings.commands, (err, files) => {
@@ -31,7 +36,7 @@ exports.run = (seoa, msg, settings) => {
         })
       }
     })
-    msg.channel.send('DM으로 도움말을 보냈습니다!')
+    msg.channel.send(locale[settings.servers[msg.guild.id].lang].DMSEND)
     msg.author.send({ embed: help })
   })
 }
