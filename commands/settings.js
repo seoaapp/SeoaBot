@@ -9,7 +9,7 @@ exports.run = (seoa, msg, settings, query) => {
   // TODO: 대충 언어설정이랑 서버장일경우 공지 채널 설정하는 내용
   if (query.args[0]) {
     if (['lang', '언어'].includes(query.args[0].toLowerCase())) {
-      if (!(query.args[1] === 'kr' || query.args[1] === 'en')) {
+      if (!(query.args[1] === 'kor' || query.args[1] === 'en')) {
         settings.servers[msg.guild.id].lang = 'en'
         fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
         msg.channel.send('해당 언어는 정의되어 있지 않아 `en`으로 설정되었습니다.')

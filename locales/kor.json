@@ -1,0 +1,20 @@
+{
+    "CommandNotFound": "아 저런! 그건 없는 명령이에요",
+    "BotNotDM": "[seoa.user.username]는 DM에서 사용하실 수 없어요!",
+    "Info": "정보!",
+    "From": "에게",
+    "Name&Tag": "의 이름, 태그",
+    "ID": "의 ID",
+    "CommandSize": "총 명령어 수",
+    "UsersSize": "총 사용자 수",
+    "ChannelsSize": "총 채널 수",
+    "ServersSize": "총 서버 수",
+    "BotDay": "의 생일",
+    "UpdataDay": "의 업데이트 날짜",
+    "UpTime": "의 업타임",
+    "APIPING": "API 핑",
+    "Day": "일 ",
+    "hour": "시간 ",
+    "minute": "분 ",
+    "second": "초"
+}

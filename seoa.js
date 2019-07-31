@@ -161,7 +161,7 @@ seoa.on('message', (msg) => {
           inline
         },
         {
-          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang].['Name&Tag']
+          name: seoa.user.username + locale[settings.servers[msg.guild.id].lang]['Name&Tag'],
           value: seoa.user.tag,
           inline
         },

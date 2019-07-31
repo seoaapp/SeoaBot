@@ -3,6 +3,7 @@
  * @description settings Command
  * @Thank https://stackoverflow.com/questions/37817334/javascript-bubble-sort
  */
+
 function bubble (arr) {
   var len = arr.length
   for (var i = 0; i < len; i++) {
