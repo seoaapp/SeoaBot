@@ -150,7 +150,7 @@ seoa.on('message', (msg) => {
     const inline = true
     const botInfoEmbed = {
       title: locale[settings.servers[msg.guild.id].lang].Info.replace('[seoa.user.username]', seoa.user.username),
-      description: msg.author + locale[settings.servers[msg.guild.id].lang].From.replace('[msg.author]', msg.author),
+      description: locale[settings.servers[msg.guild.id].lang].From.replace('[msg.author]', msg.author),
       thumbnail: {
         url: seoa.user.avatarURL
       },
