@@ -31,7 +31,7 @@ exports.run = (seoa, msg, settings) => {
 
           const embed = {
             color: parseInt(randomHexColor().substring(1), 16),
-            title: '\'' + collect.first().content.slice(0, 200) + locale[settings.servers[msg.guild.id].lang].search,
+            title: '\'' + locale[settings.servers[msg.guild.id].lang].search.replace('[collect.first().content.slice(0, 200)]', collect.first().content.slice(0, 200)) ,
             fields: []
           }
           res.videos.slice(0, 10).forEach((video, index) => {
