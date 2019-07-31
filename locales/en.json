@@ -43,6 +43,6 @@
   "NOTCORRET": "[msg.author.username] - Wrong Answer!",
   "YOUTUBEDEVMSG": "Type what you want to search on YouTube. **[Highly Unstable]**",
   "Corrent": "Canceled.",
-  "search": " - YouTube search result.",
+  "search": "YouTube search result of [collect.first().content.slice(0, 200)]",
   "view": "[Watch](http://youtube.com[video.url]) | Length: [video.duration] | Upload: [video.ago] | Played for [video.views] times"
 }
