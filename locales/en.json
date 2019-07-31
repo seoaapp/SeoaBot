@@ -1,5 +1,5 @@
 {
-  "CommandNotFound": "Sorry, I can't find that command on the CMD_LIST.seoa. Try >help!",
+  "CommandNotFound": "Sorry, I can't find that command on CMD_LIST.seoa. Try >help!",
   "BotNotDM": "Sorry, but you can't use [seoa.user.username] on Direct Message.",
   "Info": "Information of [seoa.user.username]",
   "From": ": > [msg.author] requested < :",
