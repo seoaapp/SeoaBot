@@ -51,12 +51,12 @@ const commands = new discord.Collection()
 /** Guild Onwers ID */
 if (!fs.existsSync('./ServerData/')) {
   fs.mkdirSync('./ServerData')
-  fs.writeFileSync('./ServerData/owner.json', '{}')
+  fs.writeFileSync('./ServerData/owners.json', '{}')
 }
-if (!fs.existsSync('./ServerData/owner.json')) {
-  fs.writeFileSync('./ServerData/owner.json', '{}')
+if (!fs.existsSync('./ServerData/owners.json')) {
+  fs.writeFileSync('./ServerData/owners.json', '{}')
 }
-const owners = require('./ServerData/owner.json')
+const owners = require('./ServerData/owners.json')
 
 /** UserData */
 if (!fs.existsSync('./UserData/')) {
@@ -103,7 +103,7 @@ seoa.on('ready', () => {
     owners[guild.id] = guild.ownerID
   })
 
-  fs.writeFileSync('./ServerData/owner.json', JSON.stringify(owners, null, '  '))
+  fs.writeFileSync('./ServerData/owners.json', JSON.stringify(owners, null, '  '))
   // register users
   seoa.users.forEach((user) => {
     if (!users[user.id] && user.id !== '1') {
