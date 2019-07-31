@@ -37,7 +37,7 @@ exports.run = (seoa, msg, settings, query) => {
 
   let temp = '```fix\n' + locale[settings.servers[msg.guild.id].lang].LeaderBoardMsg + '\n'
   arr.forEach((leader, th) => {
-    temp += (th + 1) + locale[settings.servers[msg.guild.id].lang]['LeaderBoardMsg1'] + '  ' + leader.name + '(' + leader.quizPoint + locale[settings.servers[msg.guild.id].lang].Point + ')\n'
+    temp += locale[settings.servers[msg.guild.id].lang]['LeaderBoardMsg1'].replace('[(th + 1)]', (th + 1)) + '  ' + leader.name + '(' + leader.quizPoint + locale[settings.servers[msg.guild.id].lang].Point + ')\n'
   })
   temp += '```'
   msg.channel.send(temp)
