@@ -43,6 +43,6 @@
   "NOTCORRET": "[msg.author.username]님 - 오답입니다!",
   "YOUTUBEDEVMSG": "YouTube에서 검색할 검색어를 입력해 주세요 (제한시간 1분) **[Dev]**",
   "Corrent": "1분이 지나 취소되었습니다",
-  "search": "'의 검색 결과",
+  "search": "[collect.first().content.slice(0, 200)]'의 검색 결과",
   "view": "[보기](http://youtube.com[video.url]) | 길이: [video.duration] | 게시일: [video.ago] | [video.views]번 재생됨"
 }
