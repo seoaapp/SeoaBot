@@ -14,9 +14,6 @@ exports.run = (seoa, msg, settings) => {
       reaction.emoji.name === '❌') &&
     user.id === msg.author.id
 
-  /**
-   * @type {number}
-   */
   let quizNum
   if (msg.content.includes('point') || msg.content.includes('포인트')) {
     const userData = require('../UserData/users.json')
@@ -62,6 +59,7 @@ exports.run = (seoa, msg, settings) => {
           max: 1
         }).then((collected) => {
           if (!collected.array()[0]) {
+            const userData = require('../UserData/users.json')
             const quizFailByLate = new discord.RichEmbed()
               .setColor(0x808080)
               .setDescription('[Code Quiz 추가 요청하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)')
@@ -95,7 +93,7 @@ exports.run = (seoa, msg, settings) => {
                 quizCorrectEmbed.setImage(QuizData[quizNum].image)
               }
               th.edit(quizCorrectEmbed)
-              userData[msg.author.id].quizPoint++
+              userData[msg.author.id].quizPoint += (QuizData[quizNum].point || 1)
               fs.writeFileSync('./UserData/users.json', JSON.stringify(userData, null, '  '))
             } else { // 틀렸을 경우
               const quizNotCorrectEmbed = new discord.RichEmbed()
