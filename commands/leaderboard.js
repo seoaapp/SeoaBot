@@ -4,12 +4,11 @@
  * @Thank https://stackoverflow.com/questions/37817334/javascript-bubble-sort
  */
 
-/** Message */
-const locale = {
-  en: require('../locales/en.json'),
-  kor: require('../locales/kor.json'),
-  pt: require('../locales/pt.json')
-}
+// i18n (locale)
+const i18n = require('i18n')
+i18n.configure({
+  directory: './locales'
+});
 
 function bubble (arr) {
   var len = arr.length
@@ -35,9 +34,9 @@ exports.run = (seoa, msg, settings, query) => {
 
   arr = bubble(arr).slice(0, parseInt(query.args[1]) || 20)
 
-  let temp = '```fix\n' + locale[settings.servers[msg.guild.id].lang].LeaderBoardMsg + '\n'
+  let temp = '```fix\n' + i18n.__({phrase: 'LeaderBoardMsg', locale: settings.servers[msg.guild.id].lang}) + '\n'
   arr.forEach((leader, th) => {
-    temp += locale[settings.servers[msg.guild.id].lang]['LeaderBoardMsg1'].replace('[(th + 1)]', (th + 1)) + '  ' + leader.name + '(' + leader.quizPoint + locale[settings.servers[msg.guild.id].lang].Point + ')\n'
+    temp += i18n.__({phrase: 'LeaderBoardMsg1',locale: settings.servers[msg.guild.id].lang}, (th + 1) , leader.name, leader.quizPoint)
   })
   temp += '```'
   msg.channel.send(temp)

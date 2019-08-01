@@ -21,6 +21,7 @@
     "dialogflow": "^0.9.1",
     "discord.js": "^11.5.1",
     "ffmpeg": "^0.0.4",
+    "i18n": "^0.8.3",
     "opusscript": "^0.0.6",
     "os": "^0.1.1",
     "random-hex-color": "^1.0.1",

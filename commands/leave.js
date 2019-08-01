@@ -13,7 +13,7 @@ const locale = {
 exports.run = (seoa, msg, settings) => {
   if (msg.guild.voiceConnection) { // TODO: LEAVE 에러 고치기
     msg.member.voiceChannel.leave()
-    msg.channel.send(locale[settings.servers[msg.guild.id].lang].Leave)
+    msg.channel.send(i18n.__({phrase: 'Leave', locale: settings.servers[msg.guild.id].lang}))
   }
 }
 
