@@ -3,12 +3,7 @@
  * @description Music Player by YouTube & Spotify & SoundCloud & Music File & Others
  */
 
-/** Message */
-const locale = {
-  en: require('../locales/en.json'),
-  kor: require('../locales/kor.json'),
-  pt: require('../locales/pt.json')
-}
+const i18n = require('i18n')
 
 const ytdl = require('ytdl-core')
 
@@ -22,7 +17,7 @@ exports.run = (seoa, msg, settings) => {
         }
         msg.guild.voiceConnection.playStream(ytdl(targetUrl, { audioonly: true }), { volume: 0.5 })
       } else {
-        msg.channel.send(locale[settings.servers[msg.guild.id].lang].NOTJOIN)
+        msg.channel.send(i18n.__({phrase: 'NOTJOIN', locale: settings.servers[msg.guild.id].lang}))
       }
     } else if (msg.content.includes('soundcloud')) {
 

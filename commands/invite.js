@@ -12,7 +12,7 @@ const locale = {
 
 exports.run = (seoa, msg, settings) => {
   const invite = {
-    description: locale[settings.servers[msg.guild.id].lang].Invite
+    description: i18n.__({phrase: 'Invite', locale: settings.servers[msg.guild.id].lang})
   }
   msg.channel.send({ embed: invite }).then(err => console.log(err))
 }

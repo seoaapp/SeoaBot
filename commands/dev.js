@@ -19,7 +19,7 @@ exports.run = (seoa, msg, settings, query) => {
       msg.channel.send(error)
     }
   } else {
-    msg.channel.send(locale[settings.servers[msg.guild.id].lang]['403'])
+    msg.channel.send(i18n.__({phrase: '403', locale: settings.servers[msg.guild.id].lang}))
   }
 }
 
