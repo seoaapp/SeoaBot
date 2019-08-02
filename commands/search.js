@@ -6,12 +6,7 @@
 const ytSearch = require('yt-search')
 const randomHexColor = require('random-hex-color')
 
-/** Message */
-const locale = {
-  en: require('../locales/en.json'),
-  kor: require('../locales/kor.json'),
-  pt: require('../locales/pt.json')
-}
+const i18n = require('i18n')
 
 exports.run = (seoa, msg, settings) => {
   /** Message Filter for .awaitMessages() */
