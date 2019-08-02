@@ -43,5 +43,5 @@
 	"YOUTUBEDEVMSG": "YouTube에서 검색할 검색어를 입력해 주세요 (제한시간 1분) **[Dev]**",
 	"Corrent": "1분이 지나 취소되었습니다",
 	"search": "%s'의 검색 결과",
-	"view": "[보기](http://youtube.com) / 길이: %s / 게시일: %s / %s번 재생됨"
+	"view": "[보기](http://youtube.com%s) / 길이: %s / 게시일: %s / %s번 재생됨"
 }
