@@ -131,15 +131,22 @@
   {
     "language": "js",
     "question": "자바스크립트와 자바는 같은 언어이다",
-    "awnser": "false",
+    "awnser": false,
     "explanation": "아니다. 자바스크립트와 자바는 이름만 비슷한 인도와 인도네시아 같은 것이다.",
-    "point": "1",
+    "point": "1"
   },
   {
     "language": "c",
     "question": "c언어에서 표준출력(stdout)을 하려면 printf 명령어를 사용하면 된다.",
-    "awnser": "true",
+    "awnser": true,
     "explanation": "맞다. c언어에서 표준출력을 하는 방법은 printf명령어이다.",
-    "point": "1",
+    "point": "1"
+  },
+  {
+    "language": "genaral",
+    "question": "HTTPS는 HTTP보다 보안이 강하다.",
+    "awnser": true,
+    "explanation": "맞습니다. HTTPS는 SSL위에서 작동하기 때문에 당연히 HTTP보다 보안이 강합니다.",
+    "point": "1"
   }
 ]
