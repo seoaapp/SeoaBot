@@ -28,7 +28,7 @@
 	"NOTURL": "삐빅! 지원하지 않는 URL입니다.",
 	"QUIZMSG1": "[Code Quiz 추가 요청하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)",
 	"PointMsg": "**%s** 포인트 입니다.",
-	"QUIZ2": "[msg.author.username]님이 Code Quiz를 푸는 중입니다...",
+	"QUIZ2": "%s님이 Code Quiz를 푸는 중입니다...",
 	"ENMSG": "해당 언어는 정의되어 있지 않아 `en`으로 설정되었습니다.",
 	"Lang": "%s으로 설정되었습니다.",
 	"su": "성공!",
@@ -39,9 +39,9 @@
 	"IS": "[Code Quiz 오류 제보하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)",
 	"PR": "[Code Quiz 문의하러 가기!](https://github.com/seoaapp/SeoaBot/issues/new/choose)",
 	"SUS": "%s님 - 정답입니다!",
-	"NOTCORRECT": "[msg.author.username]님 - 오답입니다!",
+	"NOTCORRECT": "%s님 - 오답입니다!",
 	"YOUTUBEDEVMSG": "YouTube에서 검색할 검색어를 입력해 주세요 (제한시간 1분) **[Dev]**",
 	"Corrent": "1분이 지나 취소되었습니다",
-	"search": "[collect.first().content.slice(0, 200)]'의 검색 결과",
-	"view": "[보기](http://youtube.com[video.url]) | 길이: [video.duration] | 게시일: [video.ago] | [video.views]번 재생됨"
+	"search": "%s'의 검색 결과",
+	"view": "[보기](http://youtube.com%s) | 길이: %s | 게시일: %s | %s번 재생됨"
 }

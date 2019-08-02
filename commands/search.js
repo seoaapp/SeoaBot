@@ -17,13 +17,13 @@ exports.run = (seoa, msg, settings) => {
   /** Message Filter for .awaitMessages() */
   const filter = (m) => m.author.id === msg.author.id
 
-  msg.channel.send(locale[settings.servers[msg.guild.id].lang].YOUTUBEDEVMSG).then((m) => {
+  msg.channel.send(i18n.__({phrase: 'YOUTUBEDEVMSG', locale: settings.servers[msg.guild.id].lang})).then((m) => {
     msg.channel.awaitMessages(filter, {
       max: 1,
       time: 60000
     }).then((collect) => {
       if (!collect.first()) {
-        m.edit(locale[settings.servers[msg.guild.id].lang].Corrent)
+        m.edit(i18n.__({phrase: 'Corrent', locale: settings.servers[msg.guild.id].lang}))
         m.delete(2000)
       } else {
         ytSearch(collect.first().content, (err, res) => {
@@ -31,13 +31,13 @@ exports.run = (seoa, msg, settings) => {
 
           const embed = {
             color: parseInt(randomHexColor().substring(1), 16),
-            title: '\'' + locale[settings.servers[msg.guild.id].lang].search.replace('[collect.first().content.slice(0, 200)]', collect.first().content.slice(0, 200)) ,
+            title: '\'' + i18n.__({phrase: 'search', locale: settings.servers[msg.guild.id].lang}, collect.first().content.slice(0, 200)),
             fields: []
           }
           res.videos.slice(0, 10).forEach((video, index) => {
             embed.fields.push({
               name: (index + 1) + '. ' + video.title,
-              value: locale[settings.servers[msg.guild.id].lang].view.replace('[video.url]', video.url).replace('[video.duration]', video.duration).replace('[video.ago]', video.ago).replace('[video.views]', video.views)
+              value: i18n.__({phrase: 'view', locale: settings.servers[msg.guild.id].lang}, video.url, video.duration, video.ago, video.views)
             })
           })
           m.edit({ embed })
@@ -46,7 +46,7 @@ exports.run = (seoa, msg, settings) => {
             time: 60000
           }).then((collect2) => {
             if (!collect2.first()) {
-              m.edit(locale[settings.servers[msg.guild.id].lang].Corrent)
+              m.edit(i18n.__({phrase: 'Corrent', locale: settings.servers[msg.guild.id].lang}))
               m.delete(2000)
             } else {
               if (collect2) {

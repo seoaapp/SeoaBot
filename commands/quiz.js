@@ -38,9 +38,9 @@ exports.run = (seoa, msg, settings) => {
         } */
       const quizEmbed = new discord.RichEmbed()
         .setColor(0x0000ff)
-        .setAuthor(i18n.__({pharse: 'QUIZ2', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
+        .setAuthor(i18n.__({phrase: 'QUIZ2', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
         .setTitle('Quiz No.' + quizNum)
-        .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), i18n.__({pharse: 'min', locale: settings.servers[msg.guild.id]}))
+        .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), i18n.__({phrase: 'min', locale: settings.servers[msg.guild.id].lang}))
       if (QuizData[quizNum].image) {
         quizEmbed.setImage(QuizData[quizNum].image)
       }
@@ -64,8 +64,8 @@ exports.run = (seoa, msg, settings) => {
             const userData = require('../UserData/users.json')
             const quizFailByLate = new discord.RichEmbed()
               .setColor(0x808080)
-              .setDescription(i18n.__({pharse: 'QUIZMSG1', locale: settings.servers[msg.guild.id].lang}))
-              .setAuthor(i18n.__({pharse: 'Over', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
+              .setDescription(i18n.__({phrase: 'QUIZMSG1', locale: settings.servers[msg.guild.id].lang}))
+              .setAuthor(i18n.__({phrase: 'Over', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
               .setTitle('Quiz No.' + quizNum)
               .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
             if (QuizData[quizNum].image) {
@@ -87,8 +87,8 @@ exports.run = (seoa, msg, settings) => {
             if (collected.array()[0].emoji.name === QuizAwnser) {
               const quizCorrectEmbed = new discord.RichEmbed()
                 .setColor(0x00ff00)
-                .setDescription(i18n.__({pharse: 'IS', locale: settings.servers[msg.guild.id].lang}))
-                .setAuthor(i18n.__({pharse: 'SUS', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
+                .setDescription(i18n.__({phrase: 'IS', locale: settings.servers[msg.guild.id].lang}))
+                .setAuthor(i18n.__({phrase: 'SUS', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
                 .setTitle('Quiz No.' + quizNum)
                 .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
               if (QuizData[quizNum].image) {
@@ -100,8 +100,8 @@ exports.run = (seoa, msg, settings) => {
             } else { // 틀렸을 경우
               const quizNotCorrectEmbed = new discord.RichEmbed()
                 .setColor(0xff0000)
-                .setDescription(i18n.__({pharse: 'PR', locale: settings.servers[msg.guild.id].lang}))
-                .setAuthor(i18n.__({pharse: 'NOTCORRECT', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
+                .setDescription(i18n.__({phrase: 'PR', locale: settings.servers[msg.guild.id].lang}))
+                .setAuthor(i18n.__({phrase: 'NOTCORRECT', locale: settings.servers[msg.guild.id].lang}, msg.author.username), msg.author.displayAvatarURL)
                 .setTitle('Quiz No.' + quizNum)
                 .addField('Q. ' + QuizData[quizNum].question.replace('{username}', msg.author.username), '**A.** ' + QuizData[quizNum].explanation)
               if (QuizData[quizNum].image) {

@@ -13,6 +13,5 @@
 	"UpdataDay": "[seoa.user.username]'s Last Update",
 	"UpTime": "[seoa.user.username]'s Uptime [ Time bot is online ]",
 	"APIPING": "Delay of Bot [ API Ping ]",
-	"Time": "[days] day(s) [hours] hour(s) [minutes] minute(s) [seconds] second(s)",
-	"ENMSG": "ENMSG"
+	"Time": "[days] day(s) [hours] hour(s) [minutes] minute(s) [seconds] second(s)"
 }
