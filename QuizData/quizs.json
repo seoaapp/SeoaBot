@@ -127,5 +127,19 @@
     "awnser": true,
     "explanation": "class(prototype)이 아닐 때에는 this가 global로 사용됩니다. 즉, `this.asdf = 'asdf'`가 `global.asdf = 'asdf'`가 되는것이죠. 그때 외부에서 부른 `console.log(asdf)`는 `console.log(global.asdf)`와 같은것이고, 이는 사용할 수 있으니 오류가 나지 않습니다.",
     "point": 2
+  },
+  {
+    "language": "js",
+    "question": "자바스크립트와 자바는 같은 언어이다",
+    "awnser": "false",
+    "explanation": "아니다. 자바스크립트와 자바는 이름만 비슷한 인도와 인도네시아 같은 것이다.",
+    "point": "1",
+  },
+  {
+    "language": "c",
+    "question": "c언어에서 표준출력(stdout)을 하려면 printf 명령어를 사용하면 된다.",
+    "awnser": "true",
+    "explanation": "맞다. c언어에서 표준출력을 하는 방법은 printf명령어이다.",
+    "point": "1",
   }
 ]
