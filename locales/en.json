@@ -43,5 +43,5 @@
 	"YOUTUBEDEVMSG": "Please type what you want to search on YouTube in 1 minute. **[Highly Unstable]**",
 	"Corrent": "Okay, canceled.",
 	"search": "YouTube Results of %s",
-	"view": "[Watch](http://youtube.com%s) | length: %s | Uploaded at %s | Played %s times"
+	"view": "[Watch](http://youtube.com%s) / length: %s / Uploaded at %s / Played %s times"
 }
