@@ -4,17 +4,16 @@
  */
 
 /** Message */
-const locale = {
-  en: require('../locales/en.json'),
-  kor: require('../locales/kor.json'),
-  pt: require('../locales/pt.json')
-}
+const i18n = require('i18n')
 
 exports.run = (seoa, msg, settings) => {
   const invite = {
-    description: i18n.__({phrase: 'Invite', locale: settings.servers[msg.guild.id].lang})
+    description: i18n.__({
+      phrase: 'Invite',
+      locale: settings.servers[msg.guild.id].lang
+    })
   }
-  msg.channel.send({ embed: invite }).then(err => console.log(err))
+  msg.channel.send({ embed: invite }).then((err) => console.log(err))
 }
 
 exports.callSign = ['invite', '봇초대링크', '초대링크', 'Invite']

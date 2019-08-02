@@ -4,11 +4,7 @@
  */
 
 /** Message */
-const locale = {
-  en: require('../locales/en.json'),
-  kor: require('../locales/kor.json'),
-  pt: require('../locales/pt.json')
-}
+const i18n = require('i18n')
 
 exports.run = (seoa, msg, settings, query) => {
   if (settings.owners.includes(msg.author.id)) {
@@ -19,7 +15,9 @@ exports.run = (seoa, msg, settings, query) => {
       msg.channel.send(error)
     }
   } else {
-    msg.channel.send(i18n.__({phrase: '403', locale: settings.servers[msg.guild.id].lang}))
+    msg.channel.send(
+      i18n.__({ phrase: '403', locale: settings.servers[msg.guild.id].lang })
+    )
   }
 }
 

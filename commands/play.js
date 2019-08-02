@@ -10,32 +10,55 @@ const ytdl = require('ytdl-core')
 exports.run = (seoa, msg, settings) => {
   const targetUrl = msg.content.split(' ')[1]
   try {
-    if (msg.content.includes('youtube.com') || msg.content.includes('youtu.be')) {
+    if (
+      msg.content.includes('youtube.com') ||
+      msg.content.includes('youtu.be')
+    ) {
       if (msg.member.voiceChannel) {
         if (!msg.guild.voiceConnection) {
           msg.member.voiceChannel.join()
         }
-        msg.guild.voiceConnection.playStream(ytdl(targetUrl, { audioonly: true }), { volume: 0.5 })
+        msg.guild.voiceConnection.playStream(
+          ytdl(targetUrl, { audioonly: true }),
+          { volume: 0.5 }
+        )
       } else {
-        msg.channel.send(i18n.__({phrase: 'NOTJOIN', locale: settings.servers[msg.guild.id].lang}))
+        msg.channel.send(
+          i18n.__({
+            phrase: 'NOTJOIN',
+            locale: settings.servers[msg.guild.id].lang
+          })
+        )
       }
     } else if (msg.content.includes('soundcloud')) {
-
     } else if (msg.content.includes('spotify')) {
-
     } else if (msg.content.includes('')) {
       if (msg.member.voiceChannel) {
         if (!msg.guild.voiceConnection) {
           msg.member.voiceChannel.join()
         }
-        msg.guild.voiceConnection.playStream(msg.attachments.map(v => v.url), { audioonly: true }, { volume: 0.5 })
+        msg.guild.voiceConnection.playStream(
+          msg.attachments.map((v) => v.url),
+          { audioonly: true },
+          { volume: 0.5 }
+        )
       } else {
-        msg.channel.send(locale[settings.servers[msg.guild.id].lang].NOTJOIN)
+        msg.channel.send(
+          i18n.__({
+            phrase: 'NOTJOIN',
+            locale: settings.servers[msg.guild.id].lang
+          })
+        )
       }
     }
   } catch (e) {
     console.log(URLSearchParams(e))
-    msg.channel.send(locale[settings.servers[msg.guild.id].lang].NOTURL)
+    msg.channel.send(
+      i18n.__({
+        phrase: 'NOTURL',
+        locale: settings.servers[msg.guild.id].lang
+      })
+    )
   }
 }
 

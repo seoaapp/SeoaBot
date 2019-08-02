@@ -26,7 +26,8 @@ exports.run = (seoa, msg, settings) => {
   fileReader.readdir(settings.commands, (err, files) => {
     if (err) console.error(err)
     files.forEach((v) => {
-      const temp = require(pathAppend(__dirname, '../', settings.commands, v)).helps
+      const temp = require(pathAppend(__dirname, '../', settings.commands, v))
+        .helps
       const inline = true
       if (temp) {
         help.fields.push({
