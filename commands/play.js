@@ -52,7 +52,7 @@ exports.run = (seoa, msg, settings) => {
       }
     }
   } catch (e) {
-    console.log(URLSearchParams(e))
+    // console.log(URLSearchParams(e))
     msg.channel.send(
       i18n.__({
         phrase: 'NOTURL',
