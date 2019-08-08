@@ -26,6 +26,7 @@ const fs = require('fs')
 /** ServersData */
 if (!fs.existsSync('./ServerData/servers.json')) {
   fs.writeFileSync('./ServerData/servers.json', '{}')
+  fs.appendFile('./ServerData/servers.json', '{}')
 }
 
 /** Seoa Settings */
@@ -52,9 +53,11 @@ const commands = new discord.Collection()
 if (!fs.existsSync('./ServerData/')) {
   fs.mkdirSync('./ServerData')
   fs.writeFileSync('./ServerData/owners.json', '{}')
+  fs.appendFile('./ServerData/servers.json', '{}')
 }
 if (!fs.existsSync('./ServerData/owners.json')) {
   fs.writeFileSync('./ServerData/owners.json', '{}')
+  fs.appendFile('./ServerData/owners.json', '{}')
 }
 const owners = require('./ServerData/owners.json')
 
@@ -62,9 +65,11 @@ const owners = require('./ServerData/owners.json')
 if (!fs.existsSync('./UserData/')) {
   fs.mkdirSync('./UserData')
   fs.writeFileSync('./UserData/users.json', '{}')
+  fs.appendFile('./ServerData/users.json', '{}')
 }
 if (!fs.existsSync('./UserData/users.json')) {
   fs.writeFileSync('./UserData/users.json', '{}')
+  fs.appendFile('./ServerData/users.json', '{}')
 }
 const users = require('./UserData/users.json')
 
