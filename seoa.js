@@ -53,11 +53,9 @@ const commands = new discord.Collection()
 if (!fs.existsSync('./ServerData/')) {
   fs.mkdirSync('./ServerData')
   fs.writeFileSync('./ServerData/owners.json', '{}')
-  fs.appendFile('./ServerData/servers.json', '{}')
 }
 if (!fs.existsSync('./ServerData/owners.json')) {
   fs.writeFileSync('./ServerData/owners.json', '{}')
-  fs.appendFile('./ServerData/owners.json', '{}')
 }
 const owners = require('./ServerData/owners.json')
 
@@ -65,11 +63,9 @@ const owners = require('./ServerData/owners.json')
 if (!fs.existsSync('./UserData/')) {
   fs.mkdirSync('./UserData')
   fs.writeFileSync('./UserData/users.json', '{}')
-  fs.appendFile('./ServerData/users.json', '{}')
 }
 if (!fs.existsSync('./UserData/users.json')) {
   fs.writeFileSync('./UserData/users.json', '{}')
-  fs.appendFile('./ServerData/users.json', '{}')
 }
 const users = require('./UserData/users.json')
 
@@ -138,7 +134,7 @@ seoa.on('ready', () => {
 seoa.on('message', (msg) => {
   if (msg.author.id === seoa.user.id) return
   if (msg.author.bot) return
-  if (!msg.guild) return msg.channel.send(i18n.__({phrase: 'BotNotDM',locale: settings.servers[msg.guild.id].lang}, seoa.user.username))
+  if (!msg.guild) return// msg.channel.send(i18n.__({phrase: 'BotNotDM',locale: settings.servers[msg.guild.id].lang}, seoa.user.username))
 
   if (!msg.content.startsWith(settings.prefix)) return
   console.info(msg.guild.name + '> ' + msg.author.username + '> ' + msg.content)
