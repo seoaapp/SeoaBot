@@ -9,7 +9,11 @@ const fs = require('fs')
 
 const i18n = require('i18n')
 
-exports.run = (seoa, msg, settings) => {
+exports.run = async (seoa, msg, settings) => {
+  let server = await settings.db.select('serverdata', { id: msg.guild.id })
+  server = server[0]
+  let user = await settings.db.select('userdata', { id: msg.author.id })
+  user = user[0]
   const msgArray = msg.content.split(' ')
   const filter = (reaction, user) =>
     (reaction.emoji.name === '⭕' || reaction.emoji.name === '❌') &&
@@ -17,11 +21,10 @@ exports.run = (seoa, msg, settings) => {
 
   let quizNum
   if (msg.content.includes('point') || msg.content.includes('포인트')) {
-    const userData = require('../UserData/users.json')
     msg.channel.send(
       i18n.__(
-        { phrase: 'PointMsg', locale: settings.servers[msg.guild.id].lang },
-        userData[msg.author.id].quizPoint
+        { phrase: 'PointMsg', locale: server.lang },
+        user.quizPoint
       )
     )
   } else {
@@ -44,7 +47,7 @@ exports.run = (seoa, msg, settings) => {
         .setColor(0x0000ff)
         .setAuthor(
           i18n.__(
-            { phrase: 'QUIZ2', locale: settings.servers[msg.guild.id].lang },
+            { phrase: 'QUIZ2', locale: server.lang },
             msg.author.username
           ),
           msg.author.displayAvatarURL
@@ -58,7 +61,7 @@ exports.run = (seoa, msg, settings) => {
             ),
           i18n.__({
             phrase: 'min',
-            locale: settings.servers[msg.guild.id].lang
+            locale: server.lang
           })
         )
       if (QuizData[quizNum].image) {
@@ -81,20 +84,19 @@ exports.run = (seoa, msg, settings) => {
           max: 1
         }).then((collected) => {
           if (!collected.array()[0]) {
-            const userData = require('../UserData/users.json')
             const quizFailByLate = new discord.RichEmbed()
               .setColor(0x808080)
               .setDescription(
                 i18n.__({
                   phrase: 'QUIZMSG1',
-                  locale: settings.servers[msg.guild.id].lang
+                  locale: server.lang
                 })
               )
               .setAuthor(
                 i18n.__(
                   {
                     phrase: 'Over',
-                    locale: settings.servers[msg.guild.id].lang
+                    locale: server.lang
                   },
                   msg.author.username
                 ),
@@ -113,11 +115,8 @@ exports.run = (seoa, msg, settings) => {
               quizFailByLate.setImage(QuizData[quizNum].image)
             }
             th.edit(quizFailByLate)
-            userData[msg.author.id].quizPoint--
-            fs.writeFileSync(
-              './UserData/users.json',
-              JSON.stringify(userData, null, '  ')
-            )
+            user.quizPoint--
+            settings.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
           } else {
             let QuizAwnser
             if (QuizData[quizNum].awnser === true) {
@@ -125,7 +124,6 @@ exports.run = (seoa, msg, settings) => {
             } else if (QuizData[quizNum].awnser === false) {
               QuizAwnser = '❌'
             }
-            const userData = require('../UserData/users.json')
 
             // 맞았을 경우
             if (collected.array()[0].emoji.name === QuizAwnser) {
@@ -134,14 +132,14 @@ exports.run = (seoa, msg, settings) => {
                 .setDescription(
                   i18n.__({
                     phrase: 'IS',
-                    locale: settings.servers[msg.guild.id].lang
+                    locale: server.lang
                   })
                 )
                 .setAuthor(
                   i18n.__(
                     {
                       phrase: 'SUS',
-                      locale: settings.servers[msg.guild.id].lang
+                      locale: server.lang
                     },
                     msg.author.username
                   ),
@@ -160,11 +158,8 @@ exports.run = (seoa, msg, settings) => {
                 quizCorrectEmbed.setImage(QuizData[quizNum].image)
               }
               th.edit(quizCorrectEmbed)
-              userData[msg.author.id].quizPoint += QuizData[quizNum].point || 1
-              fs.writeFileSync(
-                './UserData/users.json',
-                JSON.stringify(userData, null, '  ')
-              )
+              user.quizPoint++
+              settings.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
             } else {
               // 틀렸을 경우
               const quizNotCorrectEmbed = new discord.RichEmbed()
@@ -172,14 +167,14 @@ exports.run = (seoa, msg, settings) => {
                 .setDescription(
                   i18n.__({
                     phrase: 'PR',
-                    locale: settings.servers[msg.guild.id].lang
+                    locale: server.lang
                   })
                 )
                 .setAuthor(
                   i18n.__(
                     {
                       phrase: 'NOTCORRECT',
-                      locale: settings.servers[msg.guild.id].lang
+                      locale: server.lang
                     },
                     msg.author.username
                   ),
@@ -198,11 +193,8 @@ exports.run = (seoa, msg, settings) => {
                 quizNotCorrectEmbed.setImage(QuizData[quizNum].image)
               }
               th.edit(quizNotCorrectEmbed)
-              userData[msg.author.id].quizPoint--
-              fs.writeFileSync(
-                './UserData/users.json',
-                JSON.stringify(userData, null, '  ')
-              )
+              user.quizPoint--
+              settings.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
             }
           }
         })

@@ -7,7 +7,9 @@ const i18n = require('i18n')
 
 const ytdl = require('ytdl-core')
 
-exports.run = (seoa, msg, settings) => {
+exports.run = async (seoa, msg, settings) => {
+  let server = await settings.db.select('serverdata', { id: msg.guild.id })
+  server = server[0]
   const targetUrl = msg.content.split(' ')[1]
   try {
     if (
@@ -26,7 +28,7 @@ exports.run = (seoa, msg, settings) => {
         msg.channel.send(
           i18n.__({
             phrase: 'NOTJOIN',
-            locale: settings.servers[msg.guild.id].lang
+            locale: server.lang
           })
         )
       }
@@ -46,7 +48,7 @@ exports.run = (seoa, msg, settings) => {
         msg.channel.send(
           i18n.__({
             phrase: 'NOTJOIN',
-            locale: settings.servers[msg.guild.id].lang
+            locale: server.lang
           })
         )
       }
@@ -56,7 +58,7 @@ exports.run = (seoa, msg, settings) => {
     msg.channel.send(
       i18n.__({
         phrase: 'NOTURL',
-        locale: settings.servers[msg.guild.id].lang
+        locale: server.lang
       })
     )
   }

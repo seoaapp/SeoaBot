@@ -27,6 +27,7 @@
     "random-hex-color": "^1.0.1",
     "rethinkdb": "^2.3.3",
     "sangoon_is_math": "^0.0.3",
+    "umysql": "^0.1.1",
     "yt-search": "^0.4.1",
     "ytdl-core": "^0.29.2"
   },
