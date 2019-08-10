@@ -1,0 +1,22 @@
+{
+  "name": "SeoaBot Client",
+  "version": "0.1.0",
+  "description": "SeoaBot Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seoaapp/SeoaBot.git"
+  },
+  "author": "Seoa Bot Develoment Team",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/seoaapp/SeoaBot/issues"
+  },
+  "homepage": "https://github.com/seoaapp/SeoaBot#readme",
+  "dependencies": {
+    "electron": "^6.0.1"
+  }
+}

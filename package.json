@@ -5,7 +5,8 @@
   "main": "seoa.js",
   "scripts": {
     "test": "node seoa.js",
-    "check": "npx standard"
+    "check": "npx standard",
+    "Client": "electron ./Client && node ./seoa"
   },
   "repository": {
     "type": "git",

@@ -24,14 +24,17 @@ const SIM = require('sangoon_is_math')
 const fs = require('fs')
 
 /** ServersData */
+if (!fs.existsSync('./ServerData/')) {
+  fs.mkdirSync('./ServerData')
+  fs.writeFileSync('./ServerData/owners.json', '{}')
+}
 if (!fs.existsSync('./ServerData/servers.json')) {
   fs.writeFileSync('./ServerData/servers.json', '{}')
-  fs.appendFile('./ServerData/servers.json', '{}')
 }
 
 /** Seoa Settings */
 const settings = {
-  token: process.env.token || '',
+  token: process.env.token || process.argv[2] || '',
   prefix: process.env.prefix || '>',
   commands: process.env.commands || './commands/',
   // dialogflow: process.env.dialogflow || 'seoa-woksnl',
@@ -50,10 +53,6 @@ const seoa = new discord.Client()
 const commands = new discord.Collection()
 
 /** Guild Onwers ID */
-if (!fs.existsSync('./ServerData/')) {
-  fs.mkdirSync('./ServerData')
-  fs.writeFileSync('./ServerData/owners.json', '{}')
-}
 if (!fs.existsSync('./ServerData/owners.json')) {
   fs.writeFileSync('./ServerData/owners.json', '{}')
 }
@@ -101,6 +100,36 @@ seoa.on('ready', () => {
   console.info(seoa.user.username + ' is now Online!\n')
   seoa.user.setActivity(settings.activity, { type: 'PLAYING' })
 
+  seoa.guilds.forEach((guild) => {
+    owners[guild.id] = guild.ownerID
+  })
+
+  fs.writeFileSync('./ServerData/owners.json', JSON.stringify(owners, null, '  '))
+  // register users
+  seoa.users.forEach((user) => {
+    if (!users[user.id] && user.id !== '1') {
+      users[user.id] = {
+        quizPoint: 0,
+        name: user.tag
+      }
+    }
+  })
+
+  fs.writeFileSync('./UserData/users.json', JSON.stringify(users, null, '  '))
+
+  seoa.guilds.forEach((guilds) => {
+    if (!settings.servers[guilds.id] && guilds.id !== '1') {
+      settings.servers[guilds.id] = {
+        name: guilds.name,
+        lang: 'en',
+        channelnoticeid: ''
+      }
+    }
+  })
+
+  fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
+})
+seoa.on('guildCreate', () => {
   seoa.guilds.forEach((guild) => {
     owners[guild.id] = guild.ownerID
   })
