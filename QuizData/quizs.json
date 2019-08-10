@@ -37,7 +37,7 @@
   {
     "language": "c#",
     "question": "C#에서 조건문 if에는 무조건 중괄호가 있어야 합니다.",
-    "explanation": "기본적으로는\n\nif (조건식)\n{실행 문장}\n\n이지만 실행되는 문장이 하나일 경우\n\nif (조건식) 실행 문장\n\n으로 중괄호를 빼는 것이 가능합니다.",
+    "explanation": "있어야 합니다, 기본적으로는\n\nif (조건식)\n{실행 문장}\n\n이지만 실행되는 문장이 하나일 경우\n\nif (조건식) 실행 문장\n\n으로 중괄호를 빼는 것이 가능합니다.",
     "answer": false,
     "point": 1
   },
@@ -49,7 +49,7 @@
     "point": 1
   },
   {
-    "language": "genaral",
+    "language": "general",
     "question": "프로그래밍에서 \"x = x + 2\"를 개산하면 1이 나옵니다.",
     "explanation": "아닙니다, 프로그래밍은 수학이 아닙니다!\n저 식은 방정식이 아닌, ```fix\nx를 앞에서 정해진 x에 2를 더한 값으로 정하시오.```라는 뜻입니다.",
     "answer": false,
@@ -72,7 +72,7 @@
   {
     "language": "c#",
     "question": "C#에서 ```csharp\ndynamic c = \"20\";\nc = false;\nc = 1 + 2;\nConsole.WriteLine(c.Getype);```를 했을때, 출력은```\n> System.Int32```입니다.",
-    "explanation": "dynamic은 C#에서 지원하는 인터프리터의 기능입니다.\n그래서 변수 타입을 그때그때 계속 바꿀 수 있기에 출력하기 바로 전에 지정이 된\nint (System.Int32)로 변환되어 저렇게 표시되는 것입니다.",
+    "explanation": "맞습니다, dynamic은 C#에서 지원하는 인터프리터의 기능입니다.\n그래서 변수 타입을 그때그때 계속 바꿀 수 있기에 출력하기 바로 전에 지정이 된\nint (System.Int32)로 변환되어 저렇게 표시되는 것입니다.",
     "answer": true,
     "point": 2
   },
@@ -80,12 +80,12 @@
   {
     "language": "html",
     "question": "html에서 줄바꿈을 하려고 하면 <br>을 입력해야 한다.",
-    "explanation": "Html에서는 키보드의 Enter를 입력해도 인식이 안 되고, 단지, 사용자가 보기 편할 수 있도록 하는 수단이기 때문이다.\n따라서, 글의 내용에서 줄바꿈을 하려고 하면 Enter 대신 <br>를 입력해야 합니다.",
+    "explanation": "맞습니다, html에서는 키보드의 Enter를 입력해도 인식이 안 되고, 개발자가 보기 편할 수 있도록 하는 수단이기 때문입니다.\n글의 내용에서 줄바꿈을 하려고 하면 Enter 대신 <br>이나 문장을 <p> 등의 테그에 감싸 입력해야 합니다.",
     "answer": true,
     "point": 1
   },
   {
-    "language": "genaral",
+    "language": "general",
     "question": "{username}(은)는 심심하여 아래의 그림과 같은 논리게이트를 가지고 놀고 있었습니다.\n이때, 그가 A부분에 전기를 흘려보내고 B부분에는 전기를 흘려보내지 않는다면, Q에는 전기가 흐릅니다.",
     "explanation": "흐르지 않습니다, 이 논리게이트는 [And 게이트](https://ko.wikipedia.org/wiki/AND_%EA%B2%8C%EC%9D%B4%ED%8A%B8)로서 A와 B부분이 모두 전기가 흘러야 Q에 전기가 흐르게 됩니다",
     "answer": false,
@@ -93,7 +93,7 @@
     "point": 3
   },
   {
-    "language": "genaral",
+    "language": "general",
     "question": "{username}(은)는 심심하여 아래의 그림과 같은 논리게이트를 가지고 놀고 있었습니다.\n이때, 그가 A부분에 전기를 흘려보내고 B부분에는 전기를 흘려보내지 않는다면, Q에는 전기가 흐릅니다.",
     "explanation": "흐릅니다, 이 논리게이트는 [Or 게이트](https://ko.wikipedia.org/wiki/OR_%EA%B2%8C%EC%9D%B4%ED%8A%B8)로서 A와 B부분중 하나만 전기가 흘러도 Q에 전기가 흐르게 됩니다",
     "answer": true,
@@ -103,7 +103,7 @@
   {
     "language": "c#",
     "question": "int는 32비트 정수이다",
-    "explanation": "int 범위는 2,147,483,647 이 최대이다.\n만약 하나이라도 넘으면 –2,147,483,648 되기 때문에 주의 바람.",
+    "explanation": "맞습니다, int 범위는 2,147,483,647이 최대입니다.\n만약 하나이라도 넘으면 –2,147,483,648 되기 때문에 주의하세요",
     "answer": true,
     "point": 2
   },
@@ -111,42 +111,49 @@
     "language": "c++",
     "question": "```cpp\n#include <stdio.h>\n\nint main()\n{\n    printf(\"Hello World\");\n}```\n```cpp\n#include <iostream>\nusing namespace std;\nint main()\n{\n    cout << \"Hello World!\" << endl;\n}\n```\n이 2가지의 소스는 모두 Hello World! 를 출력하는 소스입니다.",
     "answer": true,
-    "explanation": "직접 해보시는 게 좋습니다.(?)",
+    "explanation": "맞습니다, 직접 해보시는 게 좋습니다.(?)",
     "point": 2
   },
   {
     "language": "py3",
-    "question": "raise 함수를 사용할 때는 ```\npython\nraise 'ValueError'\n```로 사용 해야한다",
+    "question": "raise 함수를 사용할 때는 ```\npython\nraise 'ValueError'\n```와 같이 사용해야 한다",
     "answer": false,
-    "explanation": "raise ValueError 등으로 따옴표가 필요 없다.",
+    "explanation": "아닙니다, raise 함수는 ```python\nraise ValueError```와 같이 따옴표가 필요 없습니다.",
     "point": 2
   },
   {
     "language": "js",
     "question": "```js\nfunction test() {\n  this.asdf = 'asdf'\n  console.log(this.asdf)\n}\n\ntest()\nconsole.log(asdf)\n```를 했을 때 오류가 나지 않는다.",
     "answer": true,
-    "explanation": "class(prototype)이 아닐 때에는 this가 global로 사용됩니다. 즉, `this.asdf = 'asdf'`가 `global.asdf = 'asdf'`가 되는것이죠. 그때 외부에서 부른 `console.log(asdf)`는 `console.log(global.asdf)`와 같은것이고, 이는 사용할 수 있으니 오류가 나지 않습니다.",
+    "explanation": "오류가 나지 않습니다, class(prototype)이 아닐 때에는 this가 global로 사용됩니다. 즉, `this.asdf = 'asdf'`가 `global.asdf = 'asdf'`가 되는것이죠. 그때 외부에서 부른 `console.log(asdf)`는 `console.log(global.asdf)`와 같은것이고, 이는 사용할 수 있으니 오류가 나지 않습니다.",
     "point": 2
   },
   {
     "language": "js",
     "question": "자바스크립트와 자바는 같은 언어이다",
     "answer": false,
-    "explanation": "아니다. 자바스크립트와 자바는 이름만 비슷한 인도와 인도네시아 같은 것이다.",
-    "point": "1"
+    "explanation": "아닙니다, 자바스크립트와 자바는 인도와 인도네시아처럼 이름만 비슷한 것입니다",
+    "point": 1
   },
   {
     "language": "c",
     "question": "c언어에서 표준출력(stdout)을 하려면 printf 명령어를 사용하면 된다.",
     "answer": true,
-    "explanation": "맞다. c언어에서 표준출력을 하는 방법은 printf명령어이다.",
-    "point": "1"
+    "explanation": "맞습니다,  c언어에서 표준출력을 하는 방법은 put이나 print, printf등의 함수를 사용해야 합니다",
+    "point": 1
   },
   {
-    "language": "genaral",
+    "language": "general",
     "question": "HTTPS는 HTTP보다 보안이 강하다.",
     "answer": true,
-    "explanation": "맞습니다. HTTPS는 SSL위에서 작동하기 때문에 당연히 HTTP보다 보안이 강합니다.",
-    "point": "1"
+    "explanation": "맞습니다, HTTPS는 SSL위에서 작동하기 때문에 당연히 HTTP보다 보안이 강합니다.",
+    "point": 1
+  },
+  {
+    "language": "aheui",
+    "question": "아희는 한글로 작성한다.",
+    "answer": true,
+    "explanation": "맞습니다, 아희는 한글로 된 언어이기 때문에 당연히 한글로 작성합니다.",
+    "point": 2
   }
 ]

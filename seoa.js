@@ -29,7 +29,7 @@ const fs = require('fs')
 
 /** Seoa Settings */
 const settings = {
-  token: process.env.token || '',
+  token: process.env.token || process.argv[2] || '',
   prefix: process.env.prefix || '>',
   commands: process.env.commands || './commands/',
   // dialogflow: process.env.dialogflow || 'seoa-woksnl',
@@ -82,6 +82,36 @@ seoa.on('ready', () => {
   seoa.guilds.forEach((guild) => {
     db.update('serverdata', { owner: guild.ownerID }, { id: guild.id })
   })
+})
+seoa.on('guildCreate', () => {
+  seoa.guilds.forEach((guild) => {
+    owners[guild.id] = guild.ownerID
+  })
+
+  fs.writeFileSync('./ServerData/owners.json', JSON.stringify(owners, null, '  '))
+  // register users
+  seoa.users.forEach((user) => {
+    if (!users[user.id] && user.id !== '1') {
+      users[user.id] = {
+        quizPoint: 0,
+        name: user.tag
+      }
+    }
+  })
+
+  fs.writeFileSync('./UserData/users.json', JSON.stringify(users, null, '  '))
+
+  seoa.guilds.forEach((guilds) => {
+    if (!settings.servers[guilds.id] && guilds.id !== '1') {
+      settings.servers[guilds.id] = {
+        name: guilds.name,
+        lang: 'en',
+        channelnoticeid: ''
+      }
+    }
+  })
+
+  fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
 })
 
 seoa.on('message', async (msg) => {
