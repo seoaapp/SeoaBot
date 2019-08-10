@@ -119,16 +119,16 @@ exports.run = (seoa, msg, settings) => {
               JSON.stringify(userData, null, '  ')
             )
           } else {
-            let QuizAwnser
-            if (QuizData[quizNum].awnser === true) {
-              QuizAwnser = '⭕'
-            } else if (QuizData[quizNum].awnser === false) {
-              QuizAwnser = '❌'
+            let Quizanswer
+            if (QuizData[quizNum].answer === true) {
+              Quizanswer = '⭕'
+            } else if (QuizData[quizNum].answer === false) {
+              Quizanswer = '❌'
             }
             const userData = require('../UserData/users.json')
 
             // 맞았을 경우
-            if (collected.array()[0].emoji.name === QuizAwnser) {
+            if (collected.array()[0].emoji.name === Quizanswer) {
               const quizCorrectEmbed = new discord.RichEmbed()
                 .setColor(0x00ff00)
                 .setDescription(
