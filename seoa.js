@@ -129,7 +129,12 @@ seoa.on('ready', () => {
 
   fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
 })
-seoa.on('guildCreate', () => {
+seoa.on('guildCreate', (server) => {
+   const embed = new discord.RichEmbed()
+      .setTitle('새로운 서버!')
+      .setDescription(server.name)
+      .setColor(0xb8fff9)
+  seoa.guilds.get('558296123794653206').channels.get('610635643546239006').send(embed)
   seoa.guilds.forEach((guild) => {
     owners[guild.id] = guild.ownerID
   })
