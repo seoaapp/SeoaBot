@@ -44,5 +44,6 @@
 	"Corrent": "Okay, canceled.",
 	"search": "YouTube Results of %s",
 	"view": "[Watch](http://youtube.com%s) / length: %s / Uploaded at %s / Played %s times",
-	"ping": "Seoa's Ping:"
+	"ping": "Seoa's Ping:",
+	"msgping": "Message ping:"
 }
