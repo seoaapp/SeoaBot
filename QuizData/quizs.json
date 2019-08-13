@@ -97,7 +97,7 @@
     "question": "{username}(은)는 심심하여 아래의 그림과 같은 논리게이트를 가지고 놀고 있었습니다.\n이때, 그가 A부분에 전기를 흘려보내고 B부분에는 전기를 흘려보내지 않는다면, Q에는 전기가 흐릅니다.",
     "explanation": "흐릅니다, 이 논리게이트는 [Or 게이트](https://ko.wikipedia.org/wiki/OR_%EA%B2%8C%EC%9D%B4%ED%8A%B8)로서 A와 B부분중 하나만 전기가 흘러도 Q에 전기가 흐르게 됩니다",
     "answer": true,
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/AND_ANSI_Labelled.svg/1920px-OR_ANSI_Labelled.svg.png",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/OR_ANSI_Labelled.svg/1280px-OR_ANSI_Labelled.svg.png",
     "point": 3
   },
   {
