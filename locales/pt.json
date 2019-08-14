@@ -43,5 +43,7 @@
 	"YOUTUBEDEVMSG": "Escreva qualquer coisa para pesquisar no YouTube (Limite de tempo: 1 minuto) **[Dev]**",
 	"Corrent": "Passou do limite de tempo e foi cancelado.",
 	"search": "Resultado de pesquisa do %s.",
-	"view": "[Ver](http://youtube.com%s) / Duração: %s / Data de Lançamento: %s / Visualizações: %s"
+	"view": "[Ver](http://youtube.com%s) / Duração: %s / Data de Lançamento: %s / Visualizações: %s",
+	"ping": "Ping do Seoa:",
+	"msgping": "Ping de mensagem:"
 }

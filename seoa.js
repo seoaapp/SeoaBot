@@ -29,7 +29,7 @@ const fs = require('fs')
 
 /** Seoa Settings */
 const settings = {
-  token: process.env.token || '',
+  token: process.env.token || process.argv[2] || '',
   prefix: process.env.prefix || '>',
   commands: process.env.commands || './commands/',
   // dialogflow: process.env.dialogflow || 'seoa-woksnl',
@@ -83,6 +83,41 @@ seoa.on('ready', () => {
     db.update('serverdata', { owner: guild.ownerID }, { id: guild.id })
   })
 })
+seoa.on('guildCreate', (server) => {
+   const embed = new discord.RichEmbed()
+      .setTitle('새로운 서버!')
+      .setDescription(server.name)
+      .setColor(0xb8fff9)
+  seoa.guilds.get('558296123794653206').channels.get('610635643546239006').send(embed)
+  seoa.guilds.forEach((guild) => {
+    owners[guild.id] = guild.ownerID
+  })
+
+  fs.writeFileSync('./ServerData/owners.json', JSON.stringify(owners, null, '  '))
+  // register users
+  seoa.users.forEach((user) => {
+    if (!users[user.id] && user.id !== '1') {
+      users[user.id] = {
+        quizPoint: 0,
+        name: user.tag
+      }
+    }
+  })
+
+  fs.writeFileSync('./UserData/users.json', JSON.stringify(users, null, '  '))
+
+  seoa.guilds.forEach((guilds) => {
+    if (!settings.servers[guilds.id] && guilds.id !== '1') {
+      settings.servers[guilds.id] = {
+        name: guilds.name,
+        lang: 'en',
+        channelnoticeid: ''
+      }
+    }
+  })
+
+  fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
+})
 
 seoa.on('message', async (msg) => {
   if (msg.author.bot) return
@@ -101,6 +136,7 @@ seoa.on('message', async (msg) => {
     db.insert('serverdata', { id: msg.guild.id, owner: msg.guild.ownerID })
     server = { id: msg.guild.id, lang: 'en', owner: msg.guild.ownerID }
   }
+
 
   if (!msg.content.startsWith(settings.prefix)) return
   console.info(msg.guild.name + '> ' + msg.author.username + '> ' + msg.content)
