@@ -155,12 +155,5 @@
     "answer": true,
     "explanation": "맞습니다, 아희는 한글로 된 언어이기 때문에 당연히 한글로 작성합니다.",
     "point": 2
-  },
-  {
-    "language": "js",
-    "question": "const, let와 var은 모두 \"똑같은 기능\"을 가진 선언문이다.",
-    "answer": false,
-    "explanation": "모두 다른 기능입니다. const는 똑같은 이름을 가진 선언문이 있다면 오류를 뜨게 해 겹쳐서는 안 될 모듈을 불러오는데 적합하며, let는 해당 scope(e.g: if(...) { let y = null }, 여기서 scope는 {}) 안에서만 효력을 가지며 var은 선언이 scope 밖으로 hoist(위에 고정)되어 여러개의 var과 조건문의 결합으로 정보를 조작할수 있는 선언문입니다.",
-    "point": 1
   }
 ]

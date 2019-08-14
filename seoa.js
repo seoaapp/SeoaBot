@@ -137,7 +137,6 @@ seoa.on('message', async (msg) => {
     server = { id: msg.guild.id, lang: 'en', owner: msg.guild.ownerID }
   }
 
-
   if (!msg.content.startsWith(settings.prefix)) return
   console.info(msg.guild.name + '> ' + msg.author.username + '> ' + msg.content)
 
