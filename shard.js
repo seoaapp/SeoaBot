@@ -1,4 +1,3 @@
-const fs = require('fs')
 const { ShardingManager: Shard } = require('discord.js')
 const manager = new Shard('./seoa.js')
 

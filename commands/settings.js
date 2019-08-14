@@ -3,8 +3,6 @@
  * @description settings Command
  */
 
-const fs = require('fs')
-
 const i18n = require('i18n')
 
 exports.run = async (seoa, msg, settings, query) => {

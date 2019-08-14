@@ -84,10 +84,10 @@ seoa.on('ready', () => {
   })
 })
 seoa.on('guildCreate', (server) => {
-   const embed = new discord.RichEmbed()
-      .setTitle('새로운 서버!')
-      .setDescription(server.name)
-      .setColor(0xb8fff9)
+  const embed = new discord.RichEmbed()
+    .setTitle('새로운 서버!')
+    .setDescription(server.name)
+    .setColor('#b8fff9')
   seoa.guilds.get('558296123794653206').channels.get('610635643546239006').send(embed)
 })
 
@@ -124,8 +124,8 @@ seoa.on('message', async (msg) => {
     // UpTime Caculator End
     const inline = true
     const botInfoEmbed = {
-      title: i18n.__({ phrase: 'Info', locale: server.lang}, seoa.user.username ),
-      description: i18n.__({ phrase: 'From', locale: server.lang}, msg.author.username ),
+      title: i18n.__({ phrase: 'Info', locale: server.lang }, seoa.user.username),
+      description: i18n.__({ phrase: 'From', locale: server.lang }, msg.author.username),
       thumbnail: { url: seoa.user.avatarURL },
       color: parseInt(randomHexColor().substring(1), 16),
       fields: [
@@ -170,7 +170,7 @@ seoa.on('message', async (msg) => {
           inline
         },
         {
-          name: i18n.__({ phrase: 'UpdataDay',locale: server.lang }, seoa.user.username),
+          name: i18n.__({ phrase: 'UpdataDay', locale: server.lang }, seoa.user.username),
           value: seoa.readyAt,
           inline
         },

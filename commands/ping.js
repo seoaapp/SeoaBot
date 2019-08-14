@@ -7,9 +7,8 @@
 const i18n = require('i18n')
 const { RichEmbed } = require('discord.js')
 
-exports.run = async(seoa, msg, settings) => {
+exports.run = async (seoa, msg, settings) => {
   let pp = await msg.channel.send('Calculating...')
-    
   let msgp = i18n.__({
     phrase: 'msgping',
     locale: settings.servers[msg.guild.id].lang

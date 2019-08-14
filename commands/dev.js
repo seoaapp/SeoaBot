@@ -7,7 +7,7 @@
 const i18n = require('i18n')
 
 exports.run = async (seoa, msg, settings, query) => {
-  const server = await settings.db.select('serverdata', { id: msg.guild.id })[0]
+  let server = await settings.db.select('serverdata', { id: msg.guild.id })[0]
   server = server[0]
   if (settings.owners.includes(msg.author.id)) {
     try {

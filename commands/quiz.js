@@ -5,7 +5,6 @@
 
 const QuizData = require('../QuizData/quizs.json')
 const discord = require('discord.js')
-const fs = require('fs')
 
 const i18n = require('i18n')
 
@@ -44,7 +43,7 @@ exports.run = async (seoa, msg, settings) => {
           }
         } */
       const quizEmbed = new discord.RichEmbed()
-        .setColor(0x0000ff)
+        .setColor('#0000ff')
         .setAuthor(
           i18n.__(
             { phrase: 'QUIZ2', locale: server.lang },
@@ -85,7 +84,7 @@ exports.run = async (seoa, msg, settings) => {
         }).then((collected) => {
           if (!collected.array()[0]) {
             const quizFailByLate = new discord.RichEmbed()
-              .setColor(0x808080)
+              .setColor('#808080')
               .setDescription(
                 i18n.__({
                   phrase: 'QUIZMSG1',
@@ -128,7 +127,7 @@ exports.run = async (seoa, msg, settings) => {
             // 맞았을 경우
             if (collected.array()[0].emoji.name === Quizanswer) {
               const quizCorrectEmbed = new discord.RichEmbed()
-                .setColor(0x00ff00)
+                .setColor('#00ff00')
                 .setDescription(
                   i18n.__({
                     phrase: 'IS',
@@ -163,7 +162,7 @@ exports.run = async (seoa, msg, settings) => {
             } else {
               // 틀렸을 경우
               const quizNotCorrectEmbed = new discord.RichEmbed()
-                .setColor(0xff0000)
+                .setColor('#ff0000')
                 .setDescription(
                   i18n.__({
                     phrase: 'PR',
