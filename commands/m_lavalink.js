@@ -12,15 +12,15 @@ exports.run = async (seoa, msg, query) => {
       _here.on('playing', song => {
         msg.reply(JSON.stringify(song))
       })
-    
+
       _here.on('alreadyJoined', () => {
         msg.reply('이미 접속했대')
       })
-    
+
       _here.on('notChannel', () => {
         msg.reply('니 채널에 없대')
       })
-    
+
       _here.on('addSong', song => {
         msg.reply(JSON.stringify(song))
       })
