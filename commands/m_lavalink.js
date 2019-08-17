@@ -7,7 +7,7 @@ exports.run = async (seoa, msg, query) => {
   if (!seoa.settings.owners.includes(msg.author.id)) return
   /** 이벤트 중복 등록 방지 */
   seoa.ready()
-  if (!seoa.lm.servers.hasOwnProperty(msg.guild.id)) {
+  if (!seoa.lm.servers.has(msg.guild.id)) {
     seoa.lm.once(`${msg.guild.id}_add`, _here => {
       _here.on('playing', song => {
         msg.reply(JSON.stringify(song))
@@ -50,7 +50,7 @@ exports.run = async (seoa, msg, query) => {
       here.start()
       break
     case 'vol':
-      if (Number(query.args[1])) here.setVolume(Number(query.args[1]))
+      if (0 <= Number(query.args[1]) && Number(query.args[1]) <= 200) here.setVolume(Number(query.args[1]))
       break
     case 'seek':
       if (Number(query.args[1])) here.seek(Number(query.args[1]))
