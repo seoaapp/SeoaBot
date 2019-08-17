@@ -129,12 +129,8 @@ seoa.on('ready', () => {
 
   fs.writeFileSync('./ServerData/servers.json', JSON.stringify(settings.servers, null, '  '))
 })
-seoa.on('guildCreate', (server) => {
-   const embed = new discord.RichEmbed()
-      .setTitle('새로운 서버!')
-      .setDescription(server.name)
-      .setColor(0xb8fff9)
-  seoa.guilds.get('558296123794653206').channels.get('610635643546239006').send(embed)
+
+seoa.on('guildCreate', () => {
   seoa.guilds.forEach((guild) => {
     owners[guild.id] = guild.ownerID
   })
@@ -185,8 +181,8 @@ seoa.on('message', (msg) => {
     // UpTime Caculator End
     const inline = true
     const botInfoEmbed = {
-      title: i18n.__({phrase: 'Info', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
-      description: i18n.__({phrase: 'From', locale: settings.servers[msg.guild.id].lang}, msg.author.username),
+      title: i18n.__({ phrase: 'Info', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
+      description: i18n.__({ phrase: 'From', locale: settings.servers[msg.guild.id].lang }, msg.author.username),
       thumbnail: {
         url: seoa.user.avatarURL
       },
@@ -198,52 +194,52 @@ seoa.on('message', (msg) => {
           inline
         },
         {
-          name: i18n.__({phrase: 'Name&Tag', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'Name&Tag', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: seoa.user.tag,
           inline
         },
         {
-          name: i18n.__({phrase: 'ID', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'ID', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: seoa.user.id,
           inline
         },
         {
-          name: i18n.__({phrase: 'CommandSize', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'CommandSize', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: commands.size,
           inline
         },
         {
-          name: i18n.__({phrase: 'UsersSize', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'UsersSize', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: seoa.users.size,
           inline
         },
         {
-          name: i18n.__({phrase: 'ChannelsSize', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'ChannelsSize', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: seoa.channels.size,
           inline
         },
         {
-          name: i18n.__({phrase: 'ServersSize', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'ServersSize', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: seoa.guilds.size,
           inline
         },
         {
-          name: i18n.__({phrase: 'BotDay', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'BotDay', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: seoa.user.createdAt,
           inline
         },
         {
-          name: i18n.__({phrase: 'UpdataDay',locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'UpdataDay', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: seoa.readyAt,
           inline
         },
         {
-          name: i18n.__({phrase: 'UpTime', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
-          value: i18n.__({phrase: 'Time', locale: settings.servers[msg.guild.id].lang}, days, hours, minutes, seconds),
+          name: i18n.__({ phrase: 'UpTime', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
+          value: i18n.__({ phrase: 'Time', locale: settings.servers[msg.guild.id].lang }, days, hours, minutes, seconds),
           inline
         },
         {
-          name: i18n.__({phrase: 'APIPING', locale: settings.servers[msg.guild.id].lang}, seoa.user.username),
+          name: i18n.__({ phrase: 'APIPING', locale: settings.servers[msg.guild.id].lang }, seoa.user.username),
           value: SIM.round(seoa.ping),
           inline
         }
