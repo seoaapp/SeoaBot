@@ -2,7 +2,7 @@
  * @name Seoa:Ping
  * @description Seoa's ping command
  */
- 
+
 /** Message */
 const i18n = require('i18n')
 const { RichEmbed } = require('discord.js')
@@ -30,7 +30,7 @@ exports.run = async (seoa, msg) => {
     .setDescription(`${msgp} ${pp.createdTimestamp - msg.createdTimestamp}ms\n${api} ${Math.round(seoa.ping)}ms`)
     .setFooter(msg.author.username, msg.author.avatarURL)
     .setTimestamp()
-  
+
   pp.edit(pingembed)
 }
 
