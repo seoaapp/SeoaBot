@@ -6,5 +6,15 @@ yarn.lock
 # vscode
 .vscode/
 
+# Old Datas
 ServerData/
 UserData/
+
+# Stream Data
+stream/*.mp3
+
+# Bot Config
+config.json
+
+# Lavalink logs
+lavalink/logs/

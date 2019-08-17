@@ -19,18 +19,18 @@
   },
   "homepage": "https://github.com/seoaapp/SeoaBot#readme",
   "dependencies": {
-    "dialogflow": "^0.9.1",
     "discord.js": "^11.5.1",
+    "discord.js-lavalink": "^2.2.3",
     "ffmpeg": "^0.0.4",
     "i18n": "^0.8.3",
-    "opusscript": "^0.0.6",
+    "node-fetch": "^2.6.0",
+    "node-opus": "^0.3.2",
     "os": "^0.1.1",
     "random-hex-color": "^1.0.1",
     "rethinkdb": "^2.3.3",
-    "sangoon_is_math": "^0.0.3",
     "umysql": "^0.1.1",
     "yt-search": "^0.4.1",
-    "ytdl-core": "^0.29.2"
+    "ytdl-core": "^0.29.5"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
