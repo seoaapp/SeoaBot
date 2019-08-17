@@ -3,11 +3,11 @@
  * @description settings Command
  */
 
-const fs = require('fs')
-
 const i18n = require('i18n')
 
-exports.run = (seoa, msg, settings, query) => {
+exports.run = async (seoa, msg, query) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
+  server = server[0]
   if (msg.member.hasPermission('ADMINISTRATOR')) {
     if (query.args[0]) {
       if (['lang', '언어'].includes(query.args[0].toLowerCase())) {
@@ -18,50 +18,36 @@ exports.run = (seoa, msg, settings, query) => {
             query.args[1] === 'pt'
           )
         ) {
-          settings.servers[msg.guild.id].lang = 'en'
-          fs.writeFileSync(
-            './ServerData/servers.json',
-            JSON.stringify(settings.servers, null, '  ')
-          )
+          seoa.db.update('serverdata', { lang: server.en }, { id: msg.guild.id })
           msg.channel.send(
             i18n.__({
               phrase: 'ENMSG',
-              locale: settings.servers[msg.guild.id].lang
+              locale: server.lang
             })
           )
         } else {
-          settings.servers[msg.guild.id].lang = query.args[1]
-          fs.writeFileSync(
-            './ServerData/servers.json',
-            JSON.stringify(settings.servers, null, '  ')
-          )
+          seoa.db.update('serverdata', { lang: query.args[1] }, { id: msg.guild.id })
           msg.channel.send(
             i18n.__(
-              { phrase: 'Lang', locale: settings.servers[msg.guild.id].lang },
+              { phrase: 'Lang', locale: server.lang },
               query.args[1]
             )
           )
         }
       } else if (['channel', '채널'].includes(query.args[0].toLowerCase())) {
-        settings.servers[
-          msg.guild.id
-        ].channelnoticeid = msg.mentions.channels.firstKey()
-        fs.writeFileSync(
-          './ServerData/servers.json',
-          JSON.stringify(settings.servers, null, '  ')
-        )
+        seoa.db.update('serverdata', { channelnoticeid: msg.mentions.channels.firstKey() }, { id: msg.guild.id })
         msg.channel.send(
-          i18n.__({ phrase: 'su', locale: settings.servers[msg.guild.id].lang })
+          i18n.__({ phrase: 'su', locale: server.lang })
         )
       }
     } else {
       msg.channel.send(
-        i18n.__({ phrase: 'ch', locale: settings.servers[msg.guild.id].lang })
+        i18n.__({ phrase: 'ch', locale: server.lang })
       )
     }
   } else {
     msg.channel.send(
-      i18n.__({ phrase: 'MISS', locale: settings.servers[msg.guild.id].lang })
+      i18n.__({ phrase: 'MISS', locale: server.lang })
     )
   }
 }
@@ -69,5 +55,5 @@ exports.run = (seoa, msg, settings, query) => {
 exports.callSign = ['settings', 'setting', '설정']
 exports.helps = {
   description: '서버 설정을 합니다.',
-  uses: '>settings'
+  uses: 'settings'
 }

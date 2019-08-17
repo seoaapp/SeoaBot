@@ -64,7 +64,7 @@
   },
   {
     "language": "js",
-    "question": "JavaScript에서 ```js\nvar a = \"30\"\na += true\na += 1 + 2\nconsole.log(a)```를 했을때, 출력은```\n> 34```이다.",
+    "question": "JavaScript에서 ```js\nvar a = '30'\na += true\na += 1 + 2\nconsole.log(a)```를 했을때, 출력은```\n> 34```이다.",
     "explanation": "\"30true3\"으로 출력됩니다, 이유는 다음과 같습니다.```diff\n+ a가 30이라는 *문자열*입니다.\n+ *문자열*에 *참/거짓*을 넣으려 할때, JS는 *참/거짓*을 *문자열*로 바꿔 맨뒤에 놓습니다.\n+ *문자열*에 *숫자*를 넣으려고 할때, JS는 *숫자*를 문자열으로 바꿔 맨뒤에 놓습니다.\n```",
     "answer": false,
     "point": 2
@@ -76,7 +76,6 @@
     "answer": true,
     "point": 2
   },
-  
   {
     "language": "html",
     "question": "html에서 줄바꿈을 하려고 하면 <br>을 입력해야 한다.",
@@ -155,12 +154,5 @@
     "answer": true,
     "explanation": "맞습니다, 아희는 한글로 된 언어이기 때문에 당연히 한글로 작성합니다.",
     "point": 2
-  },
-  {
-    "language": "js",
-    "question": "const, let와 var은 모두 \"똑같은 기능\"을 가진 선언문이다.",
-    "answer": false,
-    "explanation": "모두 다른 기능입니다. const는 똑같은 이름을 가진 선언문이 있다면 오류를 뜨게 해 겹쳐서는 안 될 모듈을 불러오는데 적합하며, let는 해당 scope(e.g: if(...) { let y = null }, 여기서 scope는 {}) 안에서만 효력을 가지며 var은 선언이 scope 밖으로 hoist(위에 고정)되어 여러개의 var과 조건문의 결합으로 정보를 조작할수 있는 선언문입니다.",
-    "point": 1
   }
 ]

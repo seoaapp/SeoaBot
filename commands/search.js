@@ -8,15 +8,17 @@ const randomHexColor = require('random-hex-color')
 
 const i18n = require('i18n')
 
-exports.run = (seoa, msg, settings) => {
+exports.run = async (seoa, msg) => {
   /** Message Filter for .awaitMessages() */
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
+  server = server[0]
   const filter = (m) => m.author.id === msg.author.id
 
   msg.channel
     .send(
       i18n.__({
         phrase: 'YOUTUBEDEVMSG',
-        locale: settings.servers[msg.guild.id].lang
+        locale: server.lang
       })
     )
     .then((m) => {
@@ -30,7 +32,7 @@ exports.run = (seoa, msg, settings) => {
             m.edit(
               i18n.__({
                 phrase: 'Corrent',
-                locale: settings.servers[msg.guild.id].lang
+                locale: server.lang
               })
             )
             m.delete(2000)
@@ -45,7 +47,7 @@ exports.run = (seoa, msg, settings) => {
                   i18n.__(
                     {
                       phrase: 'search',
-                      locale: settings.servers[msg.guild.id].lang
+                      locale: server.lang
                     },
                     collect.first().content.slice(0, 200)
                   ),
@@ -57,7 +59,7 @@ exports.run = (seoa, msg, settings) => {
                   value: i18n.__(
                     {
                       phrase: 'view',
-                      locale: settings.servers[msg.guild.id].lang
+                      locale: server.lang
                     },
                     video.url,
                     video.duration,
@@ -77,7 +79,7 @@ exports.run = (seoa, msg, settings) => {
                     m.edit(
                       i18n.__({
                         phrase: 'Corrent',
-                        locale: settings.servers[msg.guild.id].lang
+                        locale: server.lang
                       })
                     )
                     m.delete(2000)
@@ -96,5 +98,5 @@ exports.run = (seoa, msg, settings) => {
 exports.callSign = ['search', '검색']
 exports.helps = {
   description: 'YouTube에서 검색합니다',
-  uses: '>search'
+  uses: 'search'
 }

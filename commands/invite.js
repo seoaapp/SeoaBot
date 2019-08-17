@@ -6,11 +6,13 @@
 /** Message */
 const i18n = require('i18n')
 
-exports.run = (seoa, msg, settings) => {
+exports.run = async (seoa, msg) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
+  server = server[0]
   const invite = {
     description: i18n.__({
       phrase: 'Invite',
-      locale: settings.servers[msg.guild.id].lang
+      locale: server.lang
     })
   }
   msg.channel.send({ embed: invite }).then((err) => console.log(err))
@@ -19,5 +21,5 @@ exports.run = (seoa, msg, settings) => {
 exports.callSign = ['invite', '봇초대링크', '초대링크', 'Invite']
 exports.helps = {
   description: '초대링크를 줍니다',
-  uses: '>invite'
+  uses: 'invite'
 }

@@ -1,7 +1,7 @@
-const UMysql = require('umysql')
+const Umysql = require('umysql')
 console.log('SEOABOT JSON TO MYSQL MIGRATION TOOL')
 console.log('CONNECTING TO MYSQL SERVER')
-const db = new UMysql(process.env.host, process.env.user, process.env.pass, 'seoa')
+const db = new Umysql(process.env.host, process.env.user, process.env.pass, 'seoa')
 
 console.log('LOADING OLD JSON DATA')
 const users = require('./UserData/users.json')

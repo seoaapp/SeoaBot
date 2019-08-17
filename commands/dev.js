@@ -6,8 +6,10 @@
 /** Message */
 const i18n = require('i18n')
 
-exports.run = (seoa, msg, settings, query) => {
-  if (settings.owners.includes(msg.author.id)) {
+exports.run = async (seoa, msg, query) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
+  server = server[0]
+  if (seoa.settings.owners.includes(msg.author.id)) {
     try {
       // eslint-disable-next-line
       eval(query.args.join(' '))
@@ -16,7 +18,7 @@ exports.run = (seoa, msg, settings, query) => {
     }
   } else {
     msg.channel.send(
-      i18n.__({ phrase: '403', locale: settings.servers[msg.guild.id].lang })
+      i18n.__({ phrase: '403', locale: server.lang })
     )
   }
 }
