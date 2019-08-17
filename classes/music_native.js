@@ -38,14 +38,14 @@ class Server extends events.EventEmitter {
   constructor (gID) {
     super()
     this.gID = gID
-    this.conn
-    this.dispatcher
+    this.conn = null
+    this.dispatcher = null
     this.skipSafe = false
     this.volume = 1
     this.repeat = false
     this.random = false // un used variable
     this.playing = false
-    this.currentSong
+    this.currentSong = null
     this.songs = []
     this.stableMode = stableMode // Read-only
   }
@@ -117,7 +117,7 @@ class Server extends events.EventEmitter {
       delete this.dispatcher
     }
 
-    cb ? cb() : null
+    if (cb) cb()
   }
 
   setVolume (vol) {
@@ -157,11 +157,11 @@ class Server extends events.EventEmitter {
 class Song {
   constructor (url) {
     this.url = url
-    this.title
-    this.length
-    this.vID
-    this.thumbnail
-    this.path
+    this.title = null
+    this.length = null
+    this.vID = null
+    this.thumbnail = null
+    this.path = null
     ytdl.getInfo(url).then(inf => {
       this.title = inf.title
       this.length = inf.length_seconds

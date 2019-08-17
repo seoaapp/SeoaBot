@@ -46,7 +46,7 @@ class Server extends events.EventEmitter {
     this.repeat = false
     this.random = false // un used variable
     this.playing = false
-    this.currentSong = {}
+    this.currentSong = null
     this.songs = []
     this.stableMode = stableMode // Read-only
     this.seoa = seoa
@@ -115,11 +115,11 @@ class Server extends events.EventEmitter {
 
   stop (cb) {
     if (this.player) {
-      this.seoa.player.leave(msg.guild.id)
+      this.seoa.player.leave(this.gID)
       delete this.player
     }
 
-    cb ? cb() : null
+    if (cb) cb()
   }
 
   setVolume (vol) {
