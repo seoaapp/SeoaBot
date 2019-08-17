@@ -6,10 +6,10 @@
 /** Message */
 const i18n = require('i18n')
 
-exports.run = async (seoa, msg, settings, query) => {
-  let server = await settings.db.select('serverdata', { id: msg.guild.id })[0]
+exports.run = async (seoa, msg, query) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
-  if (settings.owners.includes(msg.author.id)) {
+  if (seoa.settings.owners.includes(msg.author.id)) {
     try {
       // eslint-disable-next-line
       eval(query.args.join(' '))

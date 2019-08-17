@@ -7,21 +7,21 @@
 const i18n = require('i18n')
 const { RichEmbed } = require('discord.js')
 
-exports.run = async (seoa, msg, settings) => {
+exports.run = async (seoa, msg) => {
   let pp = await msg.channel.send('Calculating...')
   let msgp = i18n.__({
     phrase: 'msgping',
-    locale: settings.servers[msg.guild.id].lang
+    locale: seoa.settings.servers[msg.guild.id].lang
   })
   
   let p = i18n.__({
     phrase: 'ping',
-    locale: settings.servers[msg.guild.id].lang
+    locale: seoa.settings.servers[msg.guild.id].lang
   })
   
   let api = i18n.__({
     phrase: 'APIPING',
-    locale: settings.servers[msg.guild.id].lang
+    locale: seoa.settings.servers[msg.guild.id].lang
   })
     
   let pingembed = new RichEmbed()
@@ -37,5 +37,5 @@ exports.run = async (seoa, msg, settings) => {
 exports.callSign = ['ping', '핑', '퐁', 'pong', 'pn']
 exports.helps = {
   description: '봇의 핑을 보여줍니다.',
-  uses: '>ping'
+  uses: 'ping'
 }

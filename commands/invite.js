@@ -6,8 +6,8 @@
 /** Message */
 const i18n = require('i18n')
 
-exports.run = async (seoa, msg, settings) => {
-  let server = await settings.db.select('serverdata', { id: msg.guild.id })
+exports.run = async (seoa, msg) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
   const invite = {
     description: i18n.__({
@@ -21,5 +21,5 @@ exports.run = async (seoa, msg, settings) => {
 exports.callSign = ['invite', '봇초대링크', '초대링크', 'Invite']
 exports.helps = {
   description: '초대링크를 줍니다',
-  uses: '>invite'
+  uses: 'invite'
 }

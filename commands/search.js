@@ -8,9 +8,9 @@ const randomHexColor = require('random-hex-color')
 
 const i18n = require('i18n')
 
-exports.run = async (seoa, msg, settings) => {
+exports.run = async (seoa, msg) => {
   /** Message Filter for .awaitMessages() */
-  let server = await settings.db.select('serverdata', { id: msg.guild.id })
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
   const filter = (m) => m.author.id === msg.author.id
 
@@ -98,5 +98,5 @@ exports.run = async (seoa, msg, settings) => {
 exports.callSign = ['search', '검색']
 exports.helps = {
   description: 'YouTube에서 검색합니다',
-  uses: '>search'
+  uses: 'search'
 }

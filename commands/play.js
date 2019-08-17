@@ -7,8 +7,8 @@ const i18n = require('i18n')
 
 const ytdl = require('ytdl-core')
 
-exports.run = async (seoa, msg, settings) => {
-  let server = await settings.db.select('serverdata', { id: msg.guild.id })
+exports.run = async (seoa, msg) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
   const targetUrl = msg.content.split(' ')[1]
   try {
@@ -67,5 +67,5 @@ exports.run = async (seoa, msg, settings) => {
 exports.callSign = ['플렝', '노래', '시작', 'play']
 exports.helps = {
   description: '노래를 재생해드릴께요~',
-  uses: '>play'
+  uses: 'play'
 }

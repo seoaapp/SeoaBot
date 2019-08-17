@@ -8,10 +8,10 @@ const discord = require('discord.js')
 
 const i18n = require('i18n')
 
-exports.run = async (seoa, msg, settings) => {
-  let server = await settings.db.select('serverdata', { id: msg.guild.id })
+exports.run = async (seoa, msg) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
-  let user = await settings.db.select('userdata', { id: msg.author.id })
+  let user = await seoa.db.select('userdata', { id: msg.author.id })
   user = user[0]
   const msgArray = msg.content.split(' ')
   const filter = (reaction, user) =>
@@ -115,7 +115,7 @@ exports.run = async (seoa, msg, settings) => {
             }
             th.edit(quizFailByLate)
             user.quizPoint--
-            settings.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
+            seoa.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
           } else {
             let Quizanswer
             if (QuizData[quizNum].answer === true) {
@@ -158,7 +158,7 @@ exports.run = async (seoa, msg, settings) => {
               }
               th.edit(quizCorrectEmbed)
               user.quizPoint++
-              settings.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
+              seoa.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
             } else {
               // 틀렸을 경우
               const quizNotCorrectEmbed = new discord.RichEmbed()
@@ -193,7 +193,7 @@ exports.run = async (seoa, msg, settings) => {
               }
               th.edit(quizNotCorrectEmbed)
               user.quizPoint--
-              settings.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
+              seoa.db.update('userdata', { quizPoint: user.quizPoint }, { id: msg.author.id })
             }
           }
         })
@@ -205,5 +205,5 @@ exports.run = async (seoa, msg, settings) => {
 exports.callSign = ['quiz', 'Quiz', '퀴즈']
 exports.helps = {
   description: '프로그래밍에 대한 퀴즈를 풀 수 있습니다.',
-  uses: '>quiz'
+  uses: 'quiz'
 }

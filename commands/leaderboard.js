@@ -24,10 +24,10 @@ function bubble (arr) {
   return arr
 }
 
-exports.run = async (seoa, msg, settings, query) => {
-  let server = await settings.db.select('serverdata', { id: msg.guild.id })
+exports.run = async (seoa, msg, query) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
-  const users = await settings.db.select('userdata')
+  const users = await seoa.db.select('userdata')
   let arr = []
 
   for (const user in users) arr.push(user)
@@ -58,5 +58,5 @@ exports.run = async (seoa, msg, settings, query) => {
 exports.callSign = ['leader', 'leaderboard', '리더보드', '리더', '보드']
 exports.helps = {
   description: '리더보드를 보여줍니다',
-  uses: '>leaderboard'
+  uses: 'leaderboard'
 }
