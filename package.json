@@ -27,6 +27,7 @@
     "node-opus": "^0.3.2",
     "os": "^0.1.1",
     "random-hex-color": "^1.0.1",
+    "request": "^2.88.0",
     "rethinkdb": "^2.3.3",
     "umysql": "^0.1.1",
     "yt-search": "^0.4.1",

@@ -8,20 +8,23 @@ const i18n = require('i18n')
 const { RichEmbed } = require('discord.js')
 
 exports.run = async (seoa, msg) => {
+  let server = await seoa.db.select('serverdata', { id: msg.guild.id })
+  server = server[0]
+
   let pp = await msg.channel.send('Calculating...')
   let msgp = i18n.__({
     phrase: 'msgping',
-    locale: seoa.settings.servers[msg.guild.id].lang
+    locale: server.lang
   })
   
   let p = i18n.__({
     phrase: 'ping',
-    locale: seoa.settings.servers[msg.guild.id].lang
+    locale: server.lang
   })
   
   let api = i18n.__({
     phrase: 'APIPING',
-    locale: seoa.settings.servers[msg.guild.id].lang
+    locale: server.lang
   })
     
   let pingembed = new RichEmbed()
