@@ -162,5 +162,12 @@
     "answer": false,
     "explanation": "모두 다른 기능입니다. const는 똑같은 이름을 가진 선언문이 있다면 오류를 뜨게 해 겹쳐서는 안 될 모듈을 불러오는데 적합하며, let는 해당 scope(e.g: if(...) { let y = null }, 여기서 scope는 {}) 안에서만 효력을 가지며 var은 선언이 scope 밖으로 hoist(위에 고정)되어 여러개의 var과 조건문의 결합으로 정보를 조작할수 있는 선언문입니다.",
     "point": 1
+  },
+  {
+    "language": "py3",
+    "question": "다음 python3 코드에서 random 값이 3이라면 'Yee'가 출력되는가?",
+    "answer": true,
+    "explanation": "맞습니다, 파이썬의 리스트에서는 1번부터 시작하는 것이 아니라 0번부터 시작합니다\n이 문제에서는 3개가 주어졌으니, 0.Yay 1.Noo 2.IDK가 되므로 3은 정해지지 않았습니다\n그래서 me의 3번째를 얻어오는 mee는 None이 될 수 밖에 없고, 최종적으로 Yee를 출력하게 됩니다.",
+    "point": 2
   }
 ]
