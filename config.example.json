@@ -7,7 +7,19 @@
     "487912605273423883", "526958314647453706", "119550317003014144",
     "393674169243402240", "420919892636598272"],
 
+  "youtube": "",
+
   "nodes": [
     { "host": "localhost", "port": 2333, "password": "youshallnotpass" }
-  ]
+  ],
+
+  "localPolicy": {
+    "eval": {
+      "acceptObfuscate": true,
+      "decryptObfuscate": true,
+      "disableRisks": false,
+      "sayError": false,
+      "sayFindedRisk": false
+    }
+  }
 }
