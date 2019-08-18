@@ -41,7 +41,7 @@ const settings = {
   activity: process.env.activity || 'Awesome Musics & Quizs | >help',
   owners: ['527746745073926145', '309230935377707011', '403025222921486338',
     '487912605273423883', '526958314647453706', '119550317003014144',
-    '393674169243402240'],
+    '393674169243402240', '347014076989440013'],
   servers: require('./ServerData/servers.json')
 }
 module.exports.settings = settings
