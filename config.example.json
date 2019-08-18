@@ -11,5 +11,15 @@
 
   "nodes": [
     { "host": "localhost", "port": 2333, "password": "youshallnotpass" }
-  ]
+  ],
+
+  "localPolicy": {
+    "eval": {
+      "acceptObfuscate": true,
+      "decryptObfuscate": true,
+      "disableRisks": false,
+      "sayError": false,
+      "sayFindedRisk": false
+    }
+  }
 }
