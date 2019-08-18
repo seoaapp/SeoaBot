@@ -64,16 +64,9 @@ class Server extends events.EventEmitter {
     )
   }
 
-  handler (gID) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        let result = await this.seoa.player.get(gID)
-        resolve(result)
-      } catch (e) {
-        reject(e)
-      }
-    })
-  }
+  clear () {
+		this.songs = []
+	}
 
   seek (sec) {
     this.player.seek(sec * 1000 + this.player.state.position)
@@ -81,20 +74,18 @@ class Server extends events.EventEmitter {
 
   start () {
     if (!this.player) return
-    if (!this.playing) this.play(this.songs.shift())
+    if (!this.player.playing) this.play(this.songs.shift())
   }
 
   play (song) {
     if (!this.player || !song) return
     if (this.repeat) this.songs.push(song)
     this.emit('playing', song)
-    this.playing = true
     this.currentSong = song
     this.player.play(this.currentSong.track)
     this.player.volume(this.volume)
 
     this.player.on('end', dat => {
-      this.playing = false
       if (this.skipSafe) {
         this.skipSafe = false
         return this.stop()
@@ -103,14 +94,19 @@ class Server extends events.EventEmitter {
       if (this.songs.length > 0) this.play(this.songs.shift())
       else this.stop()
     })
+
+    this.player.on('error', err => {
+      console.log(err)
+      this.skip()
+    })
   }
 
   pause () {
-    if (this.player) this.player[this.player.paused ? 'resume' : 'pause']()
+    if (this.player) this.player.pause(this.player.paused ? false : true)
   }
 
   skip () {
-    if (this.player) this.player.end()
+    if (this.player) this.player.stop()
   }
 
   stop (cb) {
