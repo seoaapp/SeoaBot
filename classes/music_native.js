@@ -1,7 +1,7 @@
 const ytdl = require('ytdl-core')
 const fs = require('fs')
 const events = require('events')
-const stableMode = false
+const stableMode = true
 
 let mylist = {}
 module.exports = class MusicServers extends events.EventEmitter {
@@ -47,7 +47,7 @@ class Server extends events.EventEmitter {
     this.playing = false
     this.currentSong = null
     this.songs = []
-    this.stableMode = stableMode // Read-only
+    this.stableMode = stableMode
   }
 
   async _ (channel) {
@@ -74,9 +74,9 @@ class Server extends events.EventEmitter {
     this.playing = true
     this.skipSafe = false
     this.currentSong = song
-    this.dispatcher = stableMode
+    this.dispatcher = this.stableMode
       ? this.conn.playFile(song.path)
-      : this.conn.playStream(ytdl(song.url, { filter: 'audioonly', quality: 'highestaudio' }))
+      : this.conn.playStream(ytdl(song.url))
     this.dispatcher.setVolume(this.volume)
 
     this.dispatcher.on('error', err => {

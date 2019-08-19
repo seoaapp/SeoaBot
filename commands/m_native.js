@@ -78,6 +78,12 @@ exports.run = (seoa, msg, query) => {
     case 'fix':
       here.fix(msg.member.voiceChannel)
       break
+    case 'stable':
+      here.stableMode = true
+      break
+    case 'unstable':
+      here.stableMode = false
+      break
     case 'mylist':
       if (query.args[1]) here.mylist(query.args[1])
       break  
