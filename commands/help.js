@@ -25,7 +25,7 @@ exports.run = async (seoa, msg) => {
 
   let keys = Object.keys(commands)
   for (k of keys) {
-    if (commands[k].helps) help.fields.push({
+    if (commands[k].helps.description) help.fields.push({
       name: commands[k].helps.description,
       value: '> ' + commands[k].helps.uses,
       inline: true
