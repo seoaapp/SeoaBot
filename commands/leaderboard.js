@@ -1,7 +1,6 @@
 /**
  * @name Seoa:settings
  * @description settings Command
- * @Thank https://stackoverflow.com/questions/37817334/javascript-bubble-sort
  */
 
 // i18n (locale)
@@ -10,28 +9,10 @@ i18n.configure({
   directory: './locales'
 })
 
-function bubble (arr) {
-  var len = arr.length
-  for (var i = 0; i < len; i++) {
-    for (var j = 0; j < len - i - 1; j++) {
-      if (arr[j].quizPoint < arr[j + 1].quizPoint) {
-        const temp = arr[j]
-        arr[j] = arr[j + 1]
-        arr[j + 1] = temp
-      }
-    }
-  }
-  return arr
-}
-
-exports.run = async (seoa, msg, query) => {
+exports.run = async (seoa, msg) => {
   let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
-  const users = await seoa.db.select('userdata')
-  let arr = []
-
-  for (const user in users) arr.push(user)
-  arr = bubble(arr).slice(0, parseInt(query.args[1]) || 20)
+  let arr = await seoa.db.select('userdata', null, 'order by quizPoint desc')
 
   let temp =
     '```fix\n' +
