@@ -64,7 +64,7 @@ seoa.on('message', async (msg) => {
 
   const cmd = seoa.commands.get(query.command.toLowerCase())
   if (!cmd) return
-  let pass = cmd.helps ?
+  let pass = cmd.helps && (cmd.helps.chkOwner || cmd.helps.permission) ?
     (
       cmd.helps.chkOwner ?
       config.owners.includes(msg.author.id) || '403' :
