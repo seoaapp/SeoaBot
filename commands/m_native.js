@@ -3,7 +3,6 @@
  * @description Music
  */
 
-const Search = require('../classes').s
 exports.run = (seoa, msg, query) => {
   /** 이벤트 중복 등록 방지 */
   if (!seoa.m.servers.has(msg.guild.id)) {
@@ -72,8 +71,8 @@ exports.run = (seoa, msg, query) => {
       break
     case 'search':
       if (!query.args[1]) return
-      seoa.search._(query.args.split(1).join(' '), 5).then(res => {
-        here.add(res.items[0].video_url)
+      seoa.search._(query.args.splice(1).join(' '), 5).then(res => {
+        here.add(res.items[0].id.videoId)
       })
       break
     case 'fix':
@@ -81,7 +80,7 @@ exports.run = (seoa, msg, query) => {
       break
     case 'mylist':
       if (query.args[1]) here.mylist(query.args[1])
-      break
+      break  
     default:
       msg.channel.send('join, leave, url [URL], play, vol [PERCENTAGE], stop, skip')
   }

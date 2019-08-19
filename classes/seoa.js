@@ -30,7 +30,7 @@ module.exports = class Seoa extends Discord.Client {
       const command = commands[k]
       if (config.localPolicy.core.printLoadedCMD) console.log(`${config.commands}/${k} loaded`)
       command.callSign.forEach(c => {
-        seoa.commands.set(c, command)
+        this.commands.set(c, command)
       })
     })
 
