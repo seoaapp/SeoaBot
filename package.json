@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node seoa.js",
     "check": "npx standard",
-    "Client": "electron ./Client && node ./seoa"
+    "Client": "electron ./Client && node ./seoa",
+    "lavalink": "java -jar ./lavalink/Lavalink.jar"
   },
   "repository": {
     "type": "git",
