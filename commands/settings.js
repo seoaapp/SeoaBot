@@ -4,26 +4,15 @@
  */
 
 const i18n = require('i18n')
+const locales = Object.keys(require('../locales'))
 
 exports.run = async (seoa, msg, query) => {
   let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
     if (query.args[0]) {
       if (['lang', '언어'].includes(query.args[0].toLowerCase())) {
-        if (
-          !(
-            query.args[1] === 'kor' ||
-            query.args[1] === 'en' ||
-            query.args[1] === 'pt'
-          )
-        ) {
-          seoa.db.update('serverdata', { lang: server.en }, { id: msg.guild.id })
-          msg.channel.send(
-            i18n.__({
-              phrase: 'ENMSG',
-              locale: server.lang
-            })
-          )
+        if (!locales.includes(query.args[1]) || query.args[1] === 'list') {
+          msg.channel.send(`\`${locales.join(', ')}\``)
         } else {
           seoa.db.update('serverdata', { lang: query.args[1] }, { id: msg.guild.id })
           msg.channel.send(
