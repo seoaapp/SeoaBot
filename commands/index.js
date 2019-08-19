@@ -2,6 +2,7 @@
 module.exports.help = require('./help')
 module.exports.invite = require('./invite')
 module.exports.ping = require('./ping')
+module.exports.info = require('./info')
 
 /** Quiz */
 module.exports.leaderboard = require('./leaderboard')
