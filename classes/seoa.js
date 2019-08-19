@@ -25,6 +25,15 @@ module.exports = class Seoa extends Discord.Client {
       if (this.db) return this.db.update('serverdata', { owner: guild.ownerID }, { id: guild.id })
     })
 
+    const commands = require(config.commands)
+    Object.keys(commands).forEach(k => {
+      const command = commands[k]
+      if (config.localPolicy.core.printLoadedCMD) console.log(`${config.commands}/${k} loaded`)
+      command.callSign.forEach(c => {
+        seoa.commands.set(c, command)
+      })
+    })
+
     this.login(config.token)
   }
 
