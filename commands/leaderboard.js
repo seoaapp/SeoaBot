@@ -5,9 +5,6 @@
 
 // i18n (locale)
 const i18n = require('i18n')
-i18n.configure({
-  directory: './locales'
-})
 
 exports.run = async (seoa, msg) => {
   let server = await seoa.db.select('serverdata', { id: msg.guild.id })
