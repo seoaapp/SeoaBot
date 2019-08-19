@@ -3,12 +3,14 @@
  * @description Music
  */
 
+const conv = require('./stuffs/convertTime')
 exports.run = (seoa, msg, query) => {
   /** 이벤트 중복 등록 방지 */
   if (!seoa.m.servers.has(msg.guild.id)) {
     seoa.m.once(`${msg.guild.id}_add`, _here => {
       _here.on('playing', song => {
-        msg.channel.send(`${song.title} (이)가 재생중입니다!`)
+        let u = conv(song.length)
+        msg.channel.send(`:cd: **재생중!**\n**제목** | ${song.title}\n**길이** | ${u[1]}시간 ${u[2]}분 ${u[3]}초`)
       })
 
       _here.on('alreadyJoined', () => {
@@ -30,66 +32,40 @@ exports.run = (seoa, msg, query) => {
   }
 
   let here = seoa.m._(msg.guild.id, msg.member.voiceChannel)
-  switch (query.args[0]) {
-    case 'join':
-      here._(msg.member.voiceChannel)
-      break
-    case 'leave':
-      here.leave()
-      break
-    case 'url':
+    console.log(query.args)
+    if (query.args[0] === 'join') here._(msg.member.voiceChannel)
+    else if (query.args[0] === 'leave') here.leave()
+    else if (query.args[0] === 'url') {
       if (!query.args[1]) return
       here.add(query.args[1])
       here.start()
-      break
-    case 'play':
-      here.start()
-      break
-    case 'vol':
+    } else if (query.args[0] === 'play') here.start()
+    else if (query.args[0] === 'vol') {
       if (0 <= Number(query.args[1]) && Number(query.args[1]) <= 200) here.setVolume(Number(query.args[1]) / 100)
-      break
-    case 'stop':
-      here.stop()
-      break
-    case 'skip':
-      here.skip()
-      break
-    case 'pause':
-      here.pause()
-      break
-    case 'clear':
-      here.clear()
-      break
-    case 'repeat':
-      here.repeat ? here.repeat = false : here.repeat = true
-      break
-    case 'random':
-      here.random ? here.random = false : here.random = true
-      break
-    case 'now':
-      msg.channel.send(`\`\`\`${JSON.stringify(here.currentSong)}\`\`\``)
-      break
-    case 'search':
+    } else if (query.args[0] === 'stop') here.stop()
+    else if (query.args[0] === 'skip') here.skip()
+    else if (query.args[0] === 'pause') here.pause()
+    else if (query.args[0] === 'clear') here.clear()
+    else if (query.args[0] === 'repeat') here.repeat ? here.repeat = false : here.repeat = true
+    else if (query.args[0] === 'random') here.random ? here.random = false : here.random = true
+    else if (query.args[0] === 'now') {
+      let u = conv(here.currentSong.length - Math.floor(here.dispatcher.time / 1000))
+      msg.channel.send(`:musical_note: **지금 재생중**\n**제목** | ${here.currentSong.title}\n**길이** | ${u[1]}시간 ${u[2]}분 ${u[3]}초 남음`)
+    } else if (query.args[0] === 'list') {
+      let res = '***대기열***\n'
+      for (let i in here.songs) {
+        res += `[${i}] **제목** | ${here.songs[i].title}\n`
+      }
+      msg.channel.send(res)
+    } else if (query.args[0] === 'search') {
       if (!query.args[1]) return
       seoa.search._(query.args.splice(1).join(' '), 5).then(res => {
         here.add(res.items[0].id.videoId)
       })
-      break
-    case 'fix':
-      here.fix(msg.member.voiceChannel)
-      break
-    case 'stable':
-      here.stableMode = true
-      break
-    case 'unstable':
-      here.stableMode = false
-      break
-    case 'mylist':
-      if (query.args[1]) here.mylist(query.args[1])
-      break  
-    default:
-      msg.channel.send('join, leave, url [URL], play, vol [PERCENTAGE], stop, skip')
-  }
+    } else if (query.args[0] === 'fix') here.fix(msg.member.voiceChannel)
+    else if (query.args[0] === 'stable') here.stableMode = true
+    else if (query.args[0] === 'unstable') here.stableMode = false
+    else if (query.args[0] === 'mylist') if (query.args[1]) here.mylist(query.args[1])
 }
 
 exports.callSign = ['m']
