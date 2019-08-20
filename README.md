@@ -13,7 +13,7 @@
 [![GitHub followers](https://img.shields.io/github/followers/ttakkku.svg?label=Follow&style=social)](https://github.com/ttakkku)
 
 # Bot Invite
-[Seoa Invite](https://discordapp.com/oauth2/authorize?client_id=584692085614182440&permissions=8&scope=bot)
+[Seoa Invite](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)
 
 # Code Style
 
@@ -21,7 +21,7 @@
 
 # Thanks to
 
-[![discord embed](https://discordapp.com/api/guilds/558296123794653206/embed.png?style=banner2)](https://discord.gg/QJfeKYr)[![pmh discord embed](https://discordapp.com/api/guilds/541782241131495434/embed.png?style=banner2)](https://discord.gg/yhuURsY)
+[![discord embed](https://discordapp.com/api/guilds/558296123794653206/embed.png?style=banner2)](https://discord.gg/Hv6e9TJ)[![pmh discord embed](https://discordapp.com/api/guilds/541782241131495434/embed.png?style=banner2)](https://discord.gg/yhuURsY)
 
 # Copyright and license
 ```
