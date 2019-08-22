@@ -76,7 +76,7 @@ class Server extends events.EventEmitter {
     this.currentSong = song
     this.dispatcher = this.stableMode
       ? this.conn.playFile(song.path)
-      : this.conn.playStream(ytdl(song.url))
+      : this.conn.playStream(ytdl(song.url, { filter: 'audioonly', quality: 'highest' }))
     this.dispatcher.setVolume(this.volume)
 
     this.dispatcher.on('error', err => {
@@ -89,7 +89,7 @@ class Server extends events.EventEmitter {
       if (this.skipSafe) return this.stop(true)
       if (this.songs.length > 0) this.play(this.songs.shift())
       else this.stop(true)
-    })
+		})
   }
 
   pause () {
@@ -130,15 +130,16 @@ class Server extends events.EventEmitter {
   async add (url, isMyList) {
 		let inf = await ytdl.getInfo(url)
     const song = new Song(inf)
-		this.songs.push(song)
-
 		if (!isMyList) this.emit('addSong', song)
-		if (!stableMode) return
-		else if (!fs.existsSync(song.path)) {
-			ytdl(url, { filter: 'audioonly', quality: 'highestaudio' }).pipe(
-				fs.createWriteStream(song.path)
-			)
+		if (stableMode) {
+			if (!fs.existsSync(song.path)) {
+				ytdl(url, { filter: 'audioonly', quality: 'highest' }).pipe(
+					fs.createWriteStream(song.path).on('error', () => { this.add(...args) })
+				)
+			}
 		}
+		
+		this.songs.push(song)
   }
 
   leave () {
@@ -165,13 +166,12 @@ class Server extends events.EventEmitter {
 
 class Song {
   constructor (inf) {
-		console.log(inf)
     this.url = inf.video_url
-    this.title = inf.title
+		this.title = inf.title
+		this.author = inf.author.name
     this.length = inf.length_seconds
     this.vID = inf.video_id
-		this.thumbnail = inf.thumbnail_url
-		if (!stableMode) return
+		this.thumbnail = inf.player_response.videoDetails.thumbnail.thumbnails[3].url
     this.path = `./stream/${this.vID}.mp3`
   }
 }

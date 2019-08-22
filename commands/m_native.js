@@ -4,13 +4,18 @@
  */
 
 const conv = require('./stuffs/convertTime')
+const { RichEmbed } = require('discord.js')
 exports.run = (seoa, msg, query) => {
   /** 이벤트 중복 등록 방지 */
+  const embed = new RichEmbed()
   if (!seoa.m.servers.has(msg.guild.id)) {
     seoa.m.once(`${msg.guild.id}_add`, _here => {
+      let embed = new RichEmbed()
       _here.on('playing', song => {
         let u = conv(song.length)
-        msg.channel.send(`:cd: **재생중!**\n**제목** | ${song.title}\n**길이** | ${u[1]}시간 ${u[2]}분 ${u[3]}초`)
+        embed.addField(`:cd: **재생중!**`, `**제목** | ${song.title}\n**길이** | ${u[1]}시간 ${u[2]}분 ${u[3]}초`)
+          .setThumbnail(song.thumbnail)
+        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
       })
 
       _here.on('alreadyJoined', () => {
@@ -22,50 +27,71 @@ exports.run = (seoa, msg, query) => {
       })
 
       _here.on('addSong', song => {
-        msg.channel.send(`${song.title} (이)가 대기열에 추가되었습니다.`)
+        embed.addField(':inbox_tray: **대기열 추가됨!**', `${song.title} (이)가 대기열에 추가되었습니다.`)
+          .setThumbnail(song.thumbnail)
+        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
+      })
+
+      _here.on('myList', myList => {
+        embed.addField(':inbox_tray: **대기열 추가됨!**', `${myList.length}개의 항목이 대기열에 추가되었습니다.`)
+        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
       })
 
       _here.on('changeVol', (bef, aft) => {
-        msg.channel.send(`볼륨이 ${bef * 100}% 에서 ${aft * 100}% (으)로 변경되었습니다.`)
+        embed.addField(':loud_sound: **볼륨 변경됨!**', `볼륨이 ${bef * 100}% 에서 ${aft * 100}% (으)로 변경되었습니다.`)
+        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
       })
     })
   }
 
   let here = seoa.m._(msg.guild.id, msg.member.voiceChannel)
-    console.log(query.args)
-    if (query.args[0] === 'join') here._(msg.member.voiceChannel)
-    else if (query.args[0] === 'leave') here.leave()
-    else if (query.args[0] === 'url') {
-      if (!query.args[1]) return
-      here.add(query.args[1])
-      here.start()
-    } else if (query.args[0] === 'play') here.start()
-    else if (query.args[0] === 'vol') {
-      if (0 <= Number(query.args[1]) && Number(query.args[1]) <= 200) here.setVolume(Number(query.args[1]) / 100)
-    } else if (query.args[0] === 'stop') here.stop()
-    else if (query.args[0] === 'skip') here.skip()
-    else if (query.args[0] === 'pause') here.pause()
-    else if (query.args[0] === 'clear') here.clear()
-    else if (query.args[0] === 'repeat') here.repeat ? here.repeat = false : here.repeat = true
-    else if (query.args[0] === 'random') here.random ? here.random = false : here.random = true
-    else if (query.args[0] === 'now') {
-      let u = conv(here.currentSong.length - Math.floor(here.dispatcher.time / 1000))
-      msg.channel.send(`:musical_note: **지금 재생중**\n**제목** | ${here.currentSong.title}\n**길이** | ${u[1]}시간 ${u[2]}분 ${u[3]}초 남음`)
-    } else if (query.args[0] === 'list') {
-      let res = '***대기열***\n'
-      for (let i in here.songs) {
-        res += `[${i}] **제목** | ${here.songs[i].title}\n`
-      }
-      msg.channel.send(res)
-    } else if (query.args[0] === 'search') {
-      if (!query.args[1]) return
-      seoa.search._(query.args.splice(1).join(' '), 5).then(res => {
-        here.add(res.items[0].id.videoId)
-      })
-    } else if (query.args[0] === 'fix') here.fix(msg.member.voiceChannel)
-    else if (query.args[0] === 'stable') here.stableMode = true
-    else if (query.args[0] === 'unstable') here.stableMode = false
-    else if (query.args[0] === 'mylist') if (query.args[1]) here.mylist(query.args[1])
+  if (query.args[0] === 'join') here._(msg.member.voiceChannel)
+  else if (query.args[0] === 'leave') here.leave()
+  else if (query.args[0] === 'url') {
+    if (!query.args[1]) return
+    here.add(query.args[1])
+    here.start()
+  } else if (query.args[0] === 'play') here.start()
+  else if (query.args[0] === 'vol') {
+    if (0 <= Number(query.args[1]) && Number(query.args[1]) <= 200) here.setVolume(Number(query.args[1]) / 100)
+  } else if (query.args[0] === 'stop') here.stop()
+  else if (query.args[0] === 'skip') here.skip()
+  else if (query.args[0] === 'pause') here.pause()
+  else if (query.args[0] === 'clear') here.clear()
+  else if (query.args[0] === 'repeat') here.repeat ? here.repeat = false : here.repeat = true
+  else if (query.args[0] === 'random') here.random ? here.random = false : here.random = true
+  else if (query.args[0] === 'now') {
+    let u = conv(here.currentSong.length - Math.floor(here.dispatcher.time / 1000))
+    embed.addField(`:musical_note: **지금 재생중**`, `**제목** | ${here.currentSong.title}\n**길이** | ${u[1]}시간 ${u[2]}분 ${u[3]}초 남음`)
+      .setThumbnail(here.currentSong.thumbnail)
+    msg.channel.send(embed)
+  } else if (query.args[0] === 'list') {
+    embed.setTitle(`:clipboard: **대기열**`)
+    let res = ''
+    for (let i in here.songs) res += `[${i}] **제목** | ${here.songs[i].title}\n`
+    msg.channel.send(embed.setDescription(res))
+  } else if (query.args[0] === 'search') {
+    if (!query.args[1]) return
+    seoa.search._(query.args.splice(1).join(' '), 5).then(res => {
+      here.add(res.items[0].id.videoId)
+    })
+  } else if (query.args[0] === 'fix') here.fix(msg.member.voiceChannel)
+  else if (query.args[0] === 'stable') here.stableMode = true
+  else if (query.args[0] === 'unstable') here.stableMode = false
+  else if (query.args[0] === 'mylist') { if (query.args[1]) here.mylist(query.args[1]) }
+  else {
+    let desc = `
+      **[] Optinal, <> Required**
+      (p)m <join|leave|stop|skip>
+      (p)m <now|queue>
+      (p)m <play|repeat|fix>
+      (p)m search <query>
+      (p)m url <youtube_url>
+      (p)m vol <percentage>
+      (p)m mylist <mylist_ID>
+    `
+    msg.channel.send(desc.split('(p)').join(seoa.settings.prefix))
+  }
 }
 
 exports.callSign = ['m']
