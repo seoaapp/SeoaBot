@@ -12,7 +12,6 @@ exports.run = async (seoa, msg, query) => {
   server = server[0]
 
   let mylist = await seoa.db.select('mylist', { name: query.args[1] })
-  console.log(mylist)
   mylist = mylist[0]
   if (mylist && (typeof mylist.list) !== 'object') mylist.list = JSON.parse(mylist.list)
 
