@@ -5,7 +5,7 @@
 
 const conv = require('./stuffs/convertTime')
 const { RichEmbed } = require('discord.js')
-exports.run = (seoa, msg, query) => {
+exports.run = async (seoa, msg, query) => {
   /** 이벤트 중복 등록 방지 */
   const embed = new RichEmbed()
   if (!seoa.m.servers.has(msg.guild.id)) {
@@ -32,8 +32,8 @@ exports.run = (seoa, msg, query) => {
         msg.channel.send(embed).then(() => { embed = new RichEmbed() })
       })
 
-      _here.on('myList', myList => {
-        embed.addField(':inbox_tray: **대기열 추가됨!**', `${myList.length}개의 항목이 대기열에 추가되었습니다.`)
+      _here.on('myList', m => {
+        embed.addField(':inbox_tray: **대기열 추가됨!**', `<@${m.author}>(이)가 만든 ${m.name} 플레이리스트\n${m.list.length}개의 항목이 대기열에 추가되었습니다.`)
         msg.channel.send(embed).then(() => { embed = new RichEmbed() })
       })
 
@@ -78,7 +78,10 @@ exports.run = (seoa, msg, query) => {
   } else if (query.args[0] === 'fix') here.fix(msg.member.voiceChannel)
   else if (query.args[0] === 'stable') here.stableMode = true
   else if (query.args[0] === 'unstable') here.stableMode = false
-  else if (query.args[0] === 'mylist') { if (query.args[1]) here.mylist(query.args[1]) }
+  else if (query.args[0] === 'mylist') {
+    let mylist = await seoa.db.select('mylist', { name: query.args[1] })
+    here.mylist(mylist[0])
+  }
   else {
     let desc = `
       **[] Optinal, <> Required**

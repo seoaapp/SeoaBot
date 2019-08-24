@@ -12,6 +12,7 @@ module.exports.quiz = require('./quiz')
 /** Music */
 module.exports.lm = require('./m_lavalink')
 module.exports.m = require('./m_native')
+module.exports.mylist = require('./mylist')
 
 /** Owner */
 module.exports.notice = require('./notice')

@@ -3,7 +3,6 @@ const fs = require('fs')
 const events = require('events')
 const stableMode = true
 
-let mylist = {}
 module.exports = class MusicServers extends events.EventEmitter {
   constructor () {
     super()
@@ -153,14 +152,13 @@ class Server extends events.EventEmitter {
     delete this.conn
   }
 
-  mylist (lID) {
-    let myList = mylist[lID]
-    this.emit('myList', myList)
-    if (myList) {
-      myList.forEach(v => {
-        this.add(v, true)
-      })
-    }
+  mylist (m) {
+    if (!m) return
+    m.list = JSON.parse(m.list)
+    this.emit('myList', m)
+    m.list.forEach(v => {
+      this.add(v, true)
+    })
   }
 }
 
