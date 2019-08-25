@@ -17,7 +17,7 @@
 	"APIPING": "Delay [ API Ping ]",
 	"Time": "%s day(s) %s hour(s) %s minute(s) %s second(s)",
 	"DMSEND": "Sent CommandBook to your Direct Message!",
-	"BETAMSG": "This bot is BETA and Highly Unstable. Please report bugs on [issues](https://github.com/ttakkku/SeoaBot/issues).\n**[Invite Bot!](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)**\n**[Support Server](https://discord.gg/QJfeKYr)**",
+	"BETAMSG": "This bot is BETA and Highly Unstable. Please report bugs on [issues](https://github.com/ttakkku/SeoaBot/issues).\n**[Invite Bot!](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)**\n**[Support Server](https://discord.gg/ZyJuBUJ)**",
 	"CommandBook": "Seoa CommandBook",
 	"Prefix": "Prefix:",
 	"Invite": "**[Invite Bot!](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)**",

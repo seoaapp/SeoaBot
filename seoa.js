@@ -1,7 +1,7 @@
 /**
  * @name Seoa
  * @description Seoa - Music Player
- * @license GPL-3.0-or-later
+ * @license MIT
  * @author Seoa Bot Develoment Team
  * @version 0.1.0
  */

@@ -1,6 +1,6 @@
 <div align="center">
   <p>
-    <a href="https://discord.gg/QJfeKYr"><img src="https://cdn.discordapp.com/attachments/568032700213231666/589833031783809046/1_1.png" width="586" alt="SeoaBot"/></a>
+    <a href="https://discord.gg/ZyJuBUJ"><img src="https://cdn.discordapp.com/attachments/568032700213231666/589833031783809046/1_1.png" width="586" alt="SeoaBot"/></a>
   </p>
 </div>
 
@@ -21,7 +21,7 @@
 
 # Thanks to
 
-[![discord embed](https://discordapp.com/api/guilds/558296123794653206/embed.png?style=banner2)](https://discord.gg/QJfeKYr)[![pmh discord embed](https://discordapp.com/api/guilds/541782241131495434/embed.png?style=banner2)](https://discord.gg/yhuURsY)
+[![discord embed](https://discordapp.com/api/guilds/558296123794653206/embed.png?style=banner2)](https://discord.gg/ZyJuBUJ)[![pmh discord embed](https://discordapp.com/api/guilds/541782241131495434/embed.png?style=banner2)](https://discord.gg/yhuURsY)
 
 # Copyright and license
 ```

@@ -14,7 +14,7 @@
     "url": "git+https://github.com/seoaapp/SeoaBot.git"
   },
   "author": "Seoa Bot Develoment Team",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/seoaapp/SeoaBot/issues"
   },
