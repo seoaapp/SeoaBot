@@ -1,6 +1,8 @@
 const Discord = require('discord.js')
 const LMusic = require('./music_lavalink')
 const Music = require('./music_native')
+const Search = require('./search')
+const { join } = require('path')
 const { PlayerManager } = require('discord.js-lavalink')
 
 module.exports = class Seoa extends Discord.Client {
@@ -11,8 +13,11 @@ module.exports = class Seoa extends Discord.Client {
     this.m = new Music()
     this.lm = new LMusic(this)
     this.commands = new Discord.Collection()
-    this.player
-
+    this.player = null
+    this.search = new Search(config.youtube)
+      .addParam('type', 'video')
+      .addParam('order', 'relevance')
+    
     this.on('guildCreate', guild => {
       if (this.db) return this.db.update('serverdata', { owner: guild.ownerID }, { id: guild.id })
     })
@@ -21,6 +26,14 @@ module.exports = class Seoa extends Discord.Client {
       if (this.db) return this.db.update('serverdata', { owner: guild.ownerID }, { id: guild.id })
     })
 
+    const commands = require(join(__dirname, '../', config.commands))
+    Object.keys(commands).forEach(k => {
+      const command = commands[k]
+      if (config.localPolicy.core.printLoadedCMD) console.log(`${config.commands.split(/\\|\//).pop()}.${k} loaded`)
+      command.callSign.forEach(c => {
+        this.commands.set(c, command)
+      })
+    })
     this.login(config.token)
   }
 

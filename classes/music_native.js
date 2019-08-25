@@ -1,9 +1,8 @@
 const ytdl = require('ytdl-core')
 const fs = require('fs')
 const events = require('events')
-const stableMode = false
+const stableMode = true
 
-let mylist = {}
 module.exports = class MusicServers extends events.EventEmitter {
   constructor () {
     super()
@@ -43,11 +42,11 @@ class Server extends events.EventEmitter {
     this.skipSafe = false
     this.volume = 1
     this.repeat = false
-    this.random = false // un used variable
+    this.random = false
     this.playing = false
     this.currentSong = null
     this.songs = []
-    this.stableMode = stableMode // Read-only
+    this.stableMode = stableMode
   }
 
   async _ (channel) {
@@ -56,10 +55,16 @@ class Server extends events.EventEmitter {
     this.conn = await channel.join()
   }
 
-  start () {
+  start (query) {
     if (!this.conn) return
-    if (!this.playing) this.play(this.songs.shift())
-  }
+		if (this.playing) return
+		if (query) this.add(query)
+		this.play(this.random ? this.songs.splice(Math.floor(Math.random() * this.songs.length), 1) : this.songs.shift())
+	}
+	
+	clear () {
+		this.songs = []
+	}
 
   play (song) {
     if (!this.conn || !song) return
@@ -68,29 +73,22 @@ class Server extends events.EventEmitter {
     this.playing = true
     this.skipSafe = false
     this.currentSong = song
-    this.dispatcher = stableMode
+    this.dispatcher = this.stableMode
       ? this.conn.playFile(song.path)
-      : this.conn.playStream(
-        ytdl(song.url, { filter: 'audioonly', quality: 'highestaudio' })
-      )
+      : this.conn.playStream(ytdl(song.url, { filter: 'audioonly', quality: 'highest' }))
     this.dispatcher.setVolume(this.volume)
 
     this.dispatcher.on('error', err => {
       this.emit('error', err)
-      this.songs = [this.currentSong].concat(this.songs)
       this.skip()
     })
 
     this.dispatcher.on('end', () => {
       this.playing = false
-      if (this.skipSafe) {
-        this.skipSafe = false
-        return this.stop()
-      }
-
+      if (this.skipSafe) return this.stop(true)
       if (this.songs.length > 0) this.play(this.songs.shift())
-      else this.stop()
-    })
+      else this.stop(true)
+		})
   }
 
   pause () {
@@ -112,12 +110,14 @@ class Server extends events.EventEmitter {
 
   stop (cb) {
     if (this.dispatcher) {
-      this.skipSafe = true
-      this.dispatcher.end()
+			if ((typeof cb) === 'undefined') {
+				this.skipSafe = true
+      	this.dispatcher.end()
+			}
       delete this.dispatcher
     }
 
-    if (cb) cb()
+    if ((typeof cb) === 'function') cb()
   }
 
   setVolume (vol) {
@@ -126,10 +126,19 @@ class Server extends events.EventEmitter {
     if (this.dispatcher) this.dispatcher.setVolume(vol)
   }
 
-  add (url, isMyList) {
-    const song = new Song(url)
-    if (!isMyList) this.emit('addSong', song)
-    this.songs.push(song)
+  async add (url, isMyList) {
+		let inf = await ytdl.getInfo(url)
+    const song = new Song(inf)
+		if (!isMyList) this.emit('addSong', song)
+		if (stableMode) {
+			if (!fs.existsSync(song.path)) {
+				ytdl(url, { filter: 'audioonly', quality: 'highest' }).pipe(
+					fs.createWriteStream(song.path).on('error', () => { this.add(...args) })
+				)
+			}
+		}
+		
+		this.songs.push(song)
   }
 
   leave () {
@@ -143,37 +152,24 @@ class Server extends events.EventEmitter {
     delete this.conn
   }
 
-  mylist (lID) {
-    let myList = mylist[lID]
-    this.emit('myList', myList)
-    if (myList) {
-      myList.forEach(v => {
-        this.add(v, true)
-      })
-    }
+  mylist (m) {
+    if (!m) return
+    m.list = JSON.parse(m.list)
+    this.emit('myList', m)
+    m.list.forEach(v => {
+      this.add(v, true)
+    })
   }
 }
 
 class Song {
-  constructor (url) {
-    this.url = url
-    this.title = null
-    this.length = null
-    this.vID = null
-    this.thumbnail = null
-    this.path = null
-    ytdl.getInfo(url).then(inf => {
-      this.title = inf.title
-      this.length = inf.length_seconds
-      this.vID = inf.video_id
-      this.thumbnail = inf.thumbnail_url
-      if (!stableMode) return
-      this.path = `./stream/${this.vID}.mp3`
-      if (!fs.existsSync(this.path)) {
-        ytdl(url, { filter: 'audioonly', quality: 'highestaudio' }).pipe(
-          fs.createWriteStream(this.path)
-        )
-      }
-    })
+  constructor (inf) {
+    this.url = inf.video_url
+		this.title = inf.title
+		this.author = inf.author.name
+    this.length = inf.length_seconds
+    this.vID = inf.video_id
+		this.thumbnail = inf.player_response.videoDetails.thumbnail.thumbnails[3].url
+    this.path = `./stream/${this.vID}.mp3`
   }
 }

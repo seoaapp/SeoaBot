@@ -6,14 +6,15 @@
   "scripts": {
     "test": "node seoa.js",
     "check": "npx standard",
-    "Client": "electron ./Client && node ./seoa"
+    "Client": "electron ./Client && node ./seoa",
+    "lavalink": "java -jar ./lavalink/Lavalink.jar"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/seoaapp/SeoaBot.git"
   },
   "author": "Seoa Bot Develoment Team",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/seoaapp/SeoaBot/issues"
   },
@@ -27,6 +28,7 @@
     "node-opus": "^0.3.2",
     "os": "^0.1.1",
     "random-hex-color": "^1.0.1",
+    "request": "^2.88.0",
     "rethinkdb": "^2.3.3",
     "umysql": "^0.1.1",
     "yt-search": "^0.4.1",
