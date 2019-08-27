@@ -132,13 +132,12 @@ class Server extends events.EventEmitter {
 		if (!isMyList) this.emit('addSong', song)
 		if (stableMode) {
 			if (!fs.existsSync(song.path)) {
-				ytdl(url, { filter: 'audioonly', quality: 'highest' }).pipe(
-					fs.createWriteStream(song.path).on('error', () => { this.add(...args) })
-				)
-			}
-		}
-		
-		this.songs.push(song)
+        let stream = ytdl(url, { filter: 'audioonly', quality: 'highest' })
+        stream.pipe(fs.createWriteStream(song.path))
+        stream.on('error', () => { return this.add(url, isMyList) })
+      }
+    }
+    return this.songs.push(song)
   }
 
   leave () {
