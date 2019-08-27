@@ -18,6 +18,8 @@ exports.run = async (seoa, msg, query) => {
   let policy = seoa.settings.localPolicy.eval
   let server = await seoa.db.select('serverdata', { id: msg.guild.id })
   server = server[0]
+
+  if (!policy.enable) return msg.channel.send('보안 정책상 eval이 비활성화 되었습니다.')
   try {
     let q = query.args.join(' ')
     if (unObfuscate.detect(q)) {
