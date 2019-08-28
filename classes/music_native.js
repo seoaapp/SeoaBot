@@ -1,6 +1,7 @@
 const ytdl = require('ytdl-core')
 const fs = require('fs')
 const events = require('events')
+const path = require('path')
 const stableMode = true
 
 module.exports = class MusicServers extends events.EventEmitter {
@@ -169,6 +170,6 @@ class Song {
     this.length = inf.length_seconds
     this.vID = inf.video_id
 		this.thumbnail = inf.player_response.videoDetails.thumbnail.thumbnails[3].url
-    this.path = `./stream/${this.vID}.mp3`
+    this.path = path.join(__dirname, `./stream/${this.vID}.mp3`)
   }
 }
