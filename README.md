@@ -11,6 +11,7 @@
 [![issues](https://img.shields.io/github/issues/seoaApp/SeoaBot.svg)](https://github.com/ttakkku/SeoaBot/issues)
 [![pr](https://img.shields.io/github/issues-pr/seoaApp/SeoaBot.svg)](https://github.com/ttakkku/SeoaBot/pulls)
 [![GitHub followers](https://img.shields.io/github/followers/ttakkku.svg?label=Follow&style=social)](https://github.com/ttakkku)
+[![trello](https://img.shields.io/badge/trello-porject-green)](https://trello.com/b/pMfVzE8W/seoa)
 
 # Bot Invite
 [Seoa Invite](https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot)
