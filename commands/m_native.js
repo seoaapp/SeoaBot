@@ -8,14 +8,15 @@ const { RichEmbed } = require('discord.js')
 exports.run = async (seoa, msg, query) => {
   /** 이벤트 중복 등록 방지 */
   const embed = new RichEmbed()
+  const policy = seoa.settings.localPolicy.music
   if (!seoa.m.servers.has(msg.guild.id)) {
     seoa.m.once(`${msg.guild.id}_add`, _here => {
-      let embed = new RichEmbed()
       _here.on('playing', song => {
         let u = conv(song.length)
+        const embed = new RichEmbed()
         embed.addField(`:cd: **재생중!**`, `**제목** | ${song.title}\n**길이** | ${u[1]}시간 ${u[2]}분 ${u[3]}초`)
           .setThumbnail(song.thumbnail)
-        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
+        msg.channel.send(embed)
       })
 
       _here.on('alreadyJoined', () => {
@@ -27,19 +28,22 @@ exports.run = async (seoa, msg, query) => {
       })
 
       _here.on('addSong', song => {
+        const embed = new RichEmbed()
         embed.addField(':inbox_tray: **대기열 추가됨!**', `${song.title} (이)가 대기열에 추가되었습니다.`)
           .setThumbnail(song.thumbnail)
-        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
+        msg.channel.send(embed)
       })
 
       _here.on('myList', m => {
+        const embed = new RichEmbed()
         embed.addField(':inbox_tray: **대기열 추가됨!**', `<@${m.author}>(이)가 만든 ${m.name} 플레이리스트\n${m.list.length}개의 항목이 대기열에 추가되었습니다.`)
-        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
+        msg.channel.send(embed)
       })
 
       _here.on('changeVol', (bef, aft) => {
+        const embed = new RichEmbed()
         embed.addField(':loud_sound: **볼륨 변경됨!**', `볼륨이 ${bef * 100}% 에서 ${aft * 100}% (으)로 변경되었습니다.`)
-        msg.channel.send(embed).then(() => { embed = new RichEmbed() })
+        msg.channel.send(embed)
       })
     })
   }
@@ -53,7 +57,10 @@ exports.run = async (seoa, msg, query) => {
     here.start()
   } else if (query.args[0] === 'play') here.start()
   else if (query.args[0] === 'vol') {
-    if (0 <= Number(query.args[1]) && Number(query.args[1]) <= 200) here.setVolume(Number(query.args[1]) / 100)
+    if (0 <= Number(query.args[1])) {
+      if (policy.volumeLimit ? Number(query.args[1]) <= 200 : true) here.setVolume(Number(query.args[1]) / 100)
+      else msg.channel.send('200% 를 넘는 볼륨으로 설정 할 수 없습니다.')
+    } else if (query.args[1]) msg.channel.send('0% 미만의 볼륨으로 설정 할 수 없습니다.')
   } else if (query.args[0] === 'stop') here.stop()
   else if (query.args[0] === 'skip') here.skip()
   else if (query.args[0] === 'pause') here.pause()

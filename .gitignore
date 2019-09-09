@@ -12,6 +12,7 @@ UserData/
 
 # Stream Data
 stream/*.mp3
+classes/stream/*.mp3
 
 # Bot Config
 config.json

@@ -1,9 +1,7 @@
 const Discord = require('discord.js')
-const LMusic = require('./music_lavalink')
 const Music = require('./music_native')
 const Search = require('./search')
 const { join } = require('path')
-const { PlayerManager } = require('discord.js-lavalink')
 
 module.exports = class Seoa extends Discord.Client {
   constructor (config, db) {
@@ -11,7 +9,6 @@ module.exports = class Seoa extends Discord.Client {
     this.settings = config
     this.db = db || null
     this.m = new Music()
-    this.lm = new LMusic(this)
     this.commands = new Discord.Collection()
     this.player = null
     this.search = new Search(config.youtube)
@@ -35,13 +32,5 @@ module.exports = class Seoa extends Discord.Client {
       })
     })
     this.login(config.token)
-  }
-
-  ready () {
-    if (this.player) return
-    this.player = new PlayerManager(this, this.settings.nodes, {
-      user: this.user.id,
-      shards: 0
-    }, { selfdeaf: false, selfmute: false })
   }
 }

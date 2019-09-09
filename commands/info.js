@@ -5,7 +5,6 @@
 
 const i18n = require('i18n')
 const { RichEmbed } = require('discord.js')
-const randomHexColor = require('random-hex-color')
 const conv = require('./stuffs/convertTime')
 
 exports.run = async (seoa, msg) => {
@@ -17,7 +16,7 @@ exports.run = async (seoa, msg) => {
     .setTitle(i18n.__({ phrase: 'Info', locale: server.lang }, seoa.user.username))
     .setDescription(i18n.__({ phrase: 'From', locale: server.lang }, msg.author.username))
     .setThumbnail(seoa.user.avatarURL)
-    .setColor(parseInt(randomHexColor().substring(1), 16))
+    .setColor(Math.floor(Math.random() * 0xFFFFFF))
     .addField('\u200B', '\u200B', true)
     .addField(i18n.__({ phrase: 'Name&Tag', locale: server.lang }, seoa.user.username), seoa.user.tag, true)
     .addField(i18n.__({ phrase: 'ID', locale: server.lang }, seoa.user.username), seoa.user.id, true)

@@ -26,11 +26,15 @@
       "printLoadedCMD": true
     },
     "eval": {
+      "enable": true,
       "acceptObfuscate": true,
       "decryptObfuscate": true,
       "disableRisks": false,
       "sayError": false,
       "sayFindedRisk": false
+    },
+    "music": {
+      "volumeLimit": true
     }
   }
 }
