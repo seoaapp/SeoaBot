@@ -32,8 +32,8 @@ exports.run = async (seoa, msg) => {
   msg.channel.send(embed)
 }
 
-exports.callSign = ['']
+exports.callSign = ['botinfo', '봇 정보']
 exports.helps = {
   description: '봇의 정보를 보여줍니다',
-  uses: ''
+  uses: '>botinfo'
 }
