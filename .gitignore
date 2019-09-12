@@ -1,20 +1,2 @@
-# node modules
-node_modules/
-package-lock.json
-yarn.lock
-
-# vscode
-.vscode/
-
-# Old Datas
-ServerData/
-UserData/
-
-# Stream Data
-stream/*.mp3
-
-# Bot Config
+node_modules
 config.json
-
-# Lavalink logs
-lavalink/logs/
