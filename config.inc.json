@@ -12,6 +12,7 @@
   }, "localPolicy": {
 
   }, "mysql": {
+    "enable": false,
     "host": "localhost",
     "port": 3306,
     "user": "root",
@@ -19,6 +20,9 @@
     "database": "seoa",
     "charset": "utf8mb4"
   }, "api": {
-    "youtube": ""
+    "youtube": {
+      "enable": false,
+      "clientID": ""
+    }
   }
 }
