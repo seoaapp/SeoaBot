@@ -1,3 +1,3 @@
 const Seoa = require('./seoa')
-const client = new Seoa(require('./config'))
-client.dummy()
+// eslint-disable-next-line no-new
+new Seoa(require('./config'))

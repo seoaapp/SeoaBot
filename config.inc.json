@@ -6,7 +6,8 @@
 
   "path": {
     "library": "./lib",
-    "commands": "<[path.library]>/commands",
+    "classes": "<[path.library]>/classes",
+    "commandsOrigin": "<[path.library]>/commands",
     "events": "<[path.library]>/events",
     "languages": "<[path.library]>/languages"
   }, "localPolicy": {
