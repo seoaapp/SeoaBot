@@ -11,7 +11,9 @@
     "events": "<[path.library]>/events",
     "languages": "<[path.library]>/languages"
   }, "localPolicy": {
-
+    "music": {
+      "volumeLimit": true
+    }
   }, "mysql": {
     "enable": false,
     "host": "localhost",
@@ -25,5 +27,10 @@
       "enable": false,
       "clientID": ""
     }
+  }, "music": {
+    "useNative": true,
+    "lavalinkNodes": [
+      { "host": "localhost", "port": 2333, "password": "seoabot" }
+    ]
   }
 }

@@ -21,9 +21,11 @@
   "homepage": "https://github.com/UnderC/SeoaBot#readme",
   "dependencies": {
     "discord.js": "^11.5.1",
+    "discord.js-lavalink": "^2.2.3",
     "opusscript": "0.0.7",
     "request": "^2.88.0",
-    "ulangts": "^1.0.4",
+    "ulangts": "^1.0.5",
+    "umulavats": "^1.0.7",
     "umusicts": "^1.0.4",
     "umysql": "^0.1.1",
     "utimets": "^1.0.0"

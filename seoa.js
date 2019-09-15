@@ -1,6 +1,7 @@
 const { Client } = require('discord.js')
 const UlangTS = require('ulangts')
 const UmusicTS = require('umusicts')
+const UmulavaTS = require('umulavats')
 const Umysql = require('umysql')
 const path = require('path')
 
@@ -12,7 +13,7 @@ class Seoa extends Client {
     this.load()
 
     this.langs = new UlangTS(require(this.config.path.languages))
-    this.m = new UmusicTS()
+    this.m = this.config.music.useNative ? new UmusicTS() : new UmulavaTS(this)
     this.search = this.classes.Search && this.config.api.youtube.enable
       ? new this.classes.Search(this.config.api.youtube.clientID).addParam('type', 'video').addParam('order', 'relevance')
       : false
