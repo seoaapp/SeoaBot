@@ -48,5 +48,13 @@
 	"Corrent": "1분이 지나 취소되었습니다",
 	"search": "<[0]>'의 검색 결과",
 	"view": "[보기](http://youtube.com/?v=<[0]>) / 길이: <[1]> / 게시일: <[2]> / <[3]>번 재생됨",
-	"ping": "Seoa의 핑: <[0]>ms\nSeoa의 메세지 핑: <[1]>ms"
+	"ping": "Seoa의 핑: <[0]>ms\nSeoa의 메세지 핑: <[1]>ms",
+
+	"cmd_help_desc": "도움이 필요하신가요?",
+	"cmd_invite_desc": "저를 초대해줘요!",
+	"cmd_logout_desc": "안녕 :(",
+	"cmd_music_desc": "매우 좋은 기능!",
+	"cmd_mylist_desc": "이예에엥",
+	"cmd_ping_desc": "퐁!",
+	"cmd_reload_desc": "명령어 리로드"
 }

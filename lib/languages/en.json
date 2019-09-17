@@ -22,7 +22,7 @@
 	"DMSEND": "Sent CommandBook to your Direct Message!",
 	"BETAMSG": "This bot is BETA and Highly Unstable. Please report bugs on [issues](<[repository]>/issues).\n**[Invite Bot!](<[inviteLink]>)**\n**[Support Server](https://discord.gg/ZyJuBUJ)**",
 	"CommandBook": "Seoa CommandBook",
-	"Prefix": "Prefix:",
+	"Prefix": "Prefix: <[0]>",
   "Invite": "**[Invite Bot!](<[inviteLink]>)**",
   "quizTitle": "Code Quiz",
 	"LeaderBoardMsg": "SeoaBot <[quizTitle]> LeaderBoard",
@@ -48,5 +48,13 @@
 	"Corrent": "Okay, canceled.",
 	"search": "YouTube Results of <[0]>",
 	"view": "[Watch](http://youtube.com<[0]>) / length: <[1]> / Uploaded at <[2]> / Played <[3]> times",
-	"ping": "Seoa's Ping: <[0]>ms\nMessage ping: <[1]>ms"
+	"ping": "Seoa's Ping: <[0]>ms\nMessage ping: <[1]>ms",
+
+	"cmd_help_desc": "do you need help?",
+	"cmd_invite_desc": "invite me!",
+	"cmd_logout_desc": "good bye :(",
+	"cmd_music_desc": "i like it!",
+	"cmd_mylist_desc": "my favorite songs!",
+	"cmd_ping_desc": "pong!",
+	"cmd_reload_desc": "reloading!"
 }
