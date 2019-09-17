@@ -28,7 +28,8 @@
     "umulavats": "^1.0.7",
     "umusicts": "^1.0.4",
     "umysql": "^0.1.1",
-    "utimets": "^1.0.0"
+    "utimets": "^1.0.0",
+    "uuniquets": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^6.3.0",

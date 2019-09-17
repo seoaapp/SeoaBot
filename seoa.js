@@ -31,6 +31,11 @@ class Seoa extends Client {
     this.login(this.config.token)
   }
 
+  is (flag, u, perm) {
+    /** flag (1 === Owner, 2 === Admin) */
+    return flag === 1 ? this.config.owners.includes(u.id) : flag === 2 ? this.is(1, u) || u.hasPermission(perm || 0) : true
+  }
+
   load (loadKeys) {
     (loadKeys || this.loadKeys).forEach(lK => {
       /** 모듈 리로드를 위해 캐시 제거 */
