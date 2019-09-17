@@ -1,6 +1,7 @@
 {
   "repository": "https://github.com/ttakkku/SeoaBot",
 	"inviteLink": "https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot",
+	"402": "Sorry, but that command is **only** for Guild Manager.",
   "403": "Sorry, but that command is **only** for SeoaBot Developers.",
 	"404": "Sorry, but that command is **only** for SeoaBot Staffs.",
 	"CommandNotFound": "Sorry, but I couldn't find that command on CMD_LIST.txt. Try >help!",

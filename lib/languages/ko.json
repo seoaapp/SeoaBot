@@ -1,6 +1,7 @@
 {
 	"repository": "https://github.com/ttakkku/SeoaBot",
 	"inviteLink": "https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot",
+	"402": "당신은 서버 관리자가 아닙니다!",
   "403": "어디서 감히 개발자도 아닌게 까불어!",
 	"404": "당신은 봇 소유자 (운영자)가 아닙니다!",
 	"CommandNotFound": "아 저런! 그건 없는 명령이에요",
