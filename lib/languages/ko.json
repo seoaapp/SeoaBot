@@ -56,5 +56,6 @@
 	"cmd_music_desc": "매우 좋은 기능!",
 	"cmd_mylist_desc": "이예에엥",
 	"cmd_ping_desc": "퐁!",
-	"cmd_reload_desc": "명령어 리로드"
+	"cmd_reload_desc": "명령어 리로드",
+	"cmd_botinfo_desc": "yay"
 }

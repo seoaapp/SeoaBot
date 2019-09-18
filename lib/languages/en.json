@@ -56,5 +56,6 @@
 	"cmd_music_desc": "i like it!",
 	"cmd_mylist_desc": "my favorite songs!",
 	"cmd_ping_desc": "pong!",
-	"cmd_reload_desc": "reloading!"
+	"cmd_reload_desc": "reloading!",
+	"cmd_botinfo_desc": "yay"
 }
