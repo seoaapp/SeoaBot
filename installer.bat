@@ -17,7 +17,7 @@ pause
 goto QUIT
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :I1
-set /p YN=If you want to install all of needed modules, press y. If you wnat to install individual modules, press n.
+set /p YN=If you want to install all of needed modules, press y. If you want to install individual modules, press n.
 if /i "%YN%" == "y" goto I2
 if /i "%YN%" == "n" goto I3
 goto I1
