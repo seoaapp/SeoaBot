@@ -21,6 +21,7 @@
 
 # Thanks to
 
+[![StayCute](https://discordapp.com/api/guilds/512553485766492171/embed.png?style=banner2)](http://discord.gg/u8AYWkH)
 [![discord embed](https://discordapp.com/api/guilds/558296123794653206/embed.png?style=banner2)](https://discord.gg/ZyJuBUJ)[![pmh discord embed](https://discordapp.com/api/guilds/541782241131495434/embed.png?style=banner2)](https://discord.gg/yhuURsY)
 
 # Copyright and license
