@@ -57,5 +57,8 @@
 	"cmd_mylist_desc": "my favorite songs!",
 	"cmd_ping_desc": "pong!",
 	"cmd_reload_desc": "reloading!",
-	"cmd_botinfo_desc": "yay"
+	"cmd_botinfo_desc": "yay",
+	"cmd_leaderboard_desc": "asdf",
+	"cmd_logout_desc": "zxcv",
+	"cmd_quiz_desc": "qwerty"
 }
