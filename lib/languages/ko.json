@@ -1,5 +1,5 @@
 {
-	"repository": "https://github.com/ttakkku/SeoaBot",
+	"repository": "https://github.com/seoaapp/SeoaBot",
 	"inviteLink": "https://discordapp.com/oauth2/authorize?client_id=569453314551578644&permissions=8&scope=bot",
 	"402": "당신은 서버 관리자가 아닙니다!",
   "403": "어디서 감히 개발자도 아닌게 까불어!",
@@ -21,7 +21,7 @@
 	"Time": "<[0]>일 <[1]>시간 <[2]>분 <[3]>초",
 	"DMSEND": "DM(PM)으로 도움말을 보냈습니다!",
 	"BETAMSG": "이 봇은 베타입니다. 불안정하니 버그가 발생할경우 [이슈](<[repository]>/issues)에 알려주세요 \n **[봇 초대링크!](<[inviteLink]>)** \n **[봇 서포트 주소](https://discord.gg/ZyJuBUJ)**",
-	"CommandBook": "Seoa CommandBook",
+	"CommandBook": "Seoa CommandBook\n[Support Server](https://discord.gg/BHS5pw3)",
 	"Prefix": "접두사: <[0]>",
 	"Invite": "**[봇 초대링크!](<[inviteLink]>)**",
 	"quizTitle": "Code Quiz",
@@ -52,13 +52,15 @@
 
 	"cmd_help_desc": "도움이 필요하신가요?",
 	"cmd_invite_desc": "저를 초대해줘요!",
-	"cmd_logout_desc": "안녕 :(",
-	"cmd_music_desc": "매우 좋은 기능!",
-	"cmd_mylist_desc": "이예에엥",
-	"cmd_ping_desc": "퐁!",
-	"cmd_reload_desc": "명령어 리로드",
-	"cmd_botinfo_desc": "yay",
-	"cmd_leaderboard_desc": "asdf",
-	"cmd_logout_desc": "zxcv",
-	"cmd_quiz_desc": "qwerty"
+	"cmd_music_desc": "음악 관련된 명령어들이 대거로 나옵니다!",
+	"cmd_mylist_desc": "나만의 재생목록",
+	"cmd_ping_desc": "핑퐁 (따꾸)!",
+	"cmd_reload_desc": "명령어 리로드하는 명령어입니다.",
+	"cmd_botinfo_desc": "봇의 정보는 다 알려줍니다(봇 토큰 뺴고요)",
+	"cmd_leaderboard_desc": "리더보드를 보여줍니다",
+	"cmd_logout_desc": "봇이 로그아웃 됩니다!",
+	"cmd_quiz_desc": "프로그래밍 언어 퀴즈가 나옵니다!",
+	"cmd_blacklist_desc":"깜방 갑니다~",
+	"cmd_setting_desc": "서버 세팅하는 명령어입니다.",
+	"cmd_eval_desc": "(일반 유저들은 쉇) 여긴 서아봇 개발자들만 쓸 수 있는 명령어라구요!"
 }
