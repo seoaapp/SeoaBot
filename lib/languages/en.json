@@ -50,15 +50,17 @@
 	"view": "[Watch](http://youtube.com<[0]>) / length: <[1]> / Uploaded at <[2]> / Played <[3]> times",
 	"ping": "Seoa's Ping: <[0]>ms\nMessage ping: <[1]>ms",
 
-	"cmd_help_desc": "do you need help?",
-	"cmd_invite_desc": "invite me!",
-	"cmd_logout_desc": "good bye :(",
-	"cmd_music_desc": "i like it!",
-	"cmd_mylist_desc": "my favorite songs!",
-	"cmd_ping_desc": "pong!",
-	"cmd_reload_desc": "reloading!",
-	"cmd_botinfo_desc": "yay",
-	"cmd_leaderboard_desc": "asdf",
-	"cmd_logout_desc": "zxcv",
-	"cmd_quiz_desc": "qwerty"
+	"cmd_help_desc": "도움이 필요하신가요?",
+	"cmd_invite_desc": "저를 초대해줘요!",
+	"cmd_music_desc": "음악 관련된 명령어들이 대거로 나옵니다!",
+	"cmd_mylist_desc": "나만의 재생목록",
+	"cmd_ping_desc": "핑퐁 (따꾸)!",
+	"cmd_reload_desc": "명령어 리로드하는 명령어입니다.",
+	"cmd_botinfo_desc": "봇의 정보는 다 알려줍니다(봇 토큰 뺴고요)",
+	"cmd_leaderboard_desc": "리더보드를 보여줍니다",
+	"cmd_logout_desc": "봇이 로그아웃 됩니다!",
+	"cmd_quiz_desc": "프로그래밍 언어 퀴즈가 나옵니다!",
+	"cmd_blacklist_desc":"깜방 갑니다~",
+	"cmd_setting_desc": "서버 세팅하는 명령어입니다.",
+	"cmd_eval_desc": "(일반 유저들은 쉇) 여긴 서아봇 개발자들만 쓸 수 있는 명령어라구요!"
 }
