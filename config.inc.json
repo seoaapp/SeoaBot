@@ -3,6 +3,7 @@
   "token": "",
   "activity": "<[prefix]>help",
   "owners": [""],
+  "debug": false,
 
   "path": {
     "library": "./lib",
