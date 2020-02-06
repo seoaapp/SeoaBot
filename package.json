@@ -25,11 +25,12 @@
     "opusscript": "0.0.7",
     "request": "^2.88.0",
     "ulangts": "^1.0.6",
-    "umulavats": "^1.0.7",
-    "umusicts": "^1.0.4",
+    "umulavats": "^1.0.8",
+    "umusicts": "^1.0.5",
     "umysql": "^0.1.1",
     "utimets": "^1.0.0",
-    "uuniquets": "^1.0.0"
+    "uuniquets": "^1.0.0",
+    "ytsr": "^0.1.10"
   },
   "devDependencies": {
     "eslint": "^6.3.0",
